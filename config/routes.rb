@@ -1,4 +1,6 @@
 Wacomxs::Application.routes.draw do
+  resources :recommendations
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
