@@ -1,5 +1,15 @@
 <p id="notice"><%= notice %></p>
 
+<script>
+	$(function() {
+		window.recommendation = new Recommendation(
+		<%= raw @recommendation.to_json %>
+		);
+		ko.applyBindings(window.recommendation);
+	});
+</script>
+
+
 
 <%= link_to 'Edit', edit_recommendation_path(@recommendation) %> |
 <%= link_to 'Back', recommendations_path %>
