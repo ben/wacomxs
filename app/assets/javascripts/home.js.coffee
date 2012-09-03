@@ -27,6 +27,7 @@ class @ButtonViewModel
 
 	edit: -> alert("edit button")
 
+
 class @ModeViewModel
 	constructor: (@mode) ->
 		@text = ko.computed -> 'mode!'
@@ -44,3 +45,12 @@ class @HomeViewModel
 
 	load: ->
 		# TODO
+
+
+
+################################################################################
+# Bootstrap
+$ ->
+	window.vm = new HomeViewModel(new Recommendation(
+		Recommendation.defaultValues()))
+	ko.applyBindings(window.vm)
