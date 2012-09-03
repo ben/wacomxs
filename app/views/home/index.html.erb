@@ -1,1 +1,23 @@
-<h1>Home!</h1>
+	<input data-bind="value: title"></input>
+	<br/>
+
+	<div class="controls">
+		<h1>Buttons</h1>
+		<div data-bind="foreach: buttons">
+			<button data-bind="text: text, click: edit"></button>
+		</div>
+	</div>
+
+	<div class="controls">
+		<h1>Modes</h1>
+		<div data-bind="foreach: modes">
+			<button data-bind="text: text, click: edit" /></button>
+		</div>
+	</div>
+
+<script>
+	window.vm = new HomeViewModel(
+		new Recommendation(Recommendation.defaultValues())
+	);
+	ko.applyBindings(window.vm);
+</script>
