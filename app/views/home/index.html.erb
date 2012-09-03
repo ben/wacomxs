@@ -1,17 +1,25 @@
+<div class="row">
 	<input data-bind="value: title"></input>
-	<br/>
+</div>
 
-	<div class="controls">
-		<h1>Buttons</h1>
-		<div data-bind="foreach: buttons">
-			<button data-bind="text: text, click: edit"></button>
+<div class"row">
+
+	<div class="span4">
+		<div class="controls">
+			<h1>Buttons</h1>
+			<div data-bind="foreach: buttons">
+				<p><button class="btn" data-bind="text: text, click: edit"></button></p>
+			</div>
 		</div>
 	</div>
 
-	<div class="controls">
-		<h1>Modes</h1>
-		<div data-bind="foreach: modes">
-			<button data-bind="text: text, click: edit" /></button>
+	<div class="span4">
+		<div class="controls">
+			<h1>Modes</h1>
+			<div data-bind="foreach: modes">
+				<p><button class="btn" data-bind="text: text, click: edit" /></button></p>
+			</div>
 		</div>
 	</div>
 
+</div>

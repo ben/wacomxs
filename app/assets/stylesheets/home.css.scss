@@ -2,9 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-div.controls {
-	float: left;
-	button {
-		width: 100%;
-	}
+button {
+	width: 100%;
+}
+
+body {
+	margin-top: 6em;
 }
