@@ -12,10 +12,12 @@ NONE = 'none'
 # Models
 class @Recommendation extends ko.Model
 	@persistAt 'recommendation'
-	@fields 'title', 'buttons', 'modes'
+	@fields 'title', 'buttons', 'modes', 'application_name', 'application_long_name'
 
 	@defaultValues: ->
 		title: 'untitled'
+		application_name: 'app'
+		application_long_name: '/Applications/something'
 		buttons: ({} for i in [1..8])
 		modes: ({} for i in [1..4])
 
@@ -40,6 +42,8 @@ class @HomeViewModel
 		@buttons = (new ButtonViewModel(x) for x in @model.buttons())
 		@modes = (new ModeViewModel(x) for x in @model.modes())
 		@title = @model.title
+		@application_name = @model.application_name
+		@application_long_name = @model.application_long_name
 
 		@isDirty = ko.observable(false)
 
