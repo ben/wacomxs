@@ -1,0 +1,1233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- This document was created with Syntext Serna Free. -->
+<root type="map">
+  <ImportFileVersion type="integer">3</ImportFileVersion>
+  <OSInterface type="map">
+    <ApplicationMap type="map">
+      <AppID1 type="map">
+        <ApplicationLongName type="string">/Applications/Adobe Photoshop CS6/Adobe Photoshop CS6.app</ApplicationLongName>
+        <ApplicationName type="string">Photoshop</ApplicationName>
+      </AppID1>
+    </ApplicationMap>
+  </OSInterface>
+  <TabletArray type="array">
+    <!--First ArrayElement is for Opaque Intuos4/5 tablets,Radial Menu, and Ekeys (NOT PENS)-->
+    <ArrayElement type="map">
+      <TabletAppRadialMenuMapArray type="array">
+        <ArrayElement type="map">
+          <ApplicationAssociated type="integer">1</ApplicationAssociated>
+          <RadialZones type="map">
+            <Center type="map">
+              <RadialFunction type="integer">13</RadialFunction>
+              <RadialStringName type="string" />
+            </Center>
+            <East type="map">
+              <RadialFunction type="integer">0</RadialFunction>
+              <RadialFunctionHandle type="map">
+                <RadialZones type="map">
+                  <Center type="map">
+                    <RadialFunction type="integer">13</RadialFunction>
+                    <RadialStringName type="string" />
+                  </Center>
+                  <East type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[&command;&option;&shift;e]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">The Move</RadialStringName>
+                  </East>
+                  <North type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[&command;&shift;n]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">New Layer</RadialStringName>
+                  </North>
+                  <Northeast type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[&command;j]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">CMD/Ctrl +J</RadialStringName>
+                  </Northeast>
+                  <Northwest type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[&command;&backspace;]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">Fill Back- ground</RadialStringName>
+                  </Northwest>
+                  <Outside type="map">
+                    <RadialFunction type="integer">13</RadialFunction>
+                    <RadialStringName type="string" />
+                  </Outside>
+                  <South type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[&command;e]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">Merge Down</RadialStringName>
+                  </South>
+                  <Southeast type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[&option;&f10;]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">Convert for Smart Filters</RadialStringName>
+                  </Southeast>
+                  <Southwest type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[&command;g]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">New Layer Group</RadialStringName>
+                  </Southwest>
+                  <West type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[&option;&backspace;]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">Fill Fore- ground</RadialStringName>
+                  </West>
+                </RadialZones>
+              </RadialFunctionHandle>
+              <RadialStringName type="string">Layers</RadialStringName>
+            </East>
+            <North type="map">
+              <RadialFunction type="integer">0</RadialFunction>
+              <RadialFunctionHandle type="map">
+                <RadialZones type="map">
+                  <Center type="map">
+                    <RadialFunction type="integer">13</RadialFunction>
+                    <RadialStringName type="string" />
+                  </Center>
+                  <East type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[&command;&shift;s]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">Save as...</RadialStringName>
+                  </East>
+                  <North type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[&command;o]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">Open</RadialStringName>
+                  </North>
+                  <Northeast type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[&command;s]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">Save</RadialStringName>
+                  </Northeast>
+                  <Northwest type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[&command;&option;&f8;]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">8 bit</RadialStringName>
+                  </Northwest>
+                  <Outside type="map">
+                    <RadialFunction type="integer">13</RadialFunction>
+                    <RadialStringName type="string" />
+                  </Outside>
+                  <South type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[ppppp&shift;f14]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">Convert to sRGB</RadialStringName>
+                  </South>
+                  <Southeast type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[&command;&option;&shift;z]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">Flatten</RadialStringName>
+                  </Southeast>
+                  <Southwest type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[ppppp&shift;f15]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">Adobe RGB</RadialStringName>
+                  </Southwest>
+                  <West type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[&command;/]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">Convert to LAB</RadialStringName>
+                  </West>
+                </RadialZones>
+              </RadialFunctionHandle>
+              <RadialStringName type="string">Image</RadialStringName>
+            </North>
+            <Northeast type="map">
+              <RadialFunction type="integer">1</RadialFunction>
+              <RadialFunctionHandle type="map">
+                <Keystroke type="kestring"><![CDATA[&command;&shift;f]]></Keystroke>
+              </RadialFunctionHandle>
+              <RadialStringName type="string">Fade Effects</RadialStringName>
+            </Northeast>
+            <Northwest type="map">
+              <RadialFunction type="integer">0</RadialFunction>
+              <RadialFunctionHandle type="map">
+                <RadialZones type="map">
+                  <Center type="map">
+                    <RadialFunction type="integer">13</RadialFunction>
+                    <RadialStringName type="string" />
+                  </Center>
+                  <East type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[&command;&shift;'&enter;]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">Vibrance Adj Layer</RadialStringName>
+                  </East>
+                  <North type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[&command;t]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">Free Transform</RadialStringName>
+                  </North>
+                  <Northeast type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[&command;u&enter;]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">Hue/Sat Adj Layer</RadialStringName>
+                  </Northeast>
+                  <Northwest type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[&command;l&enter;]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">Levels Adj Layer</RadialStringName>
+                  </Northwest>
+                  <Outside type="map">
+                    <RadialFunction type="integer">13</RadialFunction>
+                    <RadialStringName type="string" />
+                  </Outside>
+                  <South type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[&command;&shift;.&enter;]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">Threshold Adj Layer</RadialStringName>
+                  </South>
+                  <Southeast type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[&command;m&enter;]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">Curves Adj Layer</RadialStringName>
+                  </Southeast>
+                  <Southwest type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[&command;&shift;&option;b&enter;]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">B/W Adj. Layer</RadialStringName>
+                  </Southwest>
+                  <West type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[&command;b&enter;]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">Color Balance Adj. Layer</RadialStringName>
+                  </West>
+                </RadialZones>
+              </RadialFunctionHandle>
+              <RadialStringName type="string">Adjustment</RadialStringName>
+            </Northwest>
+            <Outside type="map">
+              <RadialFunction type="integer">13</RadialFunction>
+              <RadialStringName type="string" />
+            </Outside>
+            <South type="map">
+              <RadialFunction type="integer">0</RadialFunction>
+              <RadialFunctionHandle type="map">
+                <RadialZones type="map">
+                  <Center type="map">
+                    <RadialFunction type="integer">13</RadialFunction>
+                    <RadialStringName type="string" />
+                  </Center>
+                  <East type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[0]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">100%</RadialStringName>
+                  </East>
+                  <North type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[d]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">Default Color</RadialStringName>
+                  </North>
+                  <Northeast type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[50]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">50%</RadialStringName>
+                  </Northeast>
+                  <Northwest type="map">
+                    <RadialFunction type="integer">12</RadialFunction>
+                    <RadialStringName type="string" />
+                  </Northwest>
+                  <Outside type="map">
+                    <RadialFunction type="integer">13</RadialFunction>
+                    <RadialStringName type="string" />
+                  </Outside>
+                  <South type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[x]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">Toggle Fore/Back</RadialStringName>
+                  </South>
+                  <Southeast type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[&f5;]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">Brush Palette</RadialStringName>
+                  </Southeast>
+                  <Southwest type="map">
+                    <RadialFunction type="integer">12</RadialFunction>
+                    <RadialStringName type="string" />
+                  </Southwest>
+                  <West type="map">
+                    <RadialFunction type="integer">12</RadialFunction>
+                    <RadialStringName type="string" />
+                  </West>
+                </RadialZones>
+              </RadialFunctionHandle>
+              <RadialStringName type="string">Color Opacity</RadialStringName>
+            </South>
+            <Southeast type="map">
+              <RadialFunction type="integer">0</RadialFunction>
+              <RadialFunctionHandle type="map">
+                <RadialZones type="map">
+                  <Center type="map">
+                    <RadialFunction type="integer">13</RadialFunction>
+                    <RadialStringName type="string" />
+                  </Center>
+                  <East type="map">
+                    <RadialFunction type="integer">0</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <RadialZones type="map">
+                        <Center type="map">
+                          <RadialFunction type="integer">13</RadialFunction>
+                          <RadialStringName type="string" />
+                        </Center>
+                        <East type="map">
+                          <RadialFunction type="integer">1</RadialFunction>
+                          <RadialFunctionHandle type="map">
+                            <Keystroke type="kestring"><![CDATA[&shift;&f2;]]></Keystroke>
+                          </RadialFunctionHandle>
+                          <RadialStringName type="string">Oz 2 K No SilverEfex</RadialStringName>
+                        </East>
+                        <North type="map">
+                          <RadialFunction type="integer">1</RadialFunction>
+                          <RadialFunctionHandle type="map">
+                            <Keystroke type="kestring"><![CDATA[&f8;]]></Keystroke>
+                          </RadialFunctionHandle>
+                          <RadialStringName type="string">LAB:toss AB GS to RGB</RadialStringName>
+                        </North>
+                        <Northeast type="map">
+                          <RadialFunction type="integer">1</RadialFunction>
+                          <RadialFunctionHandle type="map">
+                            <Keystroke type="kestring"><![CDATA[&shift;&f7;]]></Keystroke>
+                          </RadialFunctionHandle>
+                          <RadialStringName type="string">Midtone Contouring</RadialStringName>
+                        </Northeast>
+                        <Northwest type="map">
+                          <RadialFunction type="integer">12</RadialFunction>
+                          <RadialStringName type="string" />
+                        </Northwest>
+                        <Outside type="map">
+                          <RadialFunction type="integer">13</RadialFunction>
+                          <RadialStringName type="string" />
+                        </Outside>
+                        <South type="map">
+                          <RadialFunction type="integer">1</RadialFunction>
+                          <RadialFunctionHandle type="map">
+                            <Keystroke type="kestring"><![CDATA[&shift;&f8;]]></Keystroke>
+                          </RadialFunctionHandle>
+                          <RadialStringName type="string">R/B Swap - IR Cameras</RadialStringName>
+                        </South>
+                        <Southeast type="map">
+                          <RadialFunction type="integer">1</RadialFunction>
+                          <RadialFunctionHandle type="map">
+                            <Keystroke type="kestring"><![CDATA[&f10;]]></Keystroke>
+                          </RadialFunctionHandle>
+                          <RadialStringName type="string">PS B/W Filter</RadialStringName>
+                        </Southeast>
+                        <Southwest type="map">
+                          <RadialFunction type="integer">12</RadialFunction>
+                          <RadialStringName type="string" />
+                        </Southwest>
+                        <West type="map">
+                          <RadialFunction type="integer">12</RadialFunction>
+                          <RadialStringName type="string" />
+                        </West>
+                      </RadialZones>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string"> OZ B/W L-Z</RadialStringName>
+                  </East>
+                  <North type="map">
+                    <RadialFunction type="integer">0</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <RadialZones type="map">
+                        <Center type="map">
+                          <RadialFunction type="integer">13</RadialFunction>
+                          <RadialStringName type="string" />
+                        </Center>
+                        <East type="map">
+                          <RadialFunction type="integer">1</RadialFunction>
+                          <RadialFunctionHandle type="map">
+                            <Keystroke type="kestring"><![CDATA[&shift;&f4;]]></Keystroke>
+                          </RadialFunctionHandle>
+                          <RadialStringName type="string">SilverEfex Smartfilter</RadialStringName>
+                        </East>
+                        <North type="map">
+                          <RadialFunction type="integer">1</RadialFunction>
+                          <RadialFunctionHandle type="map">
+                            <Keystroke type="kestring"><![CDATA[&shift;&f3;]]></Keystroke>
+                          </RadialFunctionHandle>
+                          <RadialStringName type="string">OZ 2 K with SilverEfex</RadialStringName>
+                        </North>
+                        <Northeast type="map">
+                          <RadialFunction type="integer">1</RadialFunction>
+                          <RadialFunctionHandle type="map">
+                            <Keystroke type="kestring"><![CDATA[&f12;]]></Keystroke>
+                          </RadialFunctionHandle>
+                          <RadialStringName type="string">SilverEfex RGB Chord</RadialStringName>
+                        </Northeast>
+                        <Northwest type="map">
+                          <RadialFunction type="integer">12</RadialFunction>
+                          <RadialStringName type="string" />
+                        </Northwest>
+                        <Outside type="map">
+                          <RadialFunction type="integer">13</RadialFunction>
+                          <RadialStringName type="string" />
+                        </Outside>
+                        <South type="map">
+                          <RadialFunction type="integer">1</RadialFunction>
+                          <RadialFunctionHandle type="map">
+                            <Keystroke type="kestring"><![CDATA[&shift;&f6;]]></Keystroke>
+                          </RadialFunctionHandle>
+                          <RadialStringName type="string">SEP2 with Warm Toner</RadialStringName>
+                        </South>
+                        <Southeast type="map">
+                          <RadialFunction type="integer">1</RadialFunction>
+                          <RadialFunctionHandle type="map">
+                            <Keystroke type="kestring"><![CDATA[&shift;&f5;]]></Keystroke>
+                          </RadialFunctionHandle>
+                          <RadialStringName type="string">SEP2 Stand alone</RadialStringName>
+                        </Southeast>
+                        <Southwest type="map">
+                          <RadialFunction type="integer">12</RadialFunction>
+                          <RadialStringName type="string" />
+                        </Southwest>
+                        <West type="map">
+                          <RadialFunction type="integer">12</RadialFunction>
+                          <RadialStringName type="string" />
+                        </West>
+                      </RadialZones>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">OZ with nik filters</RadialStringName>
+                  </North>
+                  <Northeast type="map">
+                    <RadialFunction type="integer">0</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <RadialZones type="map">
+                        <Center type="map">
+                          <RadialFunction type="integer">13</RadialFunction>
+                          <RadialStringName type="string" />
+                        </Center>
+                        <East type="map">
+                          <RadialFunction type="integer">1</RadialFunction>
+                          <RadialFunctionHandle type="map">
+                            <Keystroke type="kestring"><![CDATA[&f5;]]></Keystroke>
+                          </RadialFunctionHandle>
+                          <RadialStringName type="string">Convert with Blend Mode</RadialStringName>
+                        </East>
+                        <North type="map">
+                          <RadialFunction type="integer">1</RadialFunction>
+                          <RadialFunctionHandle type="map">
+                            <Keystroke type="kestring"><![CDATA[&f2;]]></Keystroke>
+                          </RadialFunctionHandle>
+                          <RadialStringName type="string">Channel Comparer</RadialStringName>
+                        </North>
+                        <Northeast type="map">
+                          <RadialFunction type="integer">1</RadialFunction>
+                          <RadialFunctionHandle type="map">
+                            <Keystroke type="kestring"><![CDATA[&f9;]]></Keystroke>
+                          </RadialFunctionHandle>
+                          <RadialStringName type="string">Convert Gray RGB</RadialStringName>
+                        </Northeast>
+                        <Northwest type="map">
+                          <RadialFunction type="integer">1</RadialFunction>
+                          <RadialFunctionHandle type="map">
+                            <Keystroke type="kestring"><![CDATA[&f7;]]></Keystroke>
+                          </RadialFunctionHandle>
+                          <RadialStringName type="string">LAB: GS to RGB</RadialStringName>
+                        </Northwest>
+                        <Outside type="map">
+                          <RadialFunction type="integer">13</RadialFunction>
+                          <RadialStringName type="string" />
+                        </Outside>
+                        <South type="map">
+                          <RadialFunction type="integer">1</RadialFunction>
+                          <RadialFunctionHandle type="map">
+                            <Keystroke type="kestring"><![CDATA[&f4;]]></Keystroke>
+                          </RadialFunctionHandle>
+                          <RadialStringName type="string">Desat</RadialStringName>
+                        </South>
+                        <Southeast type="map">
+                          <RadialFunction type="integer">1</RadialFunction>
+                          <RadialFunctionHandle type="map">
+                            <Keystroke type="kestring"><![CDATA[&f3;]]></Keystroke>
+                          </RadialFunctionHandle>
+                          <RadialStringName type="string">Desat with Hue</RadialStringName>
+                        </Southeast>
+                        <Southwest type="map">
+                          <RadialFunction type="integer">1</RadialFunction>
+                          <RadialFunctionHandle type="map">
+                            <Keystroke type="kestring"><![CDATA[&f6;]]></Keystroke>
+                          </RadialFunctionHandle>
+                          <RadialStringName type="string">Film and Filter</RadialStringName>
+                        </Southwest>
+                        <West type="map">
+                          <RadialFunction type="integer">1</RadialFunction>
+                          <RadialFunctionHandle type="map">
+                            <Keystroke type="kestring"><![CDATA[&f11;]]></Keystroke>
+                          </RadialFunctionHandle>
+                          <RadialStringName type="string">Gradient Map</RadialStringName>
+                        </West>
+                      </RadialZones>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">Oz B/W  A-G</RadialStringName>
+                  </Northeast>
+                  <Northwest type="map">
+                    <RadialFunction type="integer">0</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <RadialZones type="map">
+                        <Center type="map">
+                          <RadialFunction type="integer">13</RadialFunction>
+                          <RadialStringName type="string" />
+                        </Center>
+                        <East type="map">
+                          <RadialFunction type="integer">1</RadialFunction>
+                          <RadialFunctionHandle type="map">
+                            <Keystroke type="kestring"><![CDATA[&command;&option;&shift;0]]></Keystroke>
+                          </RadialFunctionHandle>
+                          <RadialStringName type="string">Perfect Mask</RadialStringName>
+                        </East>
+                        <North type="map">
+                          <RadialFunction type="integer">1</RadialFunction>
+                          <RadialFunctionHandle type="map">
+                            <Keystroke type="kestring"><![CDATA[&command;&shift;&option;f]]></Keystroke>
+                          </RadialFunctionHandle>
+                          <RadialStringName type="string">Focalpoint 2.0</RadialStringName>
+                        </North>
+                        <Northeast type="map">
+                          <RadialFunction type="integer">1</RadialFunction>
+                          <RadialFunctionHandle type="map">
+                            <Keystroke type="kestring"><![CDATA[&command;&shift;&option;g]]></Keystroke>
+                          </RadialFunctionHandle>
+                          <RadialStringName type="string">Perfect Resize</RadialStringName>
+                        </Northeast>
+                        <Northwest type="map">
+                          <RadialFunction type="integer">12</RadialFunction>
+                          <RadialStringName type="string" />
+                        </Northwest>
+                        <Outside type="map">
+                          <RadialFunction type="integer">13</RadialFunction>
+                          <RadialStringName type="string" />
+                        </Outside>
+                        <South type="map">
+                          <RadialFunction type="integer">1</RadialFunction>
+                          <RadialFunctionHandle type="map">
+                            <Keystroke type="kestring"><![CDATA[&command;&shift;&option;.]]></Keystroke>
+                          </RadialFunctionHandle>
+                          <RadialStringName type="string">Perfect Effects</RadialStringName>
+                        </South>
+                        <Southeast type="map">
+                          <RadialFunction type="integer">1</RadialFunction>
+                          <RadialFunctionHandle type="map">
+                            <Keystroke type="kestring"><![CDATA[&command;&option;&shift;r]]></Keystroke>
+                          </RadialFunctionHandle>
+                          <RadialStringName type="string">Photo Frames</RadialStringName>
+                        </Southeast>
+                        <Southwest type="map">
+                          <RadialFunction type="integer">12</RadialFunction>
+                          <RadialStringName type="string" />
+                        </Southwest>
+                        <West type="map">
+                          <RadialFunction type="integer">12</RadialFunction>
+                          <RadialStringName type="string" />
+                        </West>
+                      </RadialZones>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">OnOne filters</RadialStringName>
+                  </Northwest>
+                  <Outside type="map">
+                    <RadialFunction type="integer">13</RadialFunction>
+                    <RadialStringName type="string" />
+                  </Outside>
+                  <South type="map">
+                    <RadialFunction type="integer">0</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <RadialZones type="map">
+                        <Center type="map">
+                          <RadialFunction type="integer">13</RadialFunction>
+                          <RadialStringName type="string" />
+                        </Center>
+                        <East type="map">
+                          <RadialFunction type="integer">1</RadialFunction>
+                          <RadialFunctionHandle type="map">
+                            <Keystroke type="kestring"><![CDATA[&command;&f8;]]></Keystroke>
+                          </RadialFunctionHandle>
+                          <RadialStringName type="string">PS_CONTRASTS_LIGHTEN_BM</RadialStringName>
+                        </East>
+                        <North type="map">
+                          <RadialFunction type="integer">1</RadialFunction>
+                          <RadialFunctionHandle type="map">
+                            <Keystroke type="kestring"><![CDATA[&shift;&f9;]]></Keystroke>
+                          </RadialFunctionHandle>
+                          <RadialStringName type="string">BP_WP_MP_Combo</RadialStringName>
+                        </North>
+                        <Northeast type="map">
+                          <RadialFunction type="integer">1</RadialFunction>
+                          <RadialFunctionHandle type="map">
+                            <Keystroke type="kestring"><![CDATA[&shift;&f10;]]></Keystroke>
+                          </RadialFunctionHandle>
+                          <RadialStringName type="string">Convert to SmartObj</RadialStringName>
+                        </Northeast>
+                        <Northwest type="map">
+                          <RadialFunction type="integer">12</RadialFunction>
+                          <RadialStringName type="string" />
+                        </Northwest>
+                        <Outside type="map">
+                          <RadialFunction type="integer">13</RadialFunction>
+                          <RadialStringName type="string" />
+                        </Outside>
+                        <South type="map">
+                          <RadialFunction type="integer">1</RadialFunction>
+                          <RadialFunctionHandle type="map">
+                            <Keystroke type="kestring"><![CDATA[&command;&f10;]]></Keystroke>
+                          </RadialFunctionHandle>
+                          <RadialStringName type="string">MIDTONE CONTOUR</RadialStringName>
+                        </South>
+                        <Southeast type="map">
+                          <RadialFunction type="integer">1</RadialFunction>
+                          <RadialFunctionHandle type="map">
+                            <Keystroke type="kestring"><![CDATA[&command;&f9;]]></Keystroke>
+                          </RadialFunctionHandle>
+                          <RadialStringName type="string">LAB_EQUILIZATION</RadialStringName>
+                        </Southeast>
+                        <Southwest type="map">
+                          <RadialFunction type="integer">1</RadialFunction>
+                          <RadialFunctionHandle type="map">
+                            <Keystroke type="kestring"><![CDATA[&command;&f7;]]></Keystroke>
+                          </RadialFunctionHandle>
+                          <RadialStringName type="string">FocalPoint onOne</RadialStringName>
+                        </Southwest>
+                        <West type="map">
+                          <RadialFunction type="integer">12</RadialFunction>
+                          <RadialStringName type="string" />
+                        </West>
+                      </RadialZones>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">OZ PT PS Only</RadialStringName>
+                  </South>
+                  <Southeast type="map">
+                    <RadialFunction type="integer">0</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <RadialZones type="map">
+                        <Center type="map">
+                          <RadialFunction type="integer">13</RadialFunction>
+                          <RadialStringName type="string" />
+                        </Center>
+                        <East type="map">
+                          <RadialFunction type="integer">1</RadialFunction>
+                          <RadialFunctionHandle type="map">
+                            <Keystroke type="kestring"><![CDATA[&command;&f2;]]></Keystroke>
+                          </RadialFunctionHandle>
+                          <RadialStringName type="string">nik Contrast Only VE</RadialStringName>
+                        </East>
+                        <North type="map">
+                          <RadialFunction type="integer">1</RadialFunction>
+                          <RadialFunctionHandle type="map">
+                            <Keystroke type="kestring"><![CDATA[&shift;&f12;]]></Keystroke>
+                          </RadialFunctionHandle>
+                          <RadialStringName type="string">nik Tonal Cont. VE</RadialStringName>
+                        </North>
+                        <Northeast type="map">
+                          <RadialFunction type="integer">1</RadialFunction>
+                          <RadialFunctionHandle type="map">
+                            <Keystroke type="kestring"><![CDATA[&shift;&f11;]]></Keystroke>
+                          </RadialFunctionHandle>
+                          <RadialStringName type="string">VE nik Skylight </RadialStringName>
+                        </Northeast>
+                        <Northwest type="map">
+                          <RadialFunction type="integer">1</RadialFunction>
+                          <RadialFunctionHandle type="map">
+                            <Keystroke type="kestring"><![CDATA[&command;&f6;]]></Keystroke>
+                          </RadialFunctionHandle>
+                          <RadialStringName type="string">nik Color Stylizer CEP4</RadialStringName>
+                        </Northwest>
+                        <Outside type="map">
+                          <RadialFunction type="integer">13</RadialFunction>
+                          <RadialStringName type="string" />
+                        </Outside>
+                        <South type="map">
+                          <RadialFunction type="integer">1</RadialFunction>
+                          <RadialFunctionHandle type="map">
+                            <Keystroke type="kestring"><![CDATA[&command;&f4;]]></Keystroke>
+                          </RadialFunctionHandle>
+                          <RadialStringName type="string">nik Skylt CEP4</RadialStringName>
+                        </South>
+                        <Southeast type="map">
+                          <RadialFunction type="integer">1</RadialFunction>
+                          <RadialFunctionHandle type="map">
+                            <Keystroke type="kestring"><![CDATA[&command;&f3;]]></Keystroke>
+                          </RadialFunctionHandle>
+                          <RadialStringName type="string">nik Tonal Cont CEP4</RadialStringName>
+                        </Southeast>
+                        <Southwest type="map">
+                          <RadialFunction type="integer">1</RadialFunction>
+                          <RadialFunctionHandle type="map">
+                            <Keystroke type="kestring"><![CDATA[&command;&f5;]]></Keystroke>
+                          </RadialFunctionHandle>
+                          <RadialStringName type="string">nik Cont. Only CEP4</RadialStringName>
+                        </Southwest>
+                        <West type="map">
+                          <RadialFunction type="integer">1</RadialFunction>
+                          <RadialFunctionHandle type="map">
+                            <Keystroke type="kestring"><![CDATA[&command;&f11;]]></Keystroke>
+                          </RadialFunctionHandle>
+                          <RadialStringName type="string">nik Paper Toner</RadialStringName>
+                        </West>
+                      </RadialZones>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">OZ Power tools</RadialStringName>
+                  </Southeast>
+                  <Southwest type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[&command;&option;&shift;g]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">Perfect Resize</RadialStringName>
+                  </Southwest>
+                  <West type="map">
+                    <RadialFunction type="integer">0</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <RadialZones type="map">
+                        <Center type="map">
+                          <RadialFunction type="integer">13</RadialFunction>
+                          <RadialStringName type="string" />
+                        </Center>
+                        <East type="map">
+                          <RadialFunction type="integer">1</RadialFunction>
+                          <RadialFunctionHandle type="map">
+                            <Keystroke type="kestring"><![CDATA[&command;&shift;&option;a]]></Keystroke>
+                          </RadialFunctionHandle>
+                          <RadialStringName type="string">Silver Efex Pro 2</RadialStringName>
+                        </East>
+                        <North type="map">
+                          <RadialFunction type="integer">1</RadialFunction>
+                          <RadialFunctionHandle type="map">
+                            <Keystroke type="kestring"><![CDATA[&command;&shift;&option;d]]></Keystroke>
+                          </RadialFunctionHandle>
+                          <RadialStringName type="string">Define 2</RadialStringName>
+                        </North>
+                        <Northeast type="map">
+                          <RadialFunction type="integer">1</RadialFunction>
+                          <RadialFunctionHandle type="map">
+                            <Keystroke type="kestring"><![CDATA[&command;&shift;p]]></Keystroke>
+                          </RadialFunctionHandle>
+                          <RadialStringName type="string">Coor Efex Pro 4</RadialStringName>
+                        </Northeast>
+                        <Northwest type="map">
+                          <RadialFunction type="integer">1</RadialFunction>
+                          <RadialFunctionHandle type="map">
+                            <Keystroke type="kestring"><![CDATA[&command;&shift;&option;h]]></Keystroke>
+                          </RadialFunctionHandle>
+                          <RadialStringName type="string">HDR Efex Pro 2</RadialStringName>
+                        </Northwest>
+                        <Outside type="map">
+                          <RadialFunction type="integer">13</RadialFunction>
+                          <RadialStringName type="string" />
+                        </Outside>
+                        <South type="map">
+                          <RadialFunction type="integer">1</RadialFunction>
+                          <RadialFunctionHandle type="map">
+                            <Keystroke type="kestring"><![CDATA[&command;&shift;&option;1]]></Keystroke>
+                          </RadialFunctionHandle>
+                          <RadialStringName type="string">Sharpener Pro 3 Raw</RadialStringName>
+                        </South>
+                        <Southeast type="map">
+                          <RadialFunction type="integer">1</RadialFunction>
+                          <RadialFunctionHandle type="map">
+                            <Keystroke type="kestring"><![CDATA[&command;&option;&shift;w]]></Keystroke>
+                          </RadialFunctionHandle>
+                          <RadialStringName type="string">Viveza 2</RadialStringName>
+                        </Southeast>
+                        <Southwest type="map">
+                          <RadialFunction type="integer">1</RadialFunction>
+                          <RadialFunctionHandle type="map">
+                            <Keystroke type="kestring"><![CDATA[&command;&shift;1]]></Keystroke>
+                          </RadialFunctionHandle>
+                          <RadialStringName type="string">Sharpener Pro Output</RadialStringName>
+                        </Southwest>
+                        <West type="map">
+                          <RadialFunction type="integer">2</RadialFunction>
+                          <RadialFunctionHandle type="map">
+                            <RunAppStringName type="string">/Applications/Nikon Software/Capture NX 2/Capture NX 2.app</RunAppStringName>
+                          </RadialFunctionHandle>
+                          <RadialStringName type="string">Capture NX 2</RadialStringName>
+                        </West>
+                      </RadialZones>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">nik filters</RadialStringName>
+                  </West>
+                </RadialZones>
+              </RadialFunctionHandle>
+              <RadialStringName type="string">Actions &amp; Filters</RadialStringName>
+            </Southeast>
+            <Southwest type="map">
+              <RadialFunction type="integer">1</RadialFunction>
+              <RadialFunctionHandle type="map">
+                <Keystroke type="kestring"><![CDATA[&command;&option;w]]></Keystroke>
+              </RadialFunctionHandle>
+              <RadialStringName type="string">New Window for...</RadialStringName>
+            </Southwest>
+            <West type="map">
+              <RadialFunction type="integer">0</RadialFunction>
+              <RadialFunctionHandle type="map">
+                <RadialZones type="map">
+                  <Center type="map">
+                    <RadialFunction type="integer">13</RadialFunction>
+                    <RadialStringName type="string" />
+                  </Center>
+                  <East type="map">
+                    <RadialFunction type="integer">2</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <RunAppStringName type="string">/Applications/Microsoft Office 2004/Microsoft Word</RunAppStringName>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">Microsoft Word</RadialStringName>
+                  </East>
+                  <North type="map">
+                    <RadialFunction type="integer">2</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <RunAppStringName type="string">/Applications/Nikon Software/Capture NX 2</RunAppStringName>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">Capture NX 2</RadialStringName>
+                  </North>
+                  <Northeast type="map">
+                    <RadialFunction type="integer">2</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <RunAppStringName type="string">/Applications/Adobe Photoshop Lightroom 4.app</RunAppStringName>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">Adobe Lightroom</RadialStringName>
+                  </Northeast>
+                  <Northwest type="map">
+                    <RadialFunction type="integer">12</RadialFunction>
+                    <RadialStringName type="string" />
+                  </Northwest>
+                  <Outside type="map">
+                    <RadialFunction type="integer">13</RadialFunction>
+                    <RadialStringName type="string" />
+                  </Outside>
+                  <South type="map">
+                    <RadialFunction type="integer">12</RadialFunction>
+                    <RadialStringName type="string"></RadialStringName>
+                  </South>
+                  <Southeast type="map">
+                    <RadialFunction type="integer">2</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <RunAppStringName type="string">/Applications/Safari.app</RunAppStringName>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">Safari</RadialStringName>
+                  </Southeast>
+                  <Southwest type="map">
+                    <RadialFunction type="integer">12</RadialFunction>
+                    <RadialStringName type="string" />
+                  </Southwest>
+                  <West type="map">
+                    <RadialFunction type="integer">12</RadialFunction>
+                    <RadialStringName type="string" />
+                  </West>
+                </RadialZones>
+              </RadialFunctionHandle>
+              <RadialStringName type="string">Run Apps</RadialStringName>
+            </West>
+          </RadialZones>
+        </ArrayElement>
+      </TabletAppRadialMenuMapArray>
+      <TabletControlContainerArray type="array">
+        <ArrayElement type="map">
+          <!--Place "TabletControlsButtonsArray" "TabletControlsButtonsArray" and "TouchRingSettings"-->
+          <ApplicationAssociated type="integer">1</ApplicationAssociated>
+          <TabletControlsButtonsArray type="array">
+            <ArrayElement type="map">
+              <ButtonFunction type="integer">42</ButtonFunction>
+              <ButtonName type="string">LeftButton1</ButtonName>
+              <Usage type="map">
+                <EFinePoint type="map">
+                  <Count type="integer">0</Count>
+                </EFinePoint>
+              </Usage>
+            </ArrayElement>
+            <ArrayElement type="map">
+              <ButtonFunction type="integer">40</ButtonFunction>
+              <ButtonName type="string">LeftButton2</ButtonName>
+              <Usage type="map">
+                <EHelp type="map">
+                  <Count type="integer">0</Count>
+                </EHelp>
+              </Usage>
+            </ArrayElement>
+            <ArrayElement type="map">
+              <ButtonFunction type="integer">8</ButtonFunction>
+              <ButtonKeystrokeShortcutName type="string">Move Tool</ButtonKeystrokeShortcutName>
+              <ButtonName type="string">LeftButton3</ButtonName>
+              <Keystroke type="kestring"><![CDATA[v]]></Keystroke>
+            </ArrayElement>
+            <ArrayElement type="map">
+              <ButtonFunction type="integer">8</ButtonFunction>
+              <ButtonKeystrokeShortcutName type="string">Present</ButtonKeystrokeShortcutName>
+              <ButtonName type="string">LeftButton4</ButtonName>
+              <Keystroke type="kestring"><![CDATA[&shift;w]]></Keystroke>
+            </ArrayElement>
+            <ArrayElement type="map">
+              <ButtonFunction type="integer">8</ButtonFunction>
+              <ButtonKeystrokeShortcutName type="string">Group Layers</ButtonKeystrokeShortcutName>
+              <ButtonName type="string">LeftButton5</ButtonName>
+              <Keystroke type="kestring"><![CDATA[&command;g]]></Keystroke>
+              <Usage type="map">
+                <EKeystrokes type="map">
+                  <Count type="integer">0</Count>
+                </EKeystrokes>
+              </Usage>
+            </ArrayElement>
+            <ArrayElement type="map">
+              <ButtonFunction type="integer">8</ButtonFunction>
+              <ButtonKeystrokeShortcutName type="string">Ungroup Layers</ButtonKeystrokeShortcutName>
+              <ButtonName type="string">LeftButton6</ButtonName>
+              <Keystroke type="kestring"><![CDATA[&command;&shift;g]]></Keystroke>
+            </ArrayElement>
+            <ArrayElement type="map">
+              <ButtonFunction type="integer">40</ButtonFunction>
+              <ButtonName type="string">LeftButton7</ButtonName>
+            </ArrayElement>
+            <ArrayElement type="map">
+              <ButtonFunction type="integer">41</ButtonFunction>
+              <ButtonName type="string">LeftButton8</ButtonName>
+            </ArrayElement>
+            <!--The following are Right hand buttons-->
+            <ArrayElement type="map">
+              <ButtonFunction type="integer">8</ButtonFunction>
+              <ButtonKeystrokeShortcutName type="string">Save...</ButtonKeystrokeShortcutName>
+              <ButtonName type="string">Rightbutton1</ButtonName>
+              <Keystroke type="kestring"><![CDATA[&command;s]]></Keystroke>
+            </ArrayElement>
+            <ArrayElement type="map">
+              <ButtonFunction type="integer">8</ButtonFunction>
+              <ButtonKeystrokeShortcutName type="string">Save as...</ButtonKeystrokeShortcutName>
+              <ButtonName type="string">Rightbutton2</ButtonName>
+              <Keystroke type="kestring"><![CDATA[&command;&shift;s]]></Keystroke>
+            </ArrayElement>
+            <ArrayElement type="map">
+              <ButtonFunction type="integer">8</ButtonFunction>
+              <ButtonKeystrokeShortcutName type="string">Print...</ButtonKeystrokeShortcutName>
+              <ButtonName type="string">Rightbutton3</ButtonName>
+              <Keystroke type="kestring"><![CDATA[&command;p]]></Keystroke>
+            </ArrayElement>
+            <ArrayElement type="map">
+              <ButtonFunction type="integer">8</ButtonFunction>
+              <ButtonKeystrokeShortcutName type="string">Open...</ButtonKeystrokeShortcutName>
+              <ButtonName type="string">Rightbutton4</ButtonName>
+              <Keystroke type="kestring"><![CDATA[&command;o]]></Keystroke>
+            </ArrayElement>
+            <ArrayElement type="map">
+              <ButtonFunction type="integer">8</ButtonFunction>
+              <ButtonKeystrokeShortcutName type="string">Screen Modes</ButtonKeystrokeShortcutName>
+              <ButtonName type="string">Rightbutton5</ButtonName>
+              <Keystroke type="kestring"><![CDATA[f]]></Keystroke>
+            </ArrayElement>
+            <ArrayElement type="map">
+              <ButtonFunction type="integer">8</ButtonFunction>
+              <ButtonKeystrokeShortcutName type="string">Launch Actions</ButtonKeystrokeShortcutName>
+              <ButtonName type="string">Rightbutton6</ButtonName>
+              <Keystroke type="kestring"><![CDATA[&option;&f9;]]></Keystroke>
+            </ArrayElement>
+            <ArrayElement type="map">
+              <ButtonFunction type="integer">8</ButtonFunction>
+              <ButtonKeystrokeShortcutName type="string">Convert to Smart Obj.</ButtonKeystrokeShortcutName>
+              <ButtonName type="string">Rightbutton7</ButtonName>
+              <Keystroke type="kestring"><![CDATA[&option;&f10;]]></Keystroke>
+            </ArrayElement>
+            <ArrayElement type="map">
+              <ButtonFunction type="integer">8</ButtonFunction>
+              <ButtonKeystrokeShortcutName type="string">Die Adjustments... DIE</ButtonKeystrokeShortcutName>
+              <ButtonName type="string">Rightbutton8</ButtonName>
+              <Keystroke type="kestring"><![CDATA[&option;&f12;]]></Keystroke>
+            </ArrayElement>
+          </TabletControlsButtonsArray>
+          <TabletControlsModButtonsArray type="array" />
+          <TouchRings type="map">
+            <!--For C24 touch rings-->
+            <LeftRing type="map">
+              <TouchStripModes type="map">
+                <mode1 type="map">
+                  <TouchStripDirection type="integer">-1</TouchStripDirection>
+                  <TouchStripEnableTapZones type="bool">false</TouchStripEnableTapZones>
+                  <TouchStripFunction type="integer">8</TouchStripFunction>
+                  <TouchStripKeystrokeDecrease type="kestring"><![CDATA[v&shift;=]]></TouchStripKeystrokeDecrease>
+                  <TouchStripKeystrokeIncrease type="kestring"><![CDATA[v&shift;-]]></TouchStripKeystrokeIncrease>
+                  <TouchStripKeystrokeName type="string">Layer Modes</TouchStripKeystrokeName>
+                  <TouchStripModeName type="string">mode1</TouchStripModeName>
+                  <TouchStripModifiers type="integer">0</TouchStripModifiers>
+                  <TouchStripSpeed type="integer">0</TouchStripSpeed>
+                </mode1>
+                <mode2 type="map">
+                  <TouchStripDirection type="integer">-1</TouchStripDirection>
+                  <TouchStripEnableTapZones type="bool">false</TouchStripEnableTapZones>
+                  <TouchStripFunction type="integer">8</TouchStripFunction>
+                  <TouchStripKeystrokeDecrease type="kestring"><![CDATA[&rsqbracket;]]></TouchStripKeystrokeDecrease>
+                  <TouchStripKeystrokeIncrease type="kestring"><![CDATA[[]]></TouchStripKeystrokeIncrease>
+                  <TouchStripKeystrokeName type="string">Brush Size</TouchStripKeystrokeName>
+                  <TouchStripModeName type="string">mode2</TouchStripModeName>
+                  <TouchStripModifiers type="integer">0</TouchStripModifiers>
+                  <TouchStripSpeed type="integer">1</TouchStripSpeed>
+                </mode2>
+                <mode3 type="map">
+                  <TouchStripDirection type="integer">-1</TouchStripDirection>
+                  <TouchStripEnableTapZones type="bool">false</TouchStripEnableTapZones>
+                  <TouchStripFunction type="integer">8</TouchStripFunction>
+                  <TouchStripKeystrokeDecrease type="kestring"><![CDATA[&shift;[]]></TouchStripKeystrokeDecrease>
+                  <TouchStripKeystrokeIncrease type="kestring"><![CDATA[&shift;&rsqbracket;]]></TouchStripKeystrokeIncrease>
+                  <TouchStripKeystrokeName type="string">Brush Hardness</TouchStripKeystrokeName>
+                  <TouchStripModeName type="string">mode3</TouchStripModeName>
+                  <TouchStripModifiers type="integer">0</TouchStripModifiers>
+                  <TouchStripSpeed type="integer">3</TouchStripSpeed>
+                </mode3>
+              </TouchStripModes>
+            </LeftRing>
+            <RightRing type="map">
+              <TouchStripModes type="map">
+                <mode1 type="map">
+                  <TouchStripDirection type="integer">-1</TouchStripDirection>
+                  <TouchStripEnableTapZones type="bool">false</TouchStripEnableTapZones>
+                  <TouchStripFunction type="integer">8</TouchStripFunction>
+                  <TouchStripKeystrokeDecrease type="kestring"><![CDATA[v&shift;=]]></TouchStripKeystrokeDecrease>
+                  <TouchStripKeystrokeIncrease type="kestring"><![CDATA[v&shift;-]]></TouchStripKeystrokeIncrease>
+                  <TouchStripKeystrokeName type="string">Layer Modes</TouchStripKeystrokeName>
+                  <TouchStripModeName type="string">mode1</TouchStripModeName>
+                  <TouchStripModifiers type="integer">0</TouchStripModifiers>
+                  <TouchStripSpeed type="integer">0</TouchStripSpeed>
+                </mode1>
+                <mode2 type="map">
+                  <TouchStripDirection type="integer">-1</TouchStripDirection>
+                  <TouchStripEnableTapZones type="bool">false</TouchStripEnableTapZones>
+                  <TouchStripFunction type="integer">8</TouchStripFunction>
+                  <TouchStripKeystrokeDecrease type="kestring"><![CDATA[&rsqbracket;]]></TouchStripKeystrokeDecrease>
+                  <TouchStripKeystrokeIncrease type="kestring"><![CDATA[[]]></TouchStripKeystrokeIncrease>
+                  <TouchStripKeystrokeName type="string">Brush Size</TouchStripKeystrokeName>
+                  <TouchStripModeName type="string">mode2</TouchStripModeName>
+                  <TouchStripModifiers type="integer">0</TouchStripModifiers>
+                  <TouchStripSpeed type="integer">1</TouchStripSpeed>
+                </mode2>
+                <mode3 type="map">
+                  <TouchStripDirection type="integer">-1</TouchStripDirection>
+                  <TouchStripEnableTapZones type="bool">false</TouchStripEnableTapZones>
+                  <TouchStripFunction type="integer">8</TouchStripFunction>
+                  <TouchStripKeystrokeDecrease type="kestring"><![CDATA[&shift;[]]></TouchStripKeystrokeDecrease>
+                  <TouchStripKeystrokeIncrease type="kestring"><![CDATA[&shift;&rsqbracket;]]></TouchStripKeystrokeIncrease>
+                  <TouchStripKeystrokeName type="string">Brush Hardness</TouchStripKeystrokeName>
+                  <TouchStripModeName type="string">mode3</TouchStripModeName>
+                  <TouchStripModifiers type="integer">0</TouchStripModifiers>
+                  <TouchStripSpeed type="integer">3</TouchStripSpeed>
+                </mode3>
+              </TouchStripModes>
+            </RightRing>
+          </TouchRings>
+          <TouchRingSettings type="map">
+            <!--For Intuos 4/5-->
+            <TouchStripModes type="map">
+              <mode1 type="map">
+                <TouchStripDirection type="integer">-1</TouchStripDirection>
+                <TouchStripEnableTapZones type="bool">false</TouchStripEnableTapZones>
+                <TouchStripFunction type="integer">8</TouchStripFunction>
+                <TouchStripKeystrokeDecrease type="kestring"><![CDATA[v&shift;=]]></TouchStripKeystrokeDecrease>
+                <TouchStripKeystrokeIncrease type="kestring"><![CDATA[v&shift;-]]></TouchStripKeystrokeIncrease>
+                <TouchStripKeystrokeName type="string">Layer Modes</TouchStripKeystrokeName>
+                <TouchStripModeName type="string">mode1</TouchStripModeName>
+                <TouchStripModifiers type="integer">0</TouchStripModifiers>
+                <TouchStripSpeed type="integer">0</TouchStripSpeed>
+              </mode1>
+              <mode2 type="map">
+                <TouchStripDirection type="integer">-1</TouchStripDirection>
+                <TouchStripEnableTapZones type="bool">false</TouchStripEnableTapZones>
+                <TouchStripFunction type="integer">8</TouchStripFunction>
+                <TouchStripKeystrokeDecrease type="kestring"><![CDATA[&rsqbracket;]]></TouchStripKeystrokeDecrease>
+                <TouchStripKeystrokeIncrease type="kestring"><![CDATA[[]]></TouchStripKeystrokeIncrease>
+                <TouchStripKeystrokeName type="string">Brush Size</TouchStripKeystrokeName>
+                <TouchStripModeName type="string">mode2</TouchStripModeName>
+                <TouchStripModifiers type="integer">0</TouchStripModifiers>
+                <TouchStripSpeed type="integer">1</TouchStripSpeed>
+              </mode2>
+              <mode3 type="map">
+                <TouchStripDirection type="integer">-1</TouchStripDirection>
+                <TouchStripEnableTapZones type="bool">false</TouchStripEnableTapZones>
+                <TouchStripFunction type="integer">8</TouchStripFunction>
+                <TouchStripKeystrokeDecrease type="kestring"><![CDATA[&shift;[]]></TouchStripKeystrokeDecrease>
+                <TouchStripKeystrokeIncrease type="kestring"><![CDATA[&shift;&rsqbracket;]]></TouchStripKeystrokeIncrease>
+                <TouchStripKeystrokeName type="string">Brush Hardness</TouchStripKeystrokeName>
+                <TouchStripModeName type="string">mode3</TouchStripModeName>
+                <TouchStripModifiers type="integer">0</TouchStripModifiers>
+                <TouchStripSpeed type="integer">3</TouchStripSpeed>
+              </mode3>
+              <mode4 type="map">
+                <TouchStripDirection type="integer">-1</TouchStripDirection>
+                <TouchStripEnableTapZones type="bool">false</TouchStripEnableTapZones>
+                <TouchStripFunction type="integer">45</TouchStripFunction>
+                <TouchStripModeName type="string">mode4</TouchStripModeName>
+                <TouchStripModifiers type="integer">0</TouchStripModifiers>
+                <TouchStripSpeed type="integer">1</TouchStripSpeed>
+              </mode4>
+            </TouchStripModes>
+            <TouchRingName type="string">touchring1</TouchRingName>
+          </TouchRingSettings>
+          <TouchStrips type="map">
+            <!--For Cintiq22, and C21-->
+            <oned1 type="map">
+              <Name type="string">oned1</Name>
+              <TouchStripModes type="map">
+                <mode1 type="map">
+                  <TouchStripDirection type="integer">-1</TouchStripDirection>
+                  <TouchStripEnableTapZones type="bool">false</TouchStripEnableTapZones>
+                  <TouchStripFunction type="integer">8</TouchStripFunction>
+                  <TouchStripKeystrokeDecrease type="kestring"><![CDATA[v&shift;=]]></TouchStripKeystrokeDecrease>
+                  <TouchStripKeystrokeIncrease type="kestring"><![CDATA[v&shift;-]]></TouchStripKeystrokeIncrease>
+                  <TouchStripKeystrokeName type="string">Layer Modes</TouchStripKeystrokeName>
+                  <TouchStripModeName type="string">mode1</TouchStripModeName>
+                  <TouchStripModifiers type="integer">0</TouchStripModifiers>
+                  <TouchStripSpeed type="integer">0</TouchStripSpeed>
+                </mode1>
+                <mode2 type="map">
+                  <TouchStripDirection type="integer">-1</TouchStripDirection>
+                  <TouchStripEnableTapZones type="bool">false</TouchStripEnableTapZones>
+                  <TouchStripFunction type="integer">8</TouchStripFunction>
+                  <TouchStripKeystrokeDecrease type="kestring"><![CDATA[&rsqbracket;]]></TouchStripKeystrokeDecrease>
+                  <TouchStripKeystrokeIncrease type="kestring"><![CDATA[[]]></TouchStripKeystrokeIncrease>
+                  <TouchStripKeystrokeName type="string">Brush Size</TouchStripKeystrokeName>
+                  <TouchStripModeName type="string">mode2</TouchStripModeName>
+                  <TouchStripModifiers type="integer">0</TouchStripModifiers>
+                  <TouchStripSpeed type="integer">1</TouchStripSpeed>
+                </mode2>
+                <mode3 type="map">
+                  <TouchStripDirection type="integer">-1</TouchStripDirection>
+                  <TouchStripEnableTapZones type="bool">false</TouchStripEnableTapZones>
+                  <TouchStripFunction type="integer">8</TouchStripFunction>
+                  <TouchStripKeystrokeDecrease type="kestring"><![CDATA[&shift;[]]></TouchStripKeystrokeDecrease>
+                  <TouchStripKeystrokeIncrease type="kestring"><![CDATA[&shift;&rsqbracket;]]></TouchStripKeystrokeIncrease>
+                  <TouchStripKeystrokeName type="string">Brush Hardness</TouchStripKeystrokeName>
+                  <TouchStripModeName type="string">mode3</TouchStripModeName>
+                  <TouchStripModifiers type="integer">0</TouchStripModifiers>
+                  <TouchStripSpeed type="integer">3</TouchStripSpeed>
+                </mode3>
+                <mode4 type="map">
+                  <TouchStripDirection type="integer">-1</TouchStripDirection>
+                  <TouchStripEnableTapZones type="bool">false</TouchStripEnableTapZones>
+                  <TouchStripFunction type="integer">45</TouchStripFunction>
+                  <TouchStripModeName type="string">mode4</TouchStripModeName>
+                  <TouchStripModifiers type="integer">0</TouchStripModifiers>
+                  <TouchStripSpeed type="integer">1</TouchStripSpeed>
+                </mode4>
+              </TouchStripModes>
+            </oned1>
+            <oned2 type="map">
+              <Name type="string">oned2</Name>
+              <TouchStripModes type="map">
+                <mode1 type="map">
+                  <TouchStripDirection type="integer">-1</TouchStripDirection>
+                  <TouchStripEnableTapZones type="bool">false</TouchStripEnableTapZones>
+                  <TouchStripFunction type="integer">8</TouchStripFunction>
+                  <TouchStripKeystrokeDecrease type="kestring"><![CDATA[v&shift;=]]></TouchStripKeystrokeDecrease>
+                  <TouchStripKeystrokeIncrease type="kestring"><![CDATA[v&shift;-]]></TouchStripKeystrokeIncrease>
+                  <TouchStripKeystrokeName type="string">Layer Modes</TouchStripKeystrokeName>
+                  <TouchStripModeName type="string">mode1</TouchStripModeName>
+                  <TouchStripModifiers type="integer">0</TouchStripModifiers>
+                  <TouchStripSpeed type="integer">0</TouchStripSpeed>
+                </mode1>
+                <mode2 type="map">
+                  <TouchStripDirection type="integer">-1</TouchStripDirection>
+                  <TouchStripEnableTapZones type="bool">false</TouchStripEnableTapZones>
+                  <TouchStripFunction type="integer">8</TouchStripFunction>
+                  <TouchStripKeystrokeDecrease type="kestring"><![CDATA[&rsqbracket;]]></TouchStripKeystrokeDecrease>
+                  <TouchStripKeystrokeIncrease type="kestring"><![CDATA[[]]></TouchStripKeystrokeIncrease>
+                  <TouchStripKeystrokeName type="string">Brush Size</TouchStripKeystrokeName>
+                  <TouchStripModeName type="string">mode2</TouchStripModeName>
+                  <TouchStripModifiers type="integer">0</TouchStripModifiers>
+                  <TouchStripSpeed type="integer">1</TouchStripSpeed>
+                </mode2>
+                <mode3 type="map">
+                  <TouchStripDirection type="integer">-1</TouchStripDirection>
+                  <TouchStripEnableTapZones type="bool">false</TouchStripEnableTapZones>
+                  <TouchStripFunction type="integer">8</TouchStripFunction>
+                  <TouchStripKeystrokeDecrease type="kestring"><![CDATA[&shift;[]]></TouchStripKeystrokeDecrease>
+                  <TouchStripKeystrokeIncrease type="kestring"><![CDATA[&shift;&rsqbracket;]]></TouchStripKeystrokeIncrease>
+                  <TouchStripKeystrokeName type="string">Brush Hardness</TouchStripKeystrokeName>
+                  <TouchStripModeName type="string">mode3</TouchStripModeName>
+                  <TouchStripModifiers type="integer">0</TouchStripModifiers>
+                  <TouchStripSpeed type="integer">3</TouchStripSpeed>
+                </mode3>
+                <mode4 type="map">
+                  <TouchStripDirection type="integer">-1</TouchStripDirection>
+                  <TouchStripEnableTapZones type="bool">false</TouchStripEnableTapZones>
+                  <TouchStripFunction type="integer">45</TouchStripFunction>
+                  <TouchStripModeName type="string">mode4</TouchStripModeName>
+                  <TouchStripModifiers type="integer">0</TouchStripModifiers>
+                  <TouchStripSpeed type="integer">1</TouchStripSpeed>
+                </mode4>
+              </TouchStripModes>
+            </oned2>
+          </TouchStrips>
+        </ArrayElement>
+      </TabletControlContainerArray>
+      <TabletModel type="array">
+        <ArrayElement type="integer">300</ArrayElement>
+        <ArrayElement type="integer">301</ArrayElement>
+        <ArrayElement type="integer">321</ArrayElement>
+        <ArrayElement type="integer">322</ArrayElement>
+        <ArrayElement type="integer">323</ArrayElement>
+        <ArrayElement type="integer">324</ArrayElement>
+        <ArrayElement type="integer">325</ArrayElement>
+        <ArrayElement type="integer">335</ArrayElement>
+        <ArrayElement type="integer">336</ArrayElement>
+        <ArrayElement type="integer">337<!--Intuos5 Med Touch--></ArrayElement>
+        <ArrayElement type="integer">338</ArrayElement>
+        <ArrayElement type="integer">327<!--Cintiq24 Pen only--></ArrayElement>
+        <ArrayElement type="integer">328<!--Cintiq24 HDT--></ArrayElement>
+        <ArrayElement type="integer">330<!--Cintiq22 HDT--></ArrayElement>
+      </TabletModel>
+      <TabletType type="array">
+        <ArrayElement type="integer">17<!--This is for Intuos3 Technology PenDisplays...  may need to go away.--></ArrayElement>
+        <ArrayElement type="integer">24<!----></ArrayElement>
+      </TabletType>
+    </ArrayElement>
+    <!--Tranducers only in this section-->
+  </TabletArray>
+</root>
