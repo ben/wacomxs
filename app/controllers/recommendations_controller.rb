@@ -6,10 +6,7 @@ class RecommendationsController < ApplicationController
 
 		respond_to do |format|
 			format.html # index.html.erb
-			format.json {
-				render json: @recommendations.map { |x|
-				x.attributes.slice('id', 'title') }
-			}
+			format.json # index.json.erb
 		end
 	end
 
