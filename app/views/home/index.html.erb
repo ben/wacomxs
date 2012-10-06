@@ -1,50 +1,27 @@
-<div class"row">
+<div class="navbar navbar-static-top">
+	<div class="navbar-inner">
+		<a class="brand" href="#">Wacom XS</a>
+		<ul class="nav pull-right">
+			<li><a href="#import">Import</a></li>
+			<li><a href="#load">Open</a></li>
+		</ul>
+	</div>
+</div>
 
-	<div class="span3">
-		<h1>Buttons</h1>
-		<div data-bind="foreach: buttons">
-			<p><button class="btn" data-bind="text: text, click: edit"></button></p>
+<div class="container">
+
+	<!-- Import view -->
+	<div class="row" data-bind="with: importVM">
+		<div class="span12">
+			<h1>Import!</h1>
 		</div>
 	</div>
 
-	<div class="span3">
-		<h1>Modes</h1>
-		<div data-bind="foreach: modes">
-			<p><button class="btn" data-bind="text: text, click: edit" /></button></p>
+	<!-- Load view -->
+	<div class"row" data-bind="with: loadVM">
+		<div class="span12">
+			<h1>Load!</h1>
 		</div>
-	</div>
-
-	<div class="span5">
-		<h1>Other</h1>
-		<form class="form-horizontal">
-			<div class="control-group">
-				<label class="control-label" for="title">Title</label>
-				<div class="controls">
-					<input id="title" type="text" data-bind="value: title"></input>
-				</div>
-			</div>
-			<div class="control-group">
-				<label class="control-label" for="appid">Application Name</label>
-				<div class="controls">
-					<input type="text" id="appid" data-bind="value: application_name"></input>
-				</div>
-			</div>
-			<div class="control-group">
-				<label class="control-label" for="appid">Application Long Name</label>
-				<div class="controls">
-					<input type="text" id="appid" data-bind="value: application_long_name"></input>
-				</div>
-			</div>
-			<div class="control-group">
-				<label class="control-label" for="title">Mappings</label>
-				<div class="controls">
-					<button class="btn">Edit...</button>
-				</div>
-			</div>
-		</form>
-
-		<p><button class="btn btn-primary">Download...</button></p>
-
 	</div>
 
 </div>

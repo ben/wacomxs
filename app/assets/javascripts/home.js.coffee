@@ -10,51 +10,61 @@ NONE = 'none'
 
 ################################################################################
 # Models
-class @Recommendation extends ko.Model
-	@persistAt 'recommendation'
-	@fields 'title', 'buttons', 'modes', 'application_name', 'application_long_name'
+class @Recommendation extends Backbone.Model
 
-	@defaultValues: ->
-		title: 'untitled'
-		application_name: 'app'
-		application_long_name: '/Applications/something'
-		buttons: ({} for i in [1..8])
-		modes: ({} for i in [1..4])
+class @RecommendationCollection extends Backbone.Collection
+	model: Recommendation
+	url: '/recommendations'
 
 ################################################################################
 # ViewModels
-class @ButtonViewModel
-	constructor: (@btn) ->
-		@text = ko.computed -> 'button!'
-
-	edit: -> alert("edit button")
-
-
-class @ModeViewModel
-	constructor: (@mode) ->
-		@text = ko.computed -> 'mode!'
-
-	edit: -> alert("edit mode")
-
-
-class @HomeViewModel
-	constructor: (@model) ->
-		@buttons = (new ButtonViewModel(x) for x in @model.buttons())
-		@modes = (new ModeViewModel(x) for x in @model.modes())
-		@title = @model.title
-		@application_name = @model.application_name
-		@application_long_name = @model.application_long_name
-
-		@isDirty = ko.observable(false)
+class @MasterViewModel
+	import: ->
+		@importVM(new ImportViewModel())
+		@loadVM(null)
 
 	load: ->
-		# TODO
+		@importVM(null)
+		@loadVM(1)
 
+	new: ->
+		@importVM(null)
+		@loadVM(null)
 
+	constructor: ->
+		@importVM = ko.observable()
+		@loadVM = ko.observable()
+
+	clearDialogs: ->
+		console.log 'Clearing dialogs'
+		@importVM(null)
+		@loadVM(null)
+
+class @ImportViewModel
+
+################################################################################
+# Routes
+class @Router extends Backbone.Router
+	routes:
+		'import':					'import'
+		'load':						'load'
+		'new':						'new'
+		'*path':						'dashboard'
+
+	import: ->
+		window.vm.import()
+	load: ->
+		window.vm.load()
+	new: ->
+		window.vm.new()
+	dashboard: ->
+		window.vm.clearDialogs()
 
 ################################################################################
 # Bootstrap
+@vm
 $ ->
-	window.vm = new HomeViewModel(new Recommendation(
-		Recommendation.defaultValues()))
+	window.router = new Router()
+	window.vm = new MasterViewModel()
+	Backbone.history.start()
 	ko.applyBindings(window.vm)
