@@ -13,13 +13,16 @@
 	<!-- Import view -->
 	<div id="import" class="modal hide fade" data-bind="with: importVM">
 		<div class="modal-header">
-			<h1>Import!</h1>
+			<h3>Import</h3>
 		</div>
 		<div class="modal-body">
-			Something
+			<input type="file" id="importfile" data-bind="file: filedata">
 		</div>
 		<div class="modal-footer">
 			<a href="#" class="btn" data-dismiss="modal">Cancel</a>
+			<button class="btn btn-primary" data-bind="css: {disabled: disabled}, click: submit">
+				Import
+			</button>
 		</div>
 	</div>
 

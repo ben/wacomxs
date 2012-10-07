@@ -4,6 +4,22 @@
 
 
 ################################################################################
+# Knockout extensions
+ko.bindingHandlers.file = 
+	init: (el, valueAccessor) ->
+		$(el).change ->
+			file = @files[0]
+			if (ko.isObservable(valueAccessor()))
+				if (file)
+					reader = new FileReader()
+					reader.onload = (e) =>
+						valueAccessor()(e.target.result)
+					reader.readAsArrayBuffer(file)
+				else
+					valueAccessor()(file)
+
+
+################################################################################
 # Constants
 NONE = 'none'
 
@@ -20,14 +36,24 @@ class @RecommendationCollection extends Backbone.Collection
 # ViewModels
 class @MasterViewModel
 
-	new: ->
-
 	constructor: ->
 		@importVM = ko.observable(new ImportViewModel())
 		@loadVM = ko.observable(2)
 
+	new: ->
+
 
 class @ImportViewModel
+	constructor: ->
+		@filedata = ko.observable()
+		@disabled = ko.computed =>
+			!@filedata()
+
+	submit: ->
+		@filedata(null)
+		$('#importfile').attr('value', null)
+		$('#import').modal('hide')
+
 
 ################################################################################
 # Routes
