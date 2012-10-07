@@ -19,26 +19,13 @@ class @RecommendationCollection extends Backbone.Collection
 ################################################################################
 # ViewModels
 class @MasterViewModel
-	import: ->
-		@importVM(new ImportViewModel())
-		@loadVM(null)
-
-	load: ->
-		@importVM(null)
-		@loadVM(1)
 
 	new: ->
-		@importVM(null)
-		@loadVM(null)
 
 	constructor: ->
-		@importVM = ko.observable()
-		@loadVM = ko.observable()
+		@importVM = ko.observable(new ImportViewModel())
+		@loadVM = ko.observable(2)
 
-	clearDialogs: ->
-		console.log 'Clearing dialogs'
-		@importVM(null)
-		@loadVM(null)
 
 class @ImportViewModel
 
@@ -46,19 +33,12 @@ class @ImportViewModel
 # Routes
 class @Router extends Backbone.Router
 	routes:
-		'import':					'import'
-		'load':						'load'
 		'new':						'new'
 		'*path':						'dashboard'
 
-	import: ->
-		window.vm.import()
-	load: ->
-		window.vm.load()
 	new: ->
 		window.vm.new()
 	dashboard: ->
-		window.vm.clearDialogs()
 
 ################################################################################
 # Bootstrap

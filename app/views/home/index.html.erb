@@ -2,8 +2,8 @@
 	<div class="navbar-inner">
 		<a class="brand" href="#">Wacom XS</a>
 		<ul class="nav pull-right">
-			<li><a href="#import">Import</a></li>
-			<li><a href="#load">Open</a></li>
+			<li><a href="#import" data-toggle="modal">Import</a></li>
+			<li><a href="#load" data-toggle="modal">Open</a></li>
 		</ul>
 	</div>
 </div>
@@ -11,16 +11,28 @@
 <div class="container">
 
 	<!-- Import view -->
-	<div class="row" data-bind="with: importVM">
-		<div class="span12">
+	<div id="import" class="modal hide fade" data-bind="with: importVM">
+		<div class="modal-header">
 			<h1>Import!</h1>
+		</div>
+		<div class="modal-body">
+			Something
+		</div>
+		<div class="modal-footer">
+			<a href="#" class="btn" data-dismiss="modal">Cancel</a>
 		</div>
 	</div>
 
 	<!-- Load view -->
-	<div class"row" data-bind="with: loadVM">
-		<div class="span12">
+	<div id="load" class="modal hide fade" data-bind="with: loadVM">
+		<div class="modal-header">
 			<h1>Load!</h1>
+		</div>
+		<div class="modal-body">
+			Something
+		</div>
+		<div class="modal-footer">
+			<a href="#" class="btn" data-dismiss="modal">Cancel</a>
 		</div>
 	</div>
 
