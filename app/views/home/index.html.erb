@@ -16,11 +16,15 @@
 			<h3>Import</h3>
 		</div>
 		<div class="modal-body">
-			<input type="file" id="importfile" data-bind="file: filedata">
+			<form><input type="file" id="importfile" data-bind="file: filedata"></form>
+			<div data-bind="with: importDetails">
+				<h2>Surprise!</h2>
+				<pre data-bind="text: data"/>
+			</div>
 		</div>
 		<div class="modal-footer">
 			<a href="#" class="btn" data-dismiss="modal">Cancel</a>
-			<button class="btn btn-primary" data-bind="css: {disabled: disabled}, click: submit">
+			<button class="btn btn-primary" data-bind="css: {disabled: submitDisabled}, click: submit">
 				Import
 			</button>
 		</div>

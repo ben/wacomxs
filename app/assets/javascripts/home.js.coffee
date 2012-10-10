@@ -10,13 +10,12 @@ ko.bindingHandlers.file =
 		$(el).change ->
 			file = @files[0]
 			if (ko.isObservable(valueAccessor()))
+				valueAccessor()(null)
 				if (file)
 					reader = new FileReader()
 					reader.onload = (e) =>
 						valueAccessor()(e.target.result)
-					reader.readAsArrayBuffer(file)
-				else
-					valueAccessor()(file)
+					reader.readAsText(file)
 
 
 ################################################################################
@@ -43,16 +42,24 @@ class @MasterViewModel
 	new: ->
 
 
+class @ImportDetailsViewModel
+	constructor: (@data) ->
+		# Might be escaped
+
 class @ImportViewModel
 	constructor: ->
 		@filedata = ko.observable()
-		@disabled = ko.computed =>
+		@importDetails = ko.computed =>
+			if @filedata()
+				new ImportDetailsViewModel(@filedata) 
+			else
+				null
+		@submitDisabled = ko.computed =>
 			!@filedata()
 
 	submit: ->
 		@filedata(null)
 		$('#importfile').attr('value', null)
-		$('#import').modal('hide')
 
 
 ################################################################################
