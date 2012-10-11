@@ -44,7 +44,11 @@ class @MasterViewModel
 
 class @ImportDetailsViewModel
 	constructor: (@data) ->
+		txt = @data()
 		# Might be escaped
+		if (txt.match(/\<WacomPrefArchive\>/))
+			@data(unescape($(txt).find('ContainedFile:first').text()))
+
 
 class @ImportViewModel
 	constructor: ->
