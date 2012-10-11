@@ -49,6 +49,18 @@ class @ImportDetailsViewModel
 		if (txt.match(/\<WacomPrefArchive\>/))
 			@data(unescape($(txt).find('ContainedFile:first').text()))
 
+		# Extract the applications
+		@apps = $(txt).find('ApplicationMap').children().map (i,el) ->
+			'id': i
+			'name': $(el).find('ApplicationName').text()
+			'longName': $(el).find('ApplicationLongName').text()
+		console.log @apps
+
+		# Observables
+		@selectedApp = ko.observable()
+		@canImport = ko.computed =>
+			@selectedApp() != null
+
 
 class @ImportViewModel
 	constructor: ->
@@ -59,7 +71,7 @@ class @ImportViewModel
 			else
 				null
 		@submitDisabled = ko.computed =>
-			!@filedata()
+			!(@importDetails() && @importDetails().canImport())
 
 	submit: ->
 		@filedata(null)

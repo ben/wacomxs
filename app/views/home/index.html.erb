@@ -18,8 +18,13 @@
 		<div class="modal-body">
 			<form><input type="file" id="importfile" data-bind="file: filedata"></form>
 			<div data-bind="with: importDetails">
-				<h2>Surprise!</h2>
-				<pre data-bind="text: data"/>
+				<h3>Defined Applications</h3>
+				<div data-bind="foreach: apps">
+					<p>
+						<input type="radio" name="appGroup" data-bind="value: id, checked: $parent.selectedApp" />
+						<span data-bind="text: name"></span> (<span data-bind="text: longName"></span>)
+					</p>
+				</div>
 			</div>
 		</div>
 		<div class="modal-footer">
