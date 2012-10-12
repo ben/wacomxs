@@ -16,16 +16,18 @@
 			<h3>Import</h3>
 		</div>
 		<div class="modal-body">
-			<form><input type="file" id="importfile" data-bind="file: filedata"></form>
-			<div data-bind="with: importDetails">
-				<h3>Defined Applications</h3>
-				<div data-bind="foreach: apps">
-					<p>
-						<input type="radio" name="appGroup" data-bind="value: id, checked: $parent.selectedApp" />
-						<span data-bind="text: name"></span> (<span data-bind="text: longName"></span>)
-					</p>
+			<form>
+				<input type="file" id="importfile" data-bind="file: filedata">
+				<div data-bind="with: importDetails">
+					<h3>Defined Applications</h3>
+					<div data-bind="foreach: apps">
+						<label class="radio">
+							<input type="radio" name="appGroup" data-bind="value: id, checked: $parent.selectedApp" />
+							<span data-bind="text: name"></span> (<span data-bind="text: longName"></span>)
+						</label>
+					</div>
 				</div>
-			</div>
+			</form>
 		</div>
 		<div class="modal-footer">
 			<a href="#" class="btn">Cancel</a>
