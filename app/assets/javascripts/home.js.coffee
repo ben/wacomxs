@@ -48,6 +48,7 @@ class @ImportDetailsViewModel
 		# Might be escaped
 		if (txt.match(/\<WacomPrefArchive\>/))
 			@data(unescape($(txt).find('ContainedFile:first').text()))
+			txt = @data()
 
 		# Extract the applications
 		@apps = $(txt).find('ApplicationMap').children().map (i,el) ->
