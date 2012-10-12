@@ -83,11 +83,26 @@ class @ImportViewModel
 class @Router extends Backbone.Router
 	routes:
 		'new':						'new'
+		'import':					'import'
+		'load':						'load'
 		'*path':						'dashboard'
 
+	modalOptions:
+		show: true
+		keyboard: false
+		'backdrop': 'static'
+
+	import: ->
+		$('#import').modal @modalOptions
+
+	load: ->
+		$('#load').modal @modalOptions
+
 	new: ->
-		window.vm.new()
+
 	dashboard: ->
+		$('#import').modal('hide')
+		$('#load').modal('hide')
 
 ################################################################################
 # Bootstrap
