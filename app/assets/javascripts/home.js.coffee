@@ -102,8 +102,7 @@ class @Router extends Backbone.Router
 	new: ->
 
 	dashboard: ->
-		$('#import').modal('hide')
-		$('#load').modal('hide')
+		$('.modal').modal('hide')
 
 ################################################################################
 # Bootstrap
