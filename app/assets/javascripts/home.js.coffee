@@ -42,37 +42,29 @@ class @MasterViewModel
 	new: ->
 
 
-class @ImportDetailsViewModel
-	constructor: (@data) ->
-		txt = @data()
-		# Might be escaped
-		if (txt.match(/\<WacomPrefArchive\>/))
-			@data(unescape($(txt).find('ContainedFile:first').text()))
-			txt = @data()
-
-		# Extract the applications
-		@apps = $(txt).find('ApplicationMap').children().map (i,el) ->
-			'id': i
-			'name': $(el).find('ApplicationName').text()
-			'longName': $(el).find('ApplicationLongName').text()
-		console.log @apps
-
-		# Observables
-		@selectedApp = ko.observable()
-		@canImport = ko.computed =>
-			@selectedApp() != null
-
-
 class @ImportViewModel
 	constructor: ->
 		@filedata = ko.observable()
-		@importDetails = ko.computed =>
-			if @filedata()
-				new ImportDetailsViewModel(@filedata) 
-			else
-				null
+
+		# Parse/unescape the input
+		@unescapedData = ko.computed =>
+			txt = @filedata()
+			if txt && txt.match(/\<WacomPrefArchive\>/)
+				return unescape $(txt).find('ContainedFile:first').text()
+			txt
+
+		# Extract list of apps
+		@apps = ko.computed =>
+			data = @unescapedData()
+			if data
+				return $(data).find('ApplicationMap').children().map (i,el) ->
+					id: i
+					name: $(el).find('ApplicationName').text()
+					longName: $(el).find('ApplicationLongName').text()
+		@selectedApp = ko.observable()
+
 		@submitDisabled = ko.computed =>
-			!(@importDetails() && @importDetails().canImport())
+			!@selectedApp()
 
 	submit: ->
 		@filedata(null)
