@@ -18,7 +18,9 @@
 		<div class="modal-body">
 			<form>
 				<input type="file" id="importfile" data-bind="file: filedata">
-				<h3>Defined Applications</h3>
+				<h3 data-bind="visible: filedata">
+					Defined Applications
+				</h3>
 				<div data-bind="foreach: apps">
 					<label class="radio">
 						<input type="radio" name="appGroup" data-bind="value: id, checked: $parent.selectedApp" />
