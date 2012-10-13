@@ -68,6 +68,7 @@ class @ImportViewModel
 
 	submit: ->
 		@filedata(null)
+		@selectedApp(null)
 		$('#importfile').attr('value', null)
 
 

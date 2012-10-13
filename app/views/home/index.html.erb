@@ -18,17 +18,18 @@
 		<div class="modal-body">
 			<form>
 				<input type="file" id="importfile" data-bind="file: filedata">
-				<h3 data-bind="visible: filedata">
-					Defined Applications
-				</h3>
-				<div data-bind="foreach: apps">
-					<label class="radio">
-						<input type="radio" name="appGroup" data-bind="value: id, checked: $parent.selectedApp" />
-						<span data-bind="text: name"></span>
-						<span data-bind="if: longName">
-							(<span data-bind="text: longName"></span>)
-						</span>
-					</label>
+
+				<div data-bind="visible: filedata">
+					<h3>Defined Applications</h3>
+					<div data-bind="foreach: apps">
+						<label class="radio">
+							<input type="radio" name="appGroup" data-bind="value: id, checked: $parent.selectedApp" />
+							<span data-bind="text: name"></span>
+							<span data-bind="if: longName">
+								(<span data-bind="text: longName"></span>)
+							</span>
+						</label>
+					</div>
 				</div>
 			</form>
 		</div>
