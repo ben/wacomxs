@@ -118,11 +118,13 @@ class @Router extends Backbone.Router
 # Bootstrap
 @vm
 $ =>
-	window.router = new Router()
-	window.vm = new MasterViewModel()
+	router = new Router()
+	vm = new MasterViewModel()
 	Backbone.history.start()
-	ko.applyBindings(window.vm)
+	ko.applyBindings(vm)
 
 	# For debugging
+	window.router = router
+	window.vm = vm
 	window.Recommendation = @Recommendation
 	window.RecommendationCollection = @RecommendationCollection
