@@ -26,6 +26,7 @@ NONE = 'none'
 ################################################################################
 # Models
 class @Recommendation extends Backbone.Model
+	urlRoot: '/recommendations'
 
 class @RecommendationCollection extends Backbone.Collection
 	model: Recommendation
@@ -67,9 +68,26 @@ class @ImportViewModel
 			!@selectedApp()
 
 	submit: ->
+		a = @apps()[@selectedApp()]
+		console.log a
+		buttons = @extractButtons(a.id)
+		modes = @extractModes(a.id)
+		r = new Recommendation(
+			application_name: a.name
+			application_long_name: a.longName
+			buttons: buttons
+			modes: modes
+			title: ''
+		)
+		r.save
+			success: -> window.router.navigate id, {trigger: true}
+		console.log r.toJSON()
 		@filedata(null)
 		@selectedApp(null)
 		$('#importfile').attr('value', null)
+
+	extractButtons: (id) -> null
+	extractModes: (id) -> null
 
 
 ################################################################################
