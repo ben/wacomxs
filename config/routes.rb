@@ -1,6 +1,7 @@
 Wacomxs::Application.routes.draw do
-	root :to => 'home#index'
 	resources :recommendations
+	root :to => 'home#index'
+	match '*path' => 'home#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

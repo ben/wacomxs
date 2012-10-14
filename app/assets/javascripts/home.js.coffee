@@ -19,11 +19,6 @@ ko.bindingHandlers.file =
 
 
 ################################################################################
-# Constants
-NONE = 'none'
-
-
-################################################################################
 # Models
 class @Recommendation extends Backbone.Model
 	urlRoot: '/recommendations'
@@ -40,7 +35,8 @@ class @MasterViewModel
 		@importVM = ko.observable(new ImportViewModel())
 		@loadVM = ko.observable(2)
 
-	new: ->
+	doImport: ->
+		router.navigate '/import', {trigger: true}
 
 
 class @ImportViewModel
@@ -79,11 +75,14 @@ class @ImportViewModel
 			title: ''
 		)
 		r.save
-			success: -> window.router.navigate id, {trigger: true}
+			success: -> router.navigate id, {trigger: true}
 		console.log r.toJSON()
 		@filedata(null)
 		@selectedApp(null)
 		$('#importfile').attr('value', null)
+
+	cancel: ->
+		router.navigate '/', {trigger: true}
 
 	extractButtons: (id) -> null
 	extractModes: (id) -> null
@@ -118,13 +117,13 @@ class @Router extends Backbone.Router
 # Bootstrap
 @vm
 $ =>
-	router = new Router()
+	@router = new Router()
 	vm = new MasterViewModel()
-	Backbone.history.start()
+	Backbone.history.start({pushState: true})
 	ko.applyBindings(vm)
 
 	# For debugging
-	window.router = router
+	window.router = @router
 	window.vm = vm
 	window.Recommendation = @Recommendation
 	window.RecommendationCollection = @RecommendationCollection
