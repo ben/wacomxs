@@ -6,7 +6,7 @@ class RecommendationsController < ApplicationController
 
 		respond_to do |format|
 			format.html # index.html.erb
-			format.json # index.json.erb
+			format.json { render :json => @recommendations.to_json(:only => [:id, :title]) }
 		end
 	end
 
