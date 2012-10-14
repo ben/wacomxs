@@ -64,8 +64,7 @@ class @ImportViewModel
 					longName: $(el).find('ApplicationLongName').text()
 		@selectedApp = ko.observable()
 
-		@submitDisabled = ko.computed =>
-			!@selectedApp()
+		@submitDisabled = ko.computed => !@selectedApp()
 
 	submit: ->
 		a = @apps()[@selectedApp()]
@@ -118,8 +117,12 @@ class @Router extends Backbone.Router
 ################################################################################
 # Bootstrap
 @vm
-$ ->
+$ =>
 	window.router = new Router()
 	window.vm = new MasterViewModel()
 	Backbone.history.start()
 	ko.applyBindings(window.vm)
+
+	# For debugging
+	window.Recommendation = @Recommendation
+	window.RecommendationCollection = @RecommendationCollection
