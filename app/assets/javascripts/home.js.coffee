@@ -38,6 +38,11 @@ class @MasterViewModel
 	doImport: ->
 		router.navigate '/import', {trigger: true}
 
+class @ImportAppViewModel
+	constructor: (data, mapEl, @id) ->
+		@mapEl = $(mapEl)
+		@name = @mapEl.find('ApplicationName').text()
+		@longName = @mapEl.find('ApplicationLongName').text()
 
 class @ImportViewModel
 	constructor: ->
@@ -55,9 +60,7 @@ class @ImportViewModel
 			data = @unescapedData()
 			if data
 				return $(data).find('ApplicationMap').children().map (i,el) ->
-					id: i
-					name: $(el).find('ApplicationName').text()
-					longName: $(el).find('ApplicationLongName').text()
+					new ImportAppViewModel(data, el, i)
 		@selectedApp = ko.observable()
 
 		@submitDisabled = ko.computed => !@selectedApp()
