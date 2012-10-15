@@ -32,7 +32,7 @@ class @RecommendationCollection extends Backbone.Collection
 class @MasterViewModel
 
 	constructor: ->
-		@importVM = ko.observable(new ImportViewModel())
+		@importVM = new ImportViewModel()
 		@loadVM = ko.observable(2)
 
 	doImport: ->
@@ -43,6 +43,22 @@ class @ImportAppViewModel
 		@mapEl = $(mapEl)
 		@name = @mapEl.find('ApplicationName').text()
 		@longName = @mapEl.find('ApplicationLongName').text()
+
+		# How many settings are associated?
+		count = 0
+		$(data).find('TabletControlContainerArray').find('ApplicationAssociated').each ->
+			thisid = parseInt($(@).text())
+			console.log "Ctrl: id " + thisid
+			if thisid == @id
+				count = count + 1
+		console.log count
+
+		# Final text to display
+		@labelText = @name
+		if @longName
+			@labelText += " (" + @longName + ")"
+
+		@visible = count > 0
 
 class @ImportViewModel
 	constructor: ->
@@ -61,6 +77,8 @@ class @ImportViewModel
 			if data
 				return $(data).find('ApplicationMap').children().map (i,el) ->
 					new ImportAppViewModel(data, el, i)
+		@visibleApps = ko.computed =>
+			_(@apps()).filter (x) -> x.visible
 		@selectedApp = ko.observable()
 
 		@submitDisabled = ko.computed => !@selectedApp()
