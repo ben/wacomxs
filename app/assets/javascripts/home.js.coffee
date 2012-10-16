@@ -43,22 +43,21 @@ class @ImportAppViewModel
 		@mapEl = $(mapEl)
 		@name = @mapEl.find('ApplicationName').text()
 		@longName = @mapEl.find('ApplicationLongName').text()
+		console.log @name, @id
 
 		# How many settings are associated?
-		count = 0
-		$(data).find('TabletControlContainerArray').find('ApplicationAssociated').each ->
-			thisid = parseInt($(@).text())
-			console.log "Ctrl: id " + thisid
+		@ctrls = null
+		$(data).find('TabletControlContainerArray').find('ApplicationAssociated').each (i,el) =>
+			thisid = parseInt($(el).text())
 			if thisid == @id
-				count = count + 1
-		console.log count
+				@ctrls = el
 
 		# Final text to display
 		@labelText = @name
 		if @longName
 			@labelText += " (" + @longName + ")"
 
-		@visible = count > 0
+		@visible = @ctrls != null
 
 class @ImportViewModel
 	constructor: ->
