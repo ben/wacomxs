@@ -44,6 +44,7 @@ class @ImportAppViewModel
 		@name = @mapEl.find('ApplicationName').text()
 		@longName = @mapEl.find('ApplicationLongName').text()
 		console.log @name, @id
+		console.log @mapEl
 
 		# How many settings are associated?
 		@ctrls = null
@@ -57,13 +58,27 @@ class @ImportAppViewModel
 		if @longName
 			@labelText += " (" + @longName + ")"
 
+		# Stow the settings away for later
+		@buttons = $(data).find('TabletControlsButtonsArray').children()
+		@stripModes = $(data).find('TouchStripModes').children()
+		@ringModes = $(data).find('TouchRingModes').children()
+
 		@visible = @ctrls != null
+
+	getButtons: ->
+		console.log 'Buttons:', @buttons
+		[]
+
+	getModes: ->
+		console.log 'Strip Modes:', @stripModes
+		console.log 'Ring Modes:', @ringModes
+		[]
 
 	toJSON: ->
 		application_name: @name
 		application_long_name: @longName
-		buttons: []
-		modes: []
+		buttons: @getButtons()
+		modes: @getModes()
 		title: ''
 
 class @ImportViewModel
