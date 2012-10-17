@@ -59,6 +59,13 @@ class @ImportAppViewModel
 
 		@visible = @ctrls != null
 
+	toJSON: ->
+		application_name: @name
+		application_long_name: @longName
+		buttons: []
+		modes: []
+		title: ''
+
 class @ImportViewModel
 	constructor: ->
 		@filedata = ko.observable()
@@ -87,15 +94,8 @@ class @ImportViewModel
 		console.log a
 		buttons = @extractButtons(a.id)
 		modes = @extractModes(a.id)
-		r = new Recommendation(
-			application_name: a.name
-			application_long_name: a.longName
-			buttons: buttons
-			modes: modes
-			title: ''
-		)
-		r.save
-			success: -> router.navigate id, {trigger: true}
+		r = new Recommendation(a.toJSON())
+		r.save success: -> router.navigate id, {trigger: true}
 		console.log r.toJSON()
 		@filedata(null)
 		@selectedApp(null)
