@@ -53,8 +53,6 @@ class @ImportAppViewModel
 		@mapEl = $(mapEl)
 		@name = @mapEl.find('ApplicationName').text()
 		@longName = @mapEl.find('ApplicationLongName').text()
-		console.log @name, @id
-		console.log @mapEl
 
 		# How many settings are associated?
 		@ctrls = null
@@ -109,7 +107,7 @@ class @ImportAppViewModel
 
 class @ImportViewModel
 	constructor: ->
-		@filedata = ko.observable()
+		@filedata = ko.observable(null)
 
 		# Parse/unescape the input
 		@unescapedData = ko.computed =>
