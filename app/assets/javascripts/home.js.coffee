@@ -34,9 +34,19 @@ class @MasterViewModel
 	constructor: ->
 		@importVM = new ImportViewModel()
 		@loadVM = ko.observable(2)
+		@showVM = ko.observable()
 
 	doImport: ->
 		router.navigate '/import', {trigger: true}
+
+	show: (id) ->
+		console.log 'Showing', id
+		@showVM new ShowViewModel(id)
+
+class @ShowViewModel
+	constructor: (id) ->
+		@model = new Recommendation(id: id)
+		@model.fetch()
 
 class @ImportAppViewModel
 	constructor: (data, mapEl, @id) ->
@@ -143,6 +153,7 @@ class @Router extends Backbone.Router
 		'new':						'new'
 		'import':					'import'
 		'load':						'load'
+		':id':						'show'
 		'*path':						'dashboard'
 
 	modalOptions:
@@ -157,6 +168,10 @@ class @Router extends Backbone.Router
 		$('#load').modal @modalOptions
 
 	new: ->
+
+	show: (id) ->
+		$('.modal').modal('hide')
+		vm.show parseInt(id)
 
 	dashboard: ->
 		$('.modal').modal('hide')
