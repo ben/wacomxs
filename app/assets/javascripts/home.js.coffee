@@ -48,8 +48,8 @@ class @ImportAppViewModel
 
 		# How many settings are associated?
 		@ctrls = null
-		$(data).find('TabletControlContainerArray').find('ApplicationAssociated').each (i,el) =>
-			thisid = parseInt($(el).text())
+		$(data).find('TabletControlContainerArray').children().each (i,el) =>
+			thisid = parseInt($(el).find('ApplicationAssociated').text())
 			if thisid == @id
 				@ctrls = el
 
@@ -59,26 +59,42 @@ class @ImportAppViewModel
 			@labelText += " (" + @longName + ")"
 
 		# Stow the settings away for later
-		@buttons = $(data).find('TabletControlsButtonsArray').children()
-		@stripModes = $(data).find('TouchStripModes').children()
-		@ringModes = $(data).find('TouchRingModes').children()
+		@buttons = @getButtons $(@ctrls).find('TabletControlsButtonsArray').children()
+		@modes = @getModes $(@ctrls).find('TouchStripModes').children(),
+			$(@ctrls).find('TouchRingModes').children()
 
 		@visible = @ctrls != null
 
-	getButtons: ->
-		console.log 'Buttons:', @buttons
-		[]
+	getButtons: (el) ->
+		ret = (el.map ->
+			buttonfunction: $(@).find('buttonfunction').text()
+			buttonname: $(@).find('buttonname').text()
+			modifier: $(@).find('modifier').html()
+			keystrokeName: $(@).find('buttonkeystrokeshortcutname').text()
+			keystroke: $(@).find('keystroke').html()
+		).toArray()
+		ret
 
-	getModes: ->
-		console.log 'Strip Modes:', @stripModes
-		console.log 'Ring Modes:', @ringModes
-		[]
+	getModes: (stripEl, ringEl) ->
+		strips = (stripEl.map ->
+			direction: $(@).find('TouchStripDirection').text()
+			enableTapZones: $(@).find('TouchStripEnableTapZones').text()
+			stripFunction: $(@).find('TouchStripFunction').text()
+			keystrokeDecrease: $(@).find('TouchStripKeystrokeDecrease').html()
+			keystrokeIncrease: $(@).find('TouchStripKeystrokeIncrease').html()
+			keystrokeName: $(@).find('TouchStripKeystrokeName').text()
+			modeName: $(@).find('TouchStripModeName').text()
+			modifiers: $(@).find('TouchStripModifiers').text()
+			speed: $(@).find('TouchStripSpeed').text()
+		).toArray()
+		rings = []
+		[].concat(strips,rings)
 
 	toJSON: ->
 		application_name: @name
 		application_long_name: @longName
-		buttons: @getButtons()
-		modes: @getModes()
+		buttons: @buttons
+		modes: @modes
 		title: ''
 
 class @ImportViewModel
@@ -106,22 +122,19 @@ class @ImportViewModel
 
 	submit: ->
 		a = @apps()[@selectedApp()]
-		console.log a
-		buttons = @extractButtons(a.id)
-		modes = @extractModes(a.id)
+		console.log 'a', a
 		r = new Recommendation(a.toJSON())
-		r.save success: -> router.navigate id, {trigger: true}
-		console.log r.toJSON()
+		r.save null, success: -> router.navigate String(r.id), {trigger: true}
+		@clear()
+
+	cancel: ->
+		@clear()
+		router.navigate '/', {trigger: true}
+
+	clear: ->
 		@filedata(null)
 		@selectedApp(null)
 		$('#importfile').attr('value', null)
-
-	cancel: ->
-		router.navigate '/', {trigger: true}
-
-	extractButtons: (id) -> null
-	extractModes: (id) -> null
-
 
 ################################################################################
 # Routes
@@ -153,12 +166,12 @@ class @Router extends Backbone.Router
 @vm
 $ =>
 	@router = new Router()
-	vm = new MasterViewModel()
+	@vm = new MasterViewModel()
+	window.vm = @vm
 	Backbone.history.start({pushState: true})
 	ko.applyBindings(vm)
 
 	# For debugging
 	window.router = @router
-	window.vm = vm
 	window.Recommendation = @Recommendation
 	window.RecommendationCollection = @RecommendationCollection
