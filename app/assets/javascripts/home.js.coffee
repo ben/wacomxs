@@ -109,6 +109,7 @@ class @ImportViewModel
 	constructor: ->
 		@filedata = ko.observable(null)
 		@busy = ko.observable(false)
+		@error = ko.observable(null)
 
 		# Parse/unescape the input
 		@unescapedData = ko.computed =>
@@ -127,20 +128,31 @@ class @ImportViewModel
 			_(@apps()).filter (x) -> x.visible
 		@selectedApp = ko.observable()
 
-		@submitDisabled = ko.computed => !@selectedApp()
+		@submitDisabled = ko.computed =>
+			selected = @selectedApp()
+			busy = @busy()
+			return !(selected || busy)
 
 	submit: ->
+		@busy(true)
 		a = @apps()[@selectedApp()]
 		console.log 'a', a
 		r = new Recommendation(a.toJSON())
-		r.save null, success: -> router.navigate String(r.id), {trigger: true}
-		@clear()
+		r.save null,
+			success: =>
+				@clear()
+				router.navigate String(r.id), {trigger: true}
+			error: (m, resp) =>
+				@busy(false)
+				@error(resp)
 
 	cancel: ->
 		@clear()
 		router.navigate '/', {trigger: true}
 
 	clear: ->
+		@busy(false)
+		@error(null)
 		@filedata(null)
 		@selectedApp(null)
 		$('#importfile').attr('value', null)
@@ -158,7 +170,7 @@ class @Router extends Backbone.Router
 	modalOptions:
 		show: true
 		keyboard: false
-		'backdrop': 'static'
+		backdrop: 'static'
 
 	import: ->
 		$('#import').modal @modalOptions

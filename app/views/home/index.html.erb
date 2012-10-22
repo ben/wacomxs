@@ -29,8 +29,14 @@
 					</div>
 				</div>
 			</form>
+			<div class="alert alert-error" data-bind="visible: error">
+				<button type="button" class="close" data-dismiss="alert">×</button>
+				There was an error.  Tell Ben.
+			</div>
+			<span data-bind="text: submitDisabled" />
 		</div>
 		<div class="modal-footer">
+			<img data-bind="visible: busy" src="/busy.gif" />
 			<button class="btn" data-bind="click: cancel">Cancel</button>
 			<button class="btn btn-primary" data-bind="css: {disabled: submitDisabled}, click: submit">
 				Import

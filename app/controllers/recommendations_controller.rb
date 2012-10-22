@@ -41,6 +41,8 @@ class RecommendationsController < ApplicationController
 	# POST /recommendations.json
 	def create
 		@recommendation = Recommendation.new(params[:recommendation])
+		sleep 1
+		render(:file => File.join(Rails.root, 'public/403.html'), :status => 403, :layout => false)
 
 		respond_to do |format|
 			if @recommendation.save
