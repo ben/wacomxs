@@ -108,6 +108,7 @@ class @ImportAppViewModel
 class @ImportViewModel
 	constructor: ->
 		@filedata = ko.observable(null)
+		@busy = ko.observable(false)
 
 		# Parse/unescape the input
 		@unescapedData = ko.computed =>
