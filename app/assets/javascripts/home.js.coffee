@@ -49,7 +49,7 @@ class @ShowViewModel
 		@model.fetch()
 
 class @ImportAppViewModel
-	constructor: (data, mapEl, @id) ->
+	constructor: (data, mapEl, @appid) ->
 		@mapEl = $(mapEl)
 		@name = @mapEl.find('ApplicationName').text()
 		@longName = @mapEl.find('ApplicationLongName').text()
@@ -58,7 +58,7 @@ class @ImportAppViewModel
 		@ctrls = null
 		$(data).find('TabletControlContainerArray').children().each (i,el) =>
 			thisid = parseInt($(el).find('ApplicationAssociated').text())
-			if thisid == @id
+			if thisid == @appid
 				@ctrls = el
 
 		# Final text to display
@@ -129,9 +129,11 @@ class @ImportViewModel
 		@selectedApp = ko.observable()
 
 		@submitDisabled = ko.computed =>
-			selected = @selectedApp()
-			busy = @busy()
-			return !(selected || busy)
+			if !@selectedApp()
+				return true
+			if @busy()
+				return true
+			false
 
 	submit: ->
 		@busy(true)
