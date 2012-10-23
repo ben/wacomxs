@@ -14,6 +14,7 @@ class RecommendationsController < ApplicationController
 	# GET /recommendations/1.json
 	def show
 		@recommendation = Recommendation.find(params[:id])
+		#sleep 1
 
 		respond_to do |format|
 			format.html # show.html.erb

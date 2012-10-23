@@ -15,4 +15,5 @@
 //= require underscore
 //= require knockout
 //= require backbone
+//= require knockback
 //= require_tree .

@@ -41,12 +41,14 @@ class @MasterViewModel
 
 	show: (id) ->
 		console.log 'Showing', id
-		@showVM new ShowViewModel(id)
+		@showVM(new ShowViewModel(new Recommendation({id:id})))
 
-class @ShowViewModel
-	constructor: (id) ->
-		@model = new Recommendation(id: id)
-		@model.fetch()
+class @ShowViewModel extends kb.ViewModel
+	constructor: ->
+		super
+		console.log @
+		@busy = ko.observable(true)
+		@model().fetch success: => @busy(false)
 
 class @ImportAppViewModel
 	constructor: (data, mapEl, @appid) ->
