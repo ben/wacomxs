@@ -58,9 +58,26 @@
 	</div>
 
 	<!-- Show view -->
-	<div data-bind="with: showVM">
-		<h1>Show!</h1>
-		<img data-bind="visible: busy" src="/busy.gif" />
-	</div>
+	<form data-bind="with: showVM">
+		<div class="row">
+			<div class="span12">
+				<input data-bind="value: title, valueUpdate: 'afterkeydown'" class="titlebox span12" placeholder="Title" />
+			</div>
+		</div>
+		<div class="row">
+			<div class="span4">
+				<label>Short name</label>
+				<input data-bind="value: application_name" class="span4" />
+			</div>
+			<div class="span8">
+				<label>Long name</label>
+				<input data-bind="value: application_long_name" class="span8" />
+			</div>
+		</div>
+
+		<!-- left buttons -->
+		<div data-bind="">
+		</div>
+	</form>
 
 </div>
