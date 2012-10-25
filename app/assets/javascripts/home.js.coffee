@@ -141,7 +141,7 @@ class @ImportViewModel
 	submit: ->
 		@busy(true)
 		a = @apps()[@selectedApp()]
-		console.log 'a', a
+		console.log 'a', a.toJSON()
 		r = new Recommendation(a.toJSON())
 		r.save null,
 			success: =>
