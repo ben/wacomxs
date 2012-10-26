@@ -74,19 +74,15 @@
 			</div>
 		</div>
 
+		<hr/>
 		<div class="row">
 			<div class="span12">
 				<h2>Buttons</h2>
 				<div data-bind="foreach: buttons">
-					<p>Button!</p>
+					<button data-bind="wacbutton: $data" />
 				</div>
 			</div>
 		</div>
-
-		<div class="row"><div class="span12">
-				<pre data-bind="text: buttons"/>
-				<pre data-bind="text: modes"/>
-		</div></div>
 	</form>
 
 </div>

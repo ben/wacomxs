@@ -17,6 +17,12 @@ ko.bindingHandlers.file =
 						valueAccessor()(e.target.result)
 					reader.readAsText(file)
 
+ko.bindingHandlers.wacbutton =
+	init: (el, valueAccessor) ->
+		obj = ko.utils.unwrapObservable(valueAccessor())
+		console.log obj
+		$(el).text(obj.buttonfunction)
+
 
 ################################################################################
 # Models
@@ -40,7 +46,6 @@ class @MasterViewModel
 		router.navigate '/import', {trigger: true}
 
 	show: (id) ->
-		console.log 'Showing', id
 		@showVM(new ShowViewModel(new Recommendation({id:id})))
 
 class @ShowViewModel extends kb.ViewModel
