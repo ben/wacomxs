@@ -83,6 +83,28 @@
 				</div>
 			</div>
 		</div>
+
+		<hr/>
+		<div class="row">
+			<div class="span12">
+				<button class="btn btn-danger span3" data-bind="click: destroy">Delete</button>
+				<button class="btn btn-success span3 pull-right" data-bind="click: save">Save</button>
+				<button class="btn btn-primary span3 pull-right" data-bind="click: download">Download</button>
+			</div>
+		</div>
+		<div class="row results">
+			<div class="span6 offset3">
+				<img data-bind="visible: busy" src="/busy.gif" />
+				<p class="alert alert-error" data-bind="visible: error">
+					<%#<button type="button" class="close" data-dismiss="alert">×</button>%>
+					There was an error.  Tell Ben.
+				</p>
+				<p class="alert alert-success" data-bind="visible: success">
+					<%#<button type="button" class="close" data-dismiss="alert">×</button>%>
+					Saved!
+				</p>
+			</div>
+		</div>
 	</form>
 
 </div>

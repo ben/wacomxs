@@ -39,7 +39,7 @@ class @MasterViewModel
 
 	constructor: ->
 		@importVM = new ImportViewModel()
-		@loadVM = ko.observable(2)
+		@loadVM = 2
 		@showVM = ko.observable()
 
 	doImport: ->
@@ -56,15 +56,36 @@ class @ShowViewModel extends kb.ViewModel
 			options: options
 		model.fetch()
 
+		@busy = ko.observable(false)
+		@success = ko.observable(false)
+		@error = ko.observable(false)
+
+	save: ->
+		@busy(true)
+		@error(false)
+		@success(false)
+		@model().save null
+			success: =>
+				@busy(false)
+				@success(true)
+			error: =>
+				@busy(false)
+				@error(true)
+
+	download: ->
+	destroy: ->
+
 class @ImportAppViewModel
 	constructor: (data, mapEl, @appid) ->
 		@mapEl = $(mapEl)
 		@name = @mapEl.find('ApplicationName').text()
 		@longName = @mapEl.find('ApplicationLongName').text()
 
+		data = $(data)
+
 		# How many settings are associated?
 		@ctrls = null
-		$(data).find('TabletControlContainerArray').children().each (i,el) =>
+		data.find('TabletControlContainerArray').children().each (i,el) =>
 			thisid = parseInt($(el).find('ApplicationAssociated').text())
 			if thisid == @appid
 				@ctrls = el
@@ -79,7 +100,8 @@ class @ImportAppViewModel
 		@modes = @getModes $(@ctrls).find('TouchStripModes').children(),
 			$(@ctrls).find('TouchRingModes').children()
 
-		@visible = @ctrls != null
+		@visible = ko.computed =>
+			@ctrls != null and @appid != 0
 
 	getButtons: (el) ->
 		ret = (el.map ->
@@ -126,14 +148,14 @@ class @ImportViewModel
 				return unescape $(txt).find('ContainedFile:first').text()
 			txt
 
-		# Extract list of apps
+		# Apps for that tablet
 		@apps = ko.computed =>
 			data = @unescapedData()
 			if data
 				return $(data).find('ApplicationMap').children().map (i,el) ->
 					new ImportAppViewModel(data, el, i)
 		@visibleApps = ko.computed =>
-			_(@apps()).filter (x) -> x.visible
+			_(@apps()).filter (x) -> x.visible()
 		@selectedApp = ko.observable()
 
 		@submitDisabled = ko.computed =>
@@ -142,6 +164,8 @@ class @ImportViewModel
 			if @busy()
 				return true
 			false
+
+		@templateName = ko.computed => String(@submitDisabled()) + 'tmpl'
 
 	submit: ->
 		@busy(true)
