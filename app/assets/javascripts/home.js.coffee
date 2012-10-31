@@ -149,8 +149,6 @@ class @ImportInnerViewModel
 			name: $(el).find('ApplicationName').text()
 			longName: $(el).find('ApplicationLongName').text()
 
-		@buttons = 
-
 class @ImportViewModel
 	constructor: ->
 		@filedata = ko.observable(null)
