@@ -48,6 +48,9 @@ class @MasterViewModel
 	show: (id) ->
 		@showVM(new ShowViewModel(new Recommendation({id:id})))
 
+	dashboard: ->
+		@showVM(null)
+
 class @ShowViewModel extends kb.ViewModel
 	constructor: (model,options) ->
 		super model,
@@ -73,7 +76,11 @@ class @ShowViewModel extends kb.ViewModel
 				@error(true)
 
 	download: ->
+
 	destroy: ->
+		if window.confirm "Are you sure you want to destroy this?"
+			@model().destroy()
+			router.navigate '/', {trigger: true}
 
 class @ImportAppViewModel
 	constructor: (data, mapEl, @appid) ->
@@ -195,6 +202,7 @@ class @ImportViewModel
 # Routes
 class @Router extends Backbone.Router
 	routes:
+		'':							'dashboard'
 		'new':						'new'
 		'import':					'import'
 		'load':						'load'
@@ -220,6 +228,7 @@ class @Router extends Backbone.Router
 
 	dashboard: ->
 		$('.modal').modal('hide')
+		vm.dashboard()
 
 ################################################################################
 # Bootstrap
