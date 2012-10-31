@@ -19,6 +19,10 @@
 			<form>
 				<input type="file" id="importfile" data-bind="file: filedata">
 
+				<div data-bind="with: innerVM">
+					<h5>New way</h5>
+				</div>
+
 				<div data-bind="visible: filedata">
 					<h3>Defined Applications</h3>
 					<div data-bind="foreach: visibleApps">

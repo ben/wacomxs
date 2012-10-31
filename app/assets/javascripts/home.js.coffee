@@ -142,6 +142,15 @@ class @ImportAppViewModel
 		modes: @modes
 		title: ''
 
+class @ImportInnerViewModel
+	constructor: (@el) ->
+		# Apps
+		apps = @el.find('ApplicationMap').children().map (i,el) ->
+			name: $(el).find('ApplicationName').text()
+			longName: $(el).find('ApplicationLongName').text()
+
+		@buttons = 
+
 class @ImportViewModel
 	constructor: ->
 		@filedata = ko.observable(null)
@@ -155,11 +164,17 @@ class @ImportViewModel
 				return unescape $(txt).find('ContainedFile:first').text()
 			txt
 
+		@innerVM = ko.computed =>
+			if (@unescapedData())
+				new ImportInnerViewModel($(@unescapedData()))
+			else
+				null
+
 		# Apps for that tablet
 		@apps = ko.computed =>
 			data = @unescapedData()
 			if data
-				return $(data).find('ApplicationMap').children().map (i,el) ->
+				$(data).find('ApplicationMap').children().map (i,el) ->
 					new ImportAppViewModel(data, el, i)
 		@visibleApps = ko.computed =>
 			_(@apps()).filter (x) -> x.visible()
@@ -177,7 +192,6 @@ class @ImportViewModel
 	submit: ->
 		@busy(true)
 		a = @apps()[@selectedApp()]
-		console.log 'a', a.toJSON()
 		r = new Recommendation(a.toJSON())
 		r.save null,
 			success: =>
