@@ -21,6 +21,14 @@
 
 				<div data-bind="with: innerVM">
 					<h5>New way</h5>
+
+					<h3>Buttons</h3>
+					<div data-bind="foreach: buttons">
+						<label class="radio">
+							<input type="radio" name="buttonsGroup" data-bind="checked: $parent.selectedButtons" />
+							<span data-bind="text: displayText"></span>
+						</label>
+					</div>
 				</div>
 
 				<div data-bind="visible: filedata">

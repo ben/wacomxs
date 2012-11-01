@@ -146,8 +146,27 @@ class @ImportInnerViewModel
 	constructor: (@el) ->
 		# Apps
 		apps = @el.find('ApplicationMap').children().map (i,el) ->
+			id: i
 			name: $(el).find('ApplicationName').text()
 			longName: $(el).find('ApplicationLongName').text()
+
+		tablets = @el.find('TabletArray').children().map (i,el) ->
+			name: $(el).find('TabletName').text()
+			model: $(el).find('TabletModel').text()
+			controls: $(el).find('TabletControlContainerArray').children()
+
+		@buttons = ko.observableArray _(tablets).map((tabEl) ->
+			tabEl.controls.map((i,ctrlEl) ->
+				ctrlEl = $(ctrlEl)
+				ret = {}
+				ret.tablet = tabEl
+				ret.app = apps[parseInt(ctrlEl.find('ApplicationAssociated').text())]
+				ret.buttons = ctrlEl.find('TabletControlsButtonsArray').children()
+				ret.displayText = tabEl.name + " / " + ret.app.name
+				ret
+			).toArray()
+		).flatten().filter((el)->el.app.id != 0)
+		@selectedButtons = ko.observable()
 
 class @ImportViewModel
 	constructor: ->
