@@ -20,23 +20,11 @@
 				<input type="file" id="importfile" data-bind="file: filedata">
 
 				<div data-bind="with: innerVM">
-					<h5>New way</h5>
-
 					<h3>Buttons</h3>
 					<div data-bind="foreach: buttons">
 						<label class="radio">
 							<input type="radio" name="buttonsGroup" data-bind="checked: $parent.selectedButtons" />
 							<span data-bind="text: displayText"></span>
-						</label>
-					</div>
-				</div>
-
-				<div data-bind="visible: filedata">
-					<h3>Defined Applications</h3>
-					<div data-bind="foreach: visibleApps">
-						<label class="radio">
-							<input type="radio" name="appGroup" data-bind="value: appid, checked: $parent.selectedApp" />
-							<span data-bind="text: labelText"></span>
 						</label>
 					</div>
 				</div>
