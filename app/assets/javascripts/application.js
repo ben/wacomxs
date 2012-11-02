@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require underscore
-//= require knockout
+//= require knockout-latest
 //= require backbone
 //= require knockback
 //= require_tree .
