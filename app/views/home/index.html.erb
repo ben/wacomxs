@@ -23,7 +23,7 @@
 					<h3>Buttons</h3>
 					<div data-bind="foreach: buttons">
 						<label class="radio">
-							<input type="radio" name="buttonsGroup" data-bind="checked: $parent.selectedButtons" />
+							<input type="radio" name="buttonsGroup" data-bind="value: $index, checked: $parent.selectedButtons" />
 							<span data-bind="text: displayText"></span>
 						</label>
 					</div>

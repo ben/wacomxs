@@ -155,7 +155,7 @@ class @ImportInnerViewModel
 			model: $(el).find('TabletModel').text()
 			controls: $(el).find('TabletControlContainerArray').children()
 
-		@buttons = ko.observableArray _(tablets).map((tabEl) ->
+		@buttons = _.map tablets, (tabEl) ->
 			tabEl.controls.map((i,ctrlEl) ->
 				ctrlEl = $(ctrlEl)
 				ret = {}
@@ -165,7 +165,9 @@ class @ImportInnerViewModel
 				ret.displayText = tabEl.name + " / " + ret.app.name
 				ret
 			).toArray()
-		).flatten().filter((el)->el.app.id != 0)
+		@buttons = _.flatten @buttons
+		@buttons = @buttons.filter((el)->el.app.id != 0)
+		@buttons = ko.observableArray @buttons
 		@selectedButtons = ko.observable()
 
 class @ImportViewModel
