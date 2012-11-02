@@ -20,13 +20,40 @@
 				<input type="file" id="importfile" data-bind="file: filedata">
 
 				<div data-bind="with: innerVM">
-					<h3>Buttons</h3>
-					<div data-bind="foreach: buttons">
-						<label class="radio">
-							<input type="radio" name="buttonsGroup" data-bind="value: $index, checked: $parent.selectedButtons" />
-							<span data-bind="text: displayText"></span>
-						</label>
-					</div>
+					<h4>Buttons</h4>
+					<!-- ko foreach: buttons -->
+					<label class="radio">
+						<input type="radio" name="buttonsGroup" data-bind="value: $index, checked: $parent.selectedButtons" />
+						<span data-bind="text: displayText"></span>
+					</label>
+					<!-- /ko -->
+					<label class="radio">
+						<input type="radio" name="buttonsGroup" value="-1" data-bind="data: -1, checked: selectedButtons" />
+						<span>(none)</span>
+					</label>
+
+					<h4>Touch Rings</h4>
+					<!-- ko foreach: rings -->
+					<label class="radio">
+						<input type="radio" name="ringsGroup" data-bind="value: $index, checked: $parent.selectedRings" />
+						<span data-bind="text: displayText"></span>
+					</label>
+					<!-- /ko -->
+					<label class="radio">
+						<input type="radio" name="ringsGroup" value="-1" data-bind="checked: selectedRings" />(none)
+					</label>
+
+					<h4>Touch Strips</h4>
+					<!-- ko foreach: strips -->
+					<label class="radio">
+						<input type="radio" name="stripsGroup" data-bind="value: $index, checked: $parent.selectedStrips" />
+						<span data-bind="text: displayText"></span>
+					</label>
+					<!-- /ko -->
+					<label class="radio">
+						<input type="radio" name="stripsGroup" value="-1" data-bind="checked: selectedStrips" />(none)
+					</label>
+
 				</div>
 			</form>
 			<div class="alert alert-error" data-bind="visible: error">

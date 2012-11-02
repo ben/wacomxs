@@ -145,30 +145,48 @@ class @ImportAppViewModel
 class @ImportInnerViewModel
 	constructor: (@el) ->
 		# Apps
-		apps = @el.find('ApplicationMap').children().map (i,el) ->
+		@apps = @el.find('ApplicationMap').children().map (i,el) ->
 			id: i
 			name: $(el).find('ApplicationName').text()
 			longName: $(el).find('ApplicationLongName').text()
 
-		tablets = @el.find('TabletArray').children().map (i,el) ->
+		@tablets = @el.find('TabletArray').children().map (i,el) ->
 			name: $(el).find('TabletName').text()
 			model: $(el).find('TabletModel').text()
 			controls: $(el).find('TabletControlContainerArray').children()
 
-		@buttons = _.map tablets, (tabEl) ->
-			tabEl.controls.map((i,ctrlEl) ->
+		@buttons = @mapToTabletAppControls 'TabletControlsButtonsArray'
+		@strips = @mapToTabletAppControls 'TouchStrips'
+		@rings = @mapToTabletAppControls 'TouchRingSettings'
+
+		@selectedButtons = ko.observable(-1)
+		@selectedRings = ko.observable(-1)
+		@selectedStrips = ko.observable(-1)
+
+		@isValid = ko.computed =>
+			@selectedButtons() >= 0 or @selectedRings() >= 0 or @selectedStrips() >= 0
+
+	mapToTabletAppControls: (selector) ->
+		arr = _.map @tablets, (tabEl) =>
+			tabEl.controls.map((i,ctrlEl) =>
 				ctrlEl = $(ctrlEl)
 				ret = {}
+
+				# Only collect if the selector has results
+				selected = ctrlEl.find(selector).children()
+				if (selected.length == 0)
+					return null
+				ret[selector] = selected
+
 				ret.tablet = tabEl
-				ret.app = apps[parseInt(ctrlEl.find('ApplicationAssociated').text())]
-				ret.buttons = ctrlEl.find('TabletControlsButtonsArray').children()
+				ret.app = @apps[parseInt(ctrlEl.find('ApplicationAssociated').text())]
 				ret.displayText = tabEl.name + " / " + ret.app.name
 				ret
 			).toArray()
-		@buttons = _.flatten @buttons
-		@buttons = @buttons.filter((el)->el.app.id != 0)
-		@buttons = ko.observableArray @buttons
-		@selectedButtons = ko.observable()
+		ko.observableArray _.flatten(arr).filter((el)->el.app.id != 0)
+
+	toJSON: ->
+		{}
 
 class @ImportViewModel
 	constructor: ->
@@ -200,7 +218,7 @@ class @ImportViewModel
 		@selectedApp = ko.observable()
 
 		@submitDisabled = ko.computed =>
-			if !@selectedApp()
+			if !@innerVM() or !@innerVM().isValid()
 				return true
 			if @busy()
 				return true
@@ -209,9 +227,15 @@ class @ImportViewModel
 		@templateName = ko.computed => String(@submitDisabled()) + 'tmpl'
 
 	submit: ->
+		if @submitDisabled()
+			return
+
 		@busy(true)
-		a = @apps()[@selectedApp()]
-		r = new Recommendation(a.toJSON())
+		r = new Recommendation @innerVM().toJSON()
+		# TODO: re-enable this when innerVM.toJSON works
+		@busy(false)
+		return
+
 		r.save null,
 			success: =>
 				@clear()
