@@ -82,66 +82,6 @@ class @ShowViewModel extends kb.ViewModel
 			@model().destroy()
 			router.navigate '/', {trigger: true}
 
-class @ImportAppViewModel
-	constructor: (data, mapEl, @appid) ->
-		@mapEl = $(mapEl)
-		@name = @mapEl.find('ApplicationName').text()
-		@longName = @mapEl.find('ApplicationLongName').text()
-
-		data = $(data)
-
-		# How many settings are associated?
-		@ctrls = null
-		data.find('TabletControlContainerArray').children().each (i,el) =>
-			thisid = parseInt($(el).find('ApplicationAssociated').text())
-			if thisid == @appid
-				@ctrls = el
-
-		# Final text to display
-		@labelText = @name
-		if @longName
-			@labelText += " (" + @longName + ")"
-
-		# Stow the settings away for later
-		@buttons = @getButtons $(@ctrls).find('TabletControlsButtonsArray').children()
-		@modes = @getModes $(@ctrls).find('TouchStripModes').children(),
-			$(@ctrls).find('TouchRingModes').children()
-
-		@visible = ko.computed =>
-			@ctrls != null and @appid != 0
-
-	getButtons: (el) ->
-		ret = (el.map ->
-			buttonfunction: $(@).find('buttonfunction').text()
-			buttonname: $(@).find('buttonname').text()
-			modifier: $(@).find('modifier').html()
-			keystrokeName: $(@).find('buttonkeystrokeshortcutname').text()
-			keystroke: $(@).find('keystroke').html()
-		).toArray()
-		ret
-
-	getModes: (stripEl, ringEl) ->
-		strips = (stripEl.map ->
-			direction: $(@).find('TouchStripDirection').text()
-			enableTapZones: $(@).find('TouchStripEnableTapZones').text()
-			stripFunction: $(@).find('TouchStripFunction').text()
-			keystrokeDecrease: $(@).find('TouchStripKeystrokeDecrease').html()
-			keystrokeIncrease: $(@).find('TouchStripKeystrokeIncrease').html()
-			keystrokeName: $(@).find('TouchStripKeystrokeName').text()
-			modeName: $(@).find('TouchStripModeName').text()
-			modifiers: $(@).find('TouchStripModifiers').text()
-			speed: $(@).find('TouchStripSpeed').text()
-		).toArray()
-		rings = []
-		[].concat(strips,rings)
-
-	toJSON: ->
-		application_name: @name
-		application_long_name: @longName
-		buttons: @buttons
-		modes: @modes
-		title: ''
-
 class @ImportInnerViewModel
 	constructor: (@el) ->
 		# Apps
@@ -207,24 +147,12 @@ class @ImportViewModel
 			else
 				null
 
-		# Apps for that tablet
-		@apps = ko.computed =>
-			data = @unescapedData()
-			if data
-				$(data).find('ApplicationMap').children().map (i,el) ->
-					new ImportAppViewModel(data, el, i)
-		@visibleApps = ko.computed =>
-			_(@apps()).filter (x) -> x.visible()
-		@selectedApp = ko.observable()
-
 		@submitDisabled = ko.computed =>
 			if !@innerVM() or !@innerVM().isValid()
 				return true
 			if @busy()
 				return true
 			false
-
-		@templateName = ko.computed => String(@submitDisabled()) + 'tmpl'
 
 	submit: ->
 		if @submitDisabled()
@@ -252,7 +180,6 @@ class @ImportViewModel
 		@busy(false)
 		@error(null)
 		@filedata(null)
-		@selectedApp(null)
 		$('#importfile').attr('value', null)
 
 ################################################################################
