@@ -32,26 +32,15 @@
 						<span>(none)</span>
 					</label>
 
-					<h4>Touch Rings</h4>
-					<!-- ko foreach: rings -->
+					<h4>Modes</h4>
+					<!-- ko foreach: modes -->
 					<label class="radio">
-						<input type="radio" name="ringsGroup" data-bind="value: $index, checked: $parent.selectedRings" />
+						<input type="radio" name="modesGroup" data-bind="value: $index, checked: $parent.selectedModes" />
 						<span data-bind="text: displayText"></span>
 					</label>
 					<!-- /ko -->
 					<label class="radio">
-						<input type="radio" name="ringsGroup" value="-1" data-bind="checked: selectedRings" />(none)
-					</label>
-
-					<h4>Touch Strips</h4>
-					<!-- ko foreach: strips -->
-					<label class="radio">
-						<input type="radio" name="stripsGroup" data-bind="value: $index, checked: $parent.selectedStrips" />
-						<span data-bind="text: displayText"></span>
-					</label>
-					<!-- /ko -->
-					<label class="radio">
-						<input type="radio" name="stripsGroup" value="-1" data-bind="checked: selectedStrips" />(none)
+						<input type="radio" name="modesGroup" value="-1" data-bind="checked: selectedModes" />(none)
 					</label>
 
 				</div>

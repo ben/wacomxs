@@ -82,6 +82,66 @@ class @ShowViewModel extends kb.ViewModel
 			@model().destroy()
 			router.navigate '/', {trigger: true}
 
+class @ImportAppViewModel
+	constructor: (data, mapEl, @appid) ->
+		@mapEl = $(mapEl)
+		@name = @mapEl.find('ApplicationName').text()
+		@longName = @mapEl.find('ApplicationLongName').text()
+
+		data = $(data)
+
+		# How many settings are associated?
+		@ctrls = null
+		data.find('TabletControlContainerArray').children().each (i,el) =>
+			thisid = parseInt($(el).find('ApplicationAssociated').text())
+			if thisid == @appid
+				@ctrls = el
+
+		# Final text to display
+		@labelText = @name
+		if @longName
+			@labelText += " (" + @longName + ")"
+
+		# Stow the settings away for later
+		@buttons = @getButtons $(@ctrls).find('TabletControlsButtonsArray').children()
+		@modes = @getModes $(@ctrls).find('TouchStripModes').children(),
+			$(@ctrls).find('TouchRingModes').children()
+
+		@visible = ko.computed =>
+			@ctrls != null and @appid != 0
+
+	getButtons: (el) ->
+		ret = (el.map ->
+			buttonfunction: $(@).find('buttonfunction').text()
+			buttonname: $(@).find('buttonname').text()
+			modifier: $(@).find('modifier').html()
+			keystrokeName: $(@).find('buttonkeystrokeshortcutname').text()
+			keystroke: $(@).find('keystroke').html()
+		).toArray()
+		ret
+
+	getModes: (stripEl, ringEl) ->
+		strips = (stripEl.map ->
+			direction: $(@).find('TouchStripDirection').text()
+			enableTapZones: $(@).find('TouchStripEnableTapZones').text()
+			stripFunction: $(@).find('TouchStripFunction').text()
+			keystrokeDecrease: $(@).find('TouchStripKeystrokeDecrease').html()
+			keystrokeIncrease: $(@).find('TouchStripKeystrokeIncrease').html()
+			keystrokeName: $(@).find('TouchStripKeystrokeName').text()
+			modeName: $(@).find('TouchStripModeName').text()
+			modifiers: $(@).find('TouchStripModifiers').text()
+			speed: $(@).find('TouchStripSpeed').text()
+		).toArray()
+		rings = []
+		[].concat(strips,rings)
+
+	toJSON: ->
+		application_name: @name
+		application_long_name: @longName
+		buttons: @buttons
+		modes: @modes
+		title: ''
+
 class @ImportInnerViewModel
 	constructor: (@el) ->
 		# Apps
@@ -96,17 +156,17 @@ class @ImportInnerViewModel
 			controls: $(el).find('TabletControlContainerArray').children()
 
 		@buttons = @mapToTabletAppControls 'TabletControlsButtonsArray'
-		@strips = @mapToTabletAppControls 'TouchStrips'
-		@rings = @mapToTabletAppControls 'TouchRingSettings'
+		strips = @mapToTabletAppControls 'TouchStrips', "Strip"
+		rings = @mapToTabletAppControls 'TouchRingSettings', "Ring"
+		@modes = strips.concat rings
 
 		@selectedButtons = ko.observable(-1)
-		@selectedRings = ko.observable(-1)
-		@selectedStrips = ko.observable(-1)
+		@selectedModes = ko.observable(-1)
 
 		@isValid = ko.computed =>
-			@selectedButtons() >= 0 or @selectedRings() >= 0 or @selectedStrips() >= 0
+			@selectedButtons() >= 0 or @selectedModes() >= 0
 
-	mapToTabletAppControls: (selector) ->
+	mapToTabletAppControls: (selector, type) ->
 		arr = _.map @tablets, (tabEl) =>
 			tabEl.controls.map((i,ctrlEl) =>
 				ctrlEl = $(ctrlEl)
@@ -116,18 +176,31 @@ class @ImportInnerViewModel
 				selected = ctrlEl.find(selector).children()
 				if (selected.length == 0)
 					return null
-				ret[selector] = selected
+				ret.values = selected
 
 				ret.tablet = tabEl
 				ret.app = @apps[parseInt(ctrlEl.find('ApplicationAssociated').text())]
 				ret.displayText = tabEl.name + " / " + ret.app.name
+				if type
+					ret.displayText = ret.displayText + " (" + type + ")"
 				ret
 			).toArray()
-		ko.observableArray _.flatten(arr).filter((el)->el.app.id != 0)
+		_.flatten(arr).filter((el)->el.app.id != 0)
 
 	toJSON: ->
-		{}
-
+		appData = @modes[@selectedModes()].app
+		if @selectedButtons() >= 0
+			appData = @buttons[@selectedButtons()].app
+		ret = {
+			application_name: appData.name
+			application_long_name: appData.longName
+			title: ''
+		}
+		if @selectedButtons() > 0
+			ret.buttons = @buttons[@selectedButtons()]
+		if @selectedModes() > 0
+			ret.modes = @modes[@selectedModes()]
+		ret
 class @ImportViewModel
 	constructor: ->
 		@filedata = ko.observable(null)
@@ -160,6 +233,7 @@ class @ImportViewModel
 
 		@busy(true)
 		r = new Recommendation @innerVM().toJSON()
+		console.log r
 		# TODO: re-enable this when innerVM.toJSON works
 		@busy(false)
 		return
@@ -180,6 +254,7 @@ class @ImportViewModel
 		@busy(false)
 		@error(null)
 		@filedata(null)
+		@selectedApp(null)
 		$('#importfile').attr('value', null)
 
 ################################################################################
