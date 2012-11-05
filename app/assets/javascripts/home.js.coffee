@@ -211,9 +211,9 @@ class @ImportInnerViewModel
 			application_long_name: appData.longName
 			title: ''
 		}
-		if @selectedButtons() > 0
+		if @selectedButtons() >= 0
 			ret.buttons = @buttons[@selectedButtons()].buttons
-		if @selectedModes() > 0
+		if @selectedModes() >= 0
 			obj = @modes[@selectedModes()]
 			ret.modes = obj.strips or obj.rings
 		ret
