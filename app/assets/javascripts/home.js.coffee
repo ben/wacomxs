@@ -20,7 +20,6 @@ ko.bindingHandlers.file =
 ko.bindingHandlers.wacbutton =
 	init: (el, valueAccessor) ->
 		obj = ko.utils.unwrapObservable(valueAccessor())
-		console.log obj
 		$(el).text(obj.buttonfunction)
 
 
@@ -82,69 +81,8 @@ class @ShowViewModel extends kb.ViewModel
 			@model().destroy()
 			router.navigate '/', {trigger: true}
 
-class @ImportAppViewModel
-	constructor: (data, mapEl, @appid) ->
-		@mapEl = $(mapEl)
-		@name = @mapEl.find('ApplicationName').text()
-		@longName = @mapEl.find('ApplicationLongName').text()
-
-		data = $(data)
-
-		# How many settings are associated?
-		@ctrls = null
-		data.find('TabletControlContainerArray').children().each (i,el) =>
-			thisid = parseInt($(el).find('ApplicationAssociated').text())
-			if thisid == @appid
-				@ctrls = el
-
-		# Final text to display
-		@labelText = @name
-		if @longName
-			@labelText += " (" + @longName + ")"
-
-		# Stow the settings away for later
-		@buttons = @getButtons $(@ctrls).find('TabletControlsButtonsArray').children()
-		@modes = @getModes $(@ctrls).find('TouchStripModes').children(),
-			$(@ctrls).find('TouchRingModes').children()
-
-		@visible = ko.computed =>
-			@ctrls != null and @appid != 0
-
-	getButtons: (el) ->
-		ret = (el.map ->
-			buttonfunction: $(@).find('buttonfunction').text()
-			buttonname: $(@).find('buttonname').text()
-			modifier: $(@).find('modifier').html()
-			keystrokeName: $(@).find('buttonkeystrokeshortcutname').text()
-			keystroke: $(@).find('keystroke').html()
-		).toArray()
-		ret
-
-	getModes: (stripEl, ringEl) ->
-		strips = (stripEl.map ->
-			direction: $(@).find('TouchStripDirection').text()
-			enableTapZones: $(@).find('TouchStripEnableTapZones').text()
-			stripFunction: $(@).find('TouchStripFunction').text()
-			keystrokeDecrease: $(@).find('TouchStripKeystrokeDecrease').html()
-			keystrokeIncrease: $(@).find('TouchStripKeystrokeIncrease').html()
-			keystrokeName: $(@).find('TouchStripKeystrokeName').text()
-			modeName: $(@).find('TouchStripModeName').text()
-			modifiers: $(@).find('TouchStripModifiers').text()
-			speed: $(@).find('TouchStripSpeed').text()
-		).toArray()
-		rings = []
-		[].concat(strips,rings)
-
-	toJSON: ->
-		application_name: @name
-		application_long_name: @longName
-		buttons: @buttons
-		modes: @modes
-		title: ''
-
 class @ImportInnerViewModel
 	constructor: (@el) ->
-		# Apps
 		@apps = @el.find('ApplicationMap').children().map (i,el) ->
 			id: i
 			name: $(el).find('ApplicationName').text()
@@ -155,10 +93,8 @@ class @ImportInnerViewModel
 			model: $(el).find('TabletModel').text()
 			controls: $(el).find('TabletControlContainerArray').children()
 
-		@buttons = @mapToTabletAppControls 'TabletControlsButtonsArray'
-		strips = @mapToTabletAppControls 'TouchStrips', "Strip"
-		rings = @mapToTabletAppControls 'TouchRingSettings', "Ring"
-		@modes = strips.concat rings
+		@buttons = @extractButtons()
+		@modes = @extractModes()
 
 		@selectedButtons = ko.observable(-1)
 		@selectedModes = ko.observable(-1)
@@ -166,29 +102,108 @@ class @ImportInnerViewModel
 		@isValid = ko.computed =>
 			@selectedButtons() >= 0 or @selectedModes() >= 0
 
-	mapToTabletAppControls: (selector, type) ->
+	extractButtons: ->
 		arr = _.map @tablets, (tabEl) =>
 			tabEl.controls.map((i,ctrlEl) =>
 				ctrlEl = $(ctrlEl)
-				ret = {}
+				app = @apps[parseInt(ctrlEl.find('ApplicationAssociated').text())]
 
 				# Only collect if the selector has results
-				selected = ctrlEl.find(selector).children()
+				selected = ctrlEl.find('TabletControlsButtonsArray').children()
 				if (selected.length == 0)
 					return null
-				ret.values = selected
 
-				ret.tablet = tabEl
-				ret.app = @apps[parseInt(ctrlEl.find('ApplicationAssociated').text())]
-				ret.displayText = tabEl.name + " / " + ret.app.name
-				if type
-					ret.displayText = ret.displayText + " (" + type + ")"
-				ret
+				{
+					buttons: @extractAllButtons selected
+					tablet: tabEl
+					app: app
+					displayText: tabEl.name + " / " + app.name
+				}
 			).toArray()
 		_.flatten(arr).filter((el)->el.app.id != 0)
 
+	extractAllButtons: (btns) ->
+		btns.map((i,b) ->
+			b = $ b
+			{
+				buttonfunction: b.find('buttonfunction').text()
+				buttonname: b.find('buttonname').text()
+				modifier: b.find('modifier').html()
+				keystrokeName: b.find('buttonkeystrokeshortcutname').text()
+				keystroke: b.find('keystroke').html()
+			}
+		).toArray()
+
+	extractModes: ->
+		@extractStrips().concat @extractRings()
+
+	extractStrips: ->
+		# PTZ/DTZ have touch strip modes in this structure:
+		#   TouchStrips/(Left|Right)OneD/TouchStripModes
+		arr = _.map @tablets, (tabEl) =>
+			tabEl.controls.map((i, ctrlEl) =>
+				ctrlEl = $(ctrlEl)
+				strips = ctrlEl.find('TouchStrips').children()
+				if strips.length == 0
+					return null
+
+				app = @apps[parseInt(ctrlEl.find('ApplicationAssociated').text())]
+				{
+					tablet: tabEl
+					app: app
+					displayText: tabEl.name + ' / ' + app.name
+					strips: @extractAllModes strips
+				}
+			).toArray()
+		_.flatten(arr).filter (el)->el.app.id != 0
+
+	extractRings: ->
+		# I4 has this structure:
+		#   TouchRingSettings/TouchStripModes
+		# Multi-ring tablets have this structure:
+		#   TouchRings/(Left|Right)Ring/TouchStripModes
+		arr = _.map @tablets, (tabEl) =>
+			tabEl.controls.map((i, ctrlEl) =>
+				ctrlEl = $(ctrlEl)
+				rings = ctrlEl.find('TouchRingSettings')
+				if rings.length == 0
+					rings = ctrlEl.find('TouchRings').children()
+				if rings.length == 0
+					return null
+
+				app = @apps[parseInt(ctrlEl.find('ApplicationAssociated').text())]
+				{
+					tablet: tabEl
+					app: app
+					displayText: tabEl.name + ' / ' + app.name
+					rings: @extractAllModes rings
+				}
+			).toArray()
+		_.flatten(arr).filter (el)->el.app.id != 0
+
+	extractAllModes: (coll) ->
+		coll.map((i,el) =>
+			name: el.localName
+			modes: ($(el).find("TouchStripModes").children().map (i,el) => @extractModesFromEl el).toArray()
+		).toArray()
+
+	extractModesFromEl: (el) ->
+		el = $(el)
+		{
+			direction: el.find('TouchStripDirection').text()
+			enableTapZones: el.find('TouchStripEnableTapZones').text()
+			stripFunction: el.find('TouchStripFunction').text()
+			keystrokeDecrease: el.find('TouchStripKeystrokeDecrease').html()
+			keystrokeIncrease: el.find('TouchStripKeystrokeIncrease').html()
+			keystrokeName: el.find('TouchStripKeystrokeName').text()
+			modeName: el.find('TouchStripModeName').text()
+			modifiers: el.find('TouchStripModifiers').text()
+			speed: el.find('TouchStripSpeed').text()
+		}
+
 	toJSON: ->
-		appData = @modes[@selectedModes()].app
+		if @selectedModes() >= 0
+			appData = @modes[@selectedModes()].app
 		if @selectedButtons() >= 0
 			appData = @buttons[@selectedButtons()].app
 		ret = {
@@ -197,10 +212,13 @@ class @ImportInnerViewModel
 			title: ''
 		}
 		if @selectedButtons() > 0
-			ret.buttons = @buttons[@selectedButtons()]
+			ret.buttons = @buttons[@selectedButtons()].buttons
 		if @selectedModes() > 0
-			ret.modes = @modes[@selectedModes()]
+			obj = @modes[@selectedModes()]
+			ret.modes = obj.strips or obj.rings
 		ret
+
+
 class @ImportViewModel
 	constructor: ->
 		@filedata = ko.observable(null)
@@ -234,9 +252,6 @@ class @ImportViewModel
 		@busy(true)
 		r = new Recommendation @innerVM().toJSON()
 		console.log r
-		# TODO: re-enable this when innerVM.toJSON works
-		@busy(false)
-		return
 
 		r.save null,
 			success: =>
@@ -254,7 +269,6 @@ class @ImportViewModel
 		@busy(false)
 		@error(null)
 		@filedata(null)
-		@selectedApp(null)
 		$('#importfile').attr('value', null)
 
 ################################################################################
