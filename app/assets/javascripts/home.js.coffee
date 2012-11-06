@@ -29,7 +29,6 @@ class @Recommendation extends Backbone.Model
 	urlRoot: '/recommendations'
 
 class @RecommendationCollection extends Backbone.Collection
-	model: Recommendation
 	url: '/recommendations'
 
 ################################################################################
@@ -38,7 +37,7 @@ class @MasterViewModel
 
 	constructor: ->
 		@importVM = new ImportViewModel()
-		@loadVM = 2
+		@loadVM = new LoadViewModel(new RecommendationCollection())
 		@showVM = ko.observable()
 
 	doImport: ->
@@ -47,8 +46,27 @@ class @MasterViewModel
 	show: (id) ->
 		@showVM(new ShowViewModel(new Recommendation({id:id})))
 
+	load: ->
+		@loadVM.items.collection().fetch()
+
 	dashboard: ->
 		@showVM(null)
+
+class @LoadViewModel
+	constructor: (@model) ->
+		@items = kb.collectionObservable @model,
+			view_model: LoadItemViewModel
+
+	cancel: ->
+		router.navigate '/', {trigger: true}
+
+class @LoadItemViewModel extends kb.ViewModel
+	constructor: (model, options) ->
+		super model, options
+		@displayTitle = ko.computed =>
+			if @title() == ""
+				return "(no title)"
+			@title()
 
 class @ShowViewModel extends kb.ViewModel
 	constructor: (model,options) ->
@@ -292,6 +310,7 @@ class @Router extends Backbone.Router
 
 	load: ->
 		$('#load').modal @modalOptions
+		vm.load()
 
 	new: ->
 
