@@ -1,0 +1,6 @@
+[submodule "vendor/knockback"]
+	path = vendor/knockback
+	url = git://github.com/kmalakoff/knockback
+[submodule "vendor/knockout"]
+	path = vendor/knockout
+	url = git://github.com/SteveSanderson/knockout.git
