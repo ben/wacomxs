@@ -34,7 +34,6 @@ class @RecommendationCollection extends Backbone.Collection
 ################################################################################
 # ViewModels
 class @MasterViewModel
-
 	constructor: ->
 		@importVM = new ImportViewModel()
 		@loadVM = new LoadViewModel(new RecommendationCollection())
@@ -63,10 +62,17 @@ class @LoadViewModel
 class @LoadItemViewModel extends kb.ViewModel
 	constructor: (model, options) ->
 		super model, options
+
 		@displayTitle = ko.computed =>
 			if @title() == ""
 				return "(no title)"
 			@title()
+
+		@displayDate = ko.computed =>
+			new Date(@created_at()).format()
+
+	open: ->
+		router.navigate '/' + @id(), trigger: true
 
 class @ShowViewModel extends kb.ViewModel
 	constructor: (model,options) ->

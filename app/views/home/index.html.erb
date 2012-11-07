@@ -66,9 +66,10 @@
 		</div>
 		<div class="modal-body">
 			<div data-bind="foreach: items">
-				<p>
-					<span data-bind="text: displayTitle"></span>
-				</p>
+				<a class="btn btn-block load-btn" data-bind="click: open">
+					<span class="load-title" data-bind="text: displayTitle"></span>
+					<span class="load-date" data-bind="text: displayDate"></span>
+				</a>
 			</div>
 		</div>
 		<div class="modal-footer">
