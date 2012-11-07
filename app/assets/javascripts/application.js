@@ -16,4 +16,5 @@
 //= require knockout-latest
 //= require backbone
 //= require knockback
+//= require sugar-1.3.6-custom.min
 //= require_tree .
