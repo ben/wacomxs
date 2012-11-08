@@ -45,6 +45,9 @@ class @MasterViewModel
 	show: (id) ->
 		@showVM(new ShowViewModel(new Recommendation({id:id})))
 
+	doLoad: ->
+		router.navigate '/load', {trigger: true}
+
 	load: ->
 		@loadVM.items.collection().fetch()
 
@@ -300,7 +303,6 @@ class @ImportViewModel
 class @Router extends Backbone.Router
 	routes:
 		'':							'dashboard'
-		'new':						'new'
 		'import':					'import'
 		'load':						'load'
 		':id':						'show'
@@ -317,8 +319,6 @@ class @Router extends Backbone.Router
 	load: ->
 		$('#load').modal @modalOptions
 		vm.load()
-
-	new: ->
 
 	show: (id) ->
 		$('.modal').modal('hide')
