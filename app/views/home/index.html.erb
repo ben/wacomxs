@@ -107,10 +107,16 @@
 
 		<hr/>
 		<div class="row">
-			<div class="span12">
-				<button class="btn btn-danger span3" data-bind="click: destroy">Delete</button>
-				<button class="btn btn-success span3 pull-right" data-bind="click: save">Save</button>
-				<button class="btn btn-primary span3 pull-right" data-bind="click: download">Download</button>
+			<div class="span12 btn-toolbar">
+				<button class="btn btn-danger" data-bind="click: destroy">Delete</button>
+				<button class="btn btn-success pull-right" data-bind="click: save">Save</button>
+				<div class="btn-group pull-right">
+					<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Download <span class="caret"></span></button>
+					<ul class="dropdown-menu">
+						<li><a data-bind="attr: {href: urlForWin}">Windows</a></li>
+						<li><a data-bind="attr: {href: urlForMac}">Mac (zip)</a></li>
+						<li><a data-bind="attr: {href: urlForAll}">Both (zip)</a></li>
+					</ul>
 			</div>
 		</div>
 		<div class="row results">

@@ -10,6 +10,10 @@ class @ShowViewModel extends kb.ViewModel
 		@success = ko.observable(false)
 		@error = ko.observable(false)
 
+		@urlForWin = "/download/" + model.id + "/win"
+		@urlForMac = "/download/" + model.id + "/mac"
+		@urlForAll = "/download/" + model.id + "/all"
+
 	save: ->
 		@busy(true)
 		@error(false)
@@ -21,8 +25,6 @@ class @ShowViewModel extends kb.ViewModel
 			error: =>
 				@busy(false)
 				@error(true)
-
-	download: ->
 
 	destroy: ->
 		if window.confirm "Are you sure you want to destroy this?"
