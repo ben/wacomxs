@@ -110,13 +110,7 @@
 			<div class="span12 btn-toolbar">
 				<button class="btn btn-danger" data-bind="click: destroy">Delete</button>
 				<button class="btn btn-success pull-right" data-bind="click: save">Save</button>
-				<div class="btn-group pull-right">
-					<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Download <span class="caret"></span></button>
-					<ul class="dropdown-menu">
-						<li><a data-bind="attr: {href: urlForWin}">Windows</a></li>
-						<li><a data-bind="attr: {href: urlForMac}">Mac (zip)</a></li>
-						<li><a data-bind="attr: {href: urlForAll}">Both (zip)</a></li>
-					</ul>
+				<a class="btn btn-primary pull-right" data-bind="attr: {href: urlForDownload}">Download</a>
 			</div>
 		</div>
 		<div class="row results">

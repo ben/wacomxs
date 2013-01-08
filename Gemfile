@@ -25,6 +25,8 @@ gem 'jquery-rails'
 gem 'knockout-rails'
 gem 'backbone-rails'
 
+gem 'unidecode'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

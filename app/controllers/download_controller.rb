@@ -1,19 +1,15 @@
 class DownloadController < ApplicationController
-	def win
-		send_data "<?xml>Win!</xml>",
+	def main
+		reco = Recommendation.find_by_id params[:id]
+		filename = reco.title.to_ascii.parameterize
+		send_data custom_render(reco),
 			:type => 'text/xml; charset=utf-8',
-			:disposition => "attachment; filename=win.xml"
+			:disposition => "attachment; filename=#{filename}.wacomxs"
 	end
 
-	def mac
-		send_data "<?xml>Mac!</xml>",
-			:type => 'text/xml; charset=utf-8',
-			:disposition => "attachment; filename=mac.xml"
-	end
+	private
 
-	def all
-		send_data "<?xml>All!</xml>",
-			:type => 'text/xml; charset=utf-8',
-			:disposition => "attachment; filename=all.xml"
+	def custom_render(reco)
+		reco.to_xml
 	end
 end

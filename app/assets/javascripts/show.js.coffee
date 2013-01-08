@@ -10,9 +10,7 @@ class @ShowViewModel extends kb.ViewModel
 		@success = ko.observable(false)
 		@error = ko.observable(false)
 
-		@urlForWin = "/download/" + model.id + "/win"
-		@urlForMac = "/download/" + model.id + "/mac"
-		@urlForAll = "/download/" + model.id + "/all"
+		@urlForDownload = "/download/" + model.id
 
 	save: ->
 		@busy(true)
