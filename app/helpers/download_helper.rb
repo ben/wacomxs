@@ -21,4 +21,13 @@ module DownloadHelper
 			338, # Large Pen & Touch
 		]
 	end
+
+	def tablet_types
+		[
+			17, # PTZ USB
+			24, # PTK USB
+			26, # PTK BT
+			27, # WL Receiver
+		]
+	end
 end
