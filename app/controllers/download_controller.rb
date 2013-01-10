@@ -7,4 +7,9 @@ class DownloadController < ApplicationController
 			:type => 'text/xml',
 			:disposition => "attachment; filename=#{filename}.wacomxs"
 	end
+
+	def raw
+		@reco = Recommendation.find_by_id params[:id]
+		render :template => 'download/main.xml.builder', :layout => false
+	end
 end

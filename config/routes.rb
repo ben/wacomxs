@@ -1,7 +1,10 @@
 Wacomxs::Application.routes.draw do
 	resources :recommendations
 	root :to => 'home#index'
+
 	match 'download/:id' => 'download#main'
+	match 'download/raw/:id' => 'download#raw'
+
 	match '*path' => 'home#index'
 
   # The priority is based upon order of creation:
