@@ -26,6 +26,17 @@ def touch_strip_modes(xml)
 	end
 end
 
+def button_array_element(xml, b, replace=nil, with=nil)
+	xml.ArrayElement :type => :map do
+		name = b[:buttonname]
+		name.sub! replace, with unless replace.nil?
+		xml.ButtonName b[:buttonname], :type => :integer
+		xml.ButtonFunction b[:buttonfunction], :type => :integer
+		xml.ButtonKeystrokeShortcutName b[:keystrokeName], :type => :string unless b[:keystrokeName].empty?
+		xml.Keystroke b[:keystroke], :type => :kestring if b.has_key? :keystroke
+	end
+end
+
 xml.root :type => :map do
 	xml.ImportFileVersion 3, :type => :integer
 	xml.OSInterface :type => :map do
@@ -38,7 +49,6 @@ xml.root :type => :map do
 	end
 
 	xml.TabletArray :type => :array do
-		xml.comment! "First ArrayElement is for Opaque Intuos4/5 tablets,Radial Menu, and Ekeys (NOT PENS)"
 		xml.ArrayElement :type => :map do
 
 			# TODO
@@ -50,15 +60,14 @@ xml.root :type => :map do
 					xml.ApplicationAssociated 1, :type => :integer
 
 					xml.TabletControlsButtonsArray :type => :array do
-						xml.comment! "This currently spits out all the buttons, in order, dumbly. Need a way to control mirroring and sides."
-						# This currently spits out all the buttons, in order, dumbly. Need a way to control mirroring and sides.
+						xml.comment! "This is a dumb mirroring. It could be better."
+						xml.comment! "Left buttons"
 						@reco.buttons.each do |b|
-							xml.ArrayElement :type => :map do
-								xml.ButtonFunction b[:buttonfunction], :type => :integer
-								xml.ButtonName b[:buttonname], :type => :integer
-								xml.ButtonKeystrokeShortcutName b[:keystrokeName], :type => :string unless b[:keystrokeName].empty?
-								xml.Keystroke b[:keystroke], :type => :kestring if b.has_key? :keystroke
-							end
+							button_array_element xml, b
+						end
+						xml.comment! "Right buttons"
+						@reco.buttons.each do |b|
+							button_array_element xml, b, "Left", "Right"
 						end
 					end
 
