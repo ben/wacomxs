@@ -66,7 +66,6 @@ xml.root :type => :map do
 					xml.TabletControlsModButtonsArray :type => :array do
 					end
 
-					# TODO
 					xml.TouchRings :type => :map do
 						# C24 touch rings live at this level
 						['Left','Right'].each do |pos|
