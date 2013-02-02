@@ -1,0 +1,711 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root type="map">
+  <ImportFileVersion type="integer">3</ImportFileVersion>
+  <OSInterface type="map">
+    <ApplicationMap type="map">
+      <AppID1 type="map">
+        <!--Replace only the application name (PC)App name and Long name (Mac)-->
+        <ApplicationLongName type="string">/Applications/Adobe/Adobe Photoshop CS6/Adobe Photoshop CS6.app</ApplicationLongName>
+        <ApplicationName type="string">Adobe Photoshop CS6</ApplicationName>
+      </AppID1>
+    </ApplicationMap>
+  </OSInterface>
+  <TabletArray type="array">
+    <!--First ArrayElement is for Opaque Intuos4 tablets,Radial Menu, and Ekeys (NOT PENS)-->
+    <ArrayElement type="map">
+      <TabletAppRadialMenuMapArray type="array">
+        <ArrayElement type="map">
+          <ApplicationAssociated type="integer">1</ApplicationAssociated>
+          <RadialZones type="map">
+            <Center type="map">
+              <RadialFunction type="integer">13</RadialFunction>
+              <RadialStringName type="string" />
+            </Center>
+            <East type="map">
+              <RadialFunction type="integer">0</RadialFunction>
+              <RadialFunctionHandle type="map">
+                <RadialZones type="map">
+                  <Center type="map">
+                    <RadialFunction type="integer">13</RadialFunction>
+                    <RadialStringName type="string" />
+                  </Center>
+                  <East type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[m]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">Marquee (m)</RadialStringName>
+                  </East>
+                  <North type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[v]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">Move (v)</RadialStringName>
+                  </North>
+                  <Northeast type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[b]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">Brush (b)</RadialStringName>
+                  </Northeast>
+                  <Northwest type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[p]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">Pen (p)</RadialStringName>
+                  </Northwest>
+                  <Outside type="map">
+                    <RadialFunction type="integer">13</RadialFunction>
+                    <RadialStringName type="string" />
+                  </Outside>
+                  <South type="map">
+                    <RadialFunction type="integer">12</RadialFunction>
+                    <RadialStringName type="string" />
+                  </South>
+                  <Southeast type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[g]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">Gradient (g)</RadialStringName>
+                  </Southeast>
+                  <Southwest type="map">
+                    <RadialFunction type="integer">12</RadialFunction>
+                    <RadialStringName type="string" />
+                  </Southwest>
+                  <West type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[a]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">Direct Selection (a)</RadialStringName>
+                  </West>
+                </RadialZones>
+              </RadialFunctionHandle>
+              <RadialStringName type="string">Tools</RadialStringName>
+            </East>
+            <North type="map">
+              <RadialFunction type="integer">1</RadialFunction>
+              <RadialFunctionHandle type="map">
+                <Keystroke type="kestring"><![CDATA[&f5;]]></Keystroke>
+              </RadialFunctionHandle>
+              <RadialStringName type="string">Brush Panel</RadialStringName>
+            </North>
+            <Northeast type="map">
+              <RadialFunction type="integer">0</RadialFunction>
+              <RadialFunctionHandle type="map">
+                <RadialZones type="map">
+                  <Center type="map">
+                    <RadialFunction type="integer">13</RadialFunction>
+                    <RadialStringName type="string" />
+                  </Center>
+                  <East type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[,]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">Load Mixer</RadialStringName>
+                  </East>
+                  <North type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[&shift;.]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">Sharpen Erodable Tips</RadialStringName>
+                  </North>
+                  <Northeast type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[&shift;,]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">Clean Mixer</RadialStringName>
+                  </Northeast>
+                  <Northwest type="map">
+                    <RadialFunction type="integer">12</RadialFunction>
+                    <RadialStringName type="string" />
+                  </Northwest>
+                  <Outside type="map">
+                    <RadialFunction type="integer">13</RadialFunction>
+                    <RadialStringName type="string" />
+                  </Outside>
+                  <South type="map">
+                    <RadialFunction type="integer">12</RadialFunction>
+                    <RadialStringName type="string" />
+                  </South>
+                  <Southeast type="map">
+                    <RadialFunction type="integer">12</RadialFunction>
+                    <RadialStringName type="string" />
+                  </Southeast>
+                  <Southwest type="map">
+                    <RadialFunction type="integer">12</RadialFunction>
+                    <RadialStringName type="string" />
+                  </Southwest>
+                  <West type="map">
+                    <RadialFunction type="integer">12</RadialFunction>
+                    <RadialStringName type="string" />
+                  </West>
+                </RadialZones>
+              </RadialFunctionHandle>
+              <RadialStringName type="string">Brush Options</RadialStringName>
+            </Northeast>
+            <Northwest type="map">
+              <RadialFunction type="integer">0</RadialFunction>
+              <RadialFunctionHandle type="map">
+                <RadialZones type="map">
+                  <Center type="map">
+                    <RadialFunction type="integer">13</RadialFunction>
+                    <RadialStringName type="string" />
+                  </Center>
+                  <East type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[&f7;]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">Layers</RadialStringName>
+                  </East>
+                  <North type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[&f5;]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">Brushes</RadialStringName>
+                  </North>
+                  <Northeast type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[&f6;]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">Color</RadialStringName>
+                  </Northeast>
+                  <Northwest type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[&option;&f9;]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">Actions</RadialStringName>
+                  </Northwest>
+                  <Outside type="map">
+                    <RadialFunction type="integer">13</RadialFunction>
+                    <RadialStringName type="string" />
+                  </Outside>
+                  <South type="map">
+                    <RadialFunction type="integer">12</RadialFunction>
+                    <RadialStringName type="string" />
+                  </South>
+                  <Southeast type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[&f8;]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">Info</RadialStringName>
+                  </Southeast>
+                  <Southwest type="map">
+                    <RadialFunction type="integer">12</RadialFunction>
+                    <RadialStringName type="string" />
+                  </Southwest>
+                  <West type="map">
+                    <RadialFunction type="integer">12</RadialFunction>
+                    <RadialStringName type="string" />
+                  </West>
+                </RadialZones>
+              </RadialFunctionHandle>
+              <RadialStringName type="string">Panels</RadialStringName>
+            </Northwest>
+            <Outside type="map">
+              <RadialFunction type="integer">13</RadialFunction>
+              <RadialStringName type="string" />
+            </Outside>
+            <South type="map">
+              <RadialFunction type="integer">12</RadialFunction>
+              <RadialStringName type="string" />
+            </South>
+            <Southeast type="map">
+              <RadialFunction type="integer">0</RadialFunction>
+              <RadialFunctionHandle type="map">
+                <RadialZones type="map">
+                  <Center type="map">
+                    <RadialFunction type="integer">13</RadialFunction>
+                    <RadialStringName type="string" />
+                  </Center>
+                  <East type="map">
+                    <RadialFunction type="integer">12</RadialFunction>
+                    <RadialStringName type="string" />
+                  </East>
+                  <North type="map">
+                    <RadialFunction type="integer">12</RadialFunction>
+                    <RadialStringName type="string" />
+                  </North>
+                  <Northeast type="map">
+                    <RadialFunction type="integer">12</RadialFunction>
+                    <RadialStringName type="string" />
+                  </Northeast>
+                  <Northwest type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[&command;&shift;&f11;]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">White</RadialStringName>
+                  </Northwest>
+                  <Outside type="map">
+                    <RadialFunction type="integer">13</RadialFunction>
+                    <RadialStringName type="string" />
+                  </Outside>
+                  <South type="map">
+                    <RadialFunction type="integer">2</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <RunAppStringName type="string">/Applications/Automator Apps/LaunchScreencapSoftware.app</RunAppStringName>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">Launch</RadialStringName>
+                  </South>
+                  <Southeast type="map">
+                    <RadialFunction type="integer">12</RadialFunction>
+                    <RadialStringName type="string" />
+                  </Southeast>
+                  <Southwest type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[&command;&shift;&f9;]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">Prep Images</RadialStringName>
+                  </Southwest>
+                  <West type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[&command;&shift;&f10;]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">Black</RadialStringName>
+                  </West>
+                </RadialZones>
+              </RadialFunctionHandle>
+              <RadialStringName type="string">HPoBM</RadialStringName>
+            </Southeast>
+            <Southwest type="map">
+              <RadialFunction type="integer">0</RadialFunction>
+              <RadialFunctionHandle type="map">
+                <RadialZones type="map">
+                  <Center type="map">
+                    <RadialFunction type="integer">13</RadialFunction>
+                    <RadialStringName type="string" />
+                  </Center>
+                  <East type="map">
+                    <RadialFunction type="integer">12</RadialFunction>
+                    <RadialStringName type="string" />
+                  </East>
+                  <North type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[&option;&backspace;]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">Foreground</RadialStringName>
+                  </North>
+                  <Northeast type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[&command;&backspace;]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">Background</RadialStringName>
+                  </Northeast>
+                  <Northwest type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[&shift;&f5;]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">Fill Menu</RadialStringName>
+                  </Northwest>
+                  <Outside type="map">
+                    <RadialFunction type="integer">13</RadialFunction>
+                    <RadialStringName type="string" />
+                  </Outside>
+                  <South type="map">
+                    <RadialFunction type="integer">12</RadialFunction>
+                    <RadialStringName type="string" />
+                  </South>
+                  <Southeast type="map">
+                    <RadialFunction type="integer">12</RadialFunction>
+                    <RadialStringName type="string" />
+                  </Southeast>
+                  <Southwest type="map">
+                    <RadialFunction type="integer">12</RadialFunction>
+                    <RadialStringName type="string" />
+                  </Southwest>
+                  <West type="map">
+                    <RadialFunction type="integer">12</RadialFunction>
+                    <RadialStringName type="string" />
+                  </West>
+                </RadialZones>
+              </RadialFunctionHandle>
+              <RadialStringName type="string">Fill</RadialStringName>
+            </Southwest>
+            <West type="map">
+              <RadialFunction type="integer">0</RadialFunction>
+              <RadialFunctionHandle type="map">
+                <RadialZones type="map">
+                  <Center type="map">
+                    <RadialFunction type="integer">13</RadialFunction>
+                    <RadialStringName type="string" />
+                  </Center>
+                  <East type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[l]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">Lasso</RadialStringName>
+                  </East>
+                  <North type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[m]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">Marquee</RadialStringName>
+                  </North>
+                  <Northeast type="map">
+                    <RadialFunction type="integer">1</RadialFunction>
+                    <RadialFunctionHandle type="map">
+                      <Keystroke type="kestring"><![CDATA[p]]></Keystroke>
+                    </RadialFunctionHandle>
+                    <RadialStringName type="string">Pen</RadialStringName>
+                  </Northeast>
+                  <Northwest type="map">
+                    <RadialFunction type="integer">12</RadialFunction>
+                    <RadialStringName type="string" />
+                  </Northwest>
+                  <Outside type="map">
+                    <RadialFunction type="integer">13</RadialFunction>
+                    <RadialStringName type="string" />
+                  </Outside>
+                  <South type="map">
+                    <RadialFunction type="integer">12</RadialFunction>
+                    <RadialStringName type="string" />
+                  </South>
+                  <Southeast type="map">
+                    <RadialFunction type="integer">12</RadialFunction>
+                    <RadialStringName type="string" />
+                  </Southeast>
+                  <Southwest type="map">
+                    <RadialFunction type="integer">12</RadialFunction>
+                    <RadialStringName type="string" />
+                  </Southwest>
+                  <West type="map">
+                    <RadialFunction type="integer">12</RadialFunction>
+                    <RadialStringName type="string" />
+                  </West>
+                </RadialZones>
+              </RadialFunctionHandle>
+              <RadialStringName type="string">Selections</RadialStringName>
+            </West>
+          </RadialZones>
+        </ArrayElement>
+      </TabletAppRadialMenuMapArray>
+      <TabletAppTouchFunctions type="array">
+        <ArrayElement type="map">
+          <AddAFingerToLeftClickEnabled type="bool">true</AddAFingerToLeftClickEnabled>
+          <AddAFingerToRightClickEnabled type="bool">true</AddAFingerToRightClickEnabled>
+          <ApplicationAssociated type="integer">1</ApplicationAssociated>
+          <CursorAccelerationCurve type="integer">2</CursorAccelerationCurve>
+          <CursorSpeed type="double">0</CursorSpeed>
+          <DoubleClickAssistMultiplier type="double">1</DoubleClickAssistMultiplier>
+          <DragEnabled type="bool">true</DragEnabled>
+          <DragLockEnabled type="bool">false</DragLockEnabled>
+          <Gesture3FDragEnabled type="bool">true</Gesture3FDragEnabled>
+          <Gesture3FSwipeDownEnabled type="bool">true</Gesture3FSwipeDownEnabled>
+          <Gesture3FSwipeEnabled type="bool">false</Gesture3FSwipeEnabled>
+          <Gesture3FSwipeUpEnabled type="bool">true</Gesture3FSwipeUpEnabled>
+          <Gesture3FTapAndHold type="map">
+            <commandID type="integer">41</commandID>
+          </Gesture3FTapAndHold>
+          <Gesture3FTapHoldEnabled type="bool">true</Gesture3FTapHoldEnabled>
+          <Gesture4FPinchEnabled type="bool">true</Gesture4FPinchEnabled>
+          <Gesture4FSpreadEnabled type="bool">true</Gesture4FSpreadEnabled>
+          <Gesture4FSwipeDown type="map">
+            <commandData type="string">&amp;command;&amp;option;z</commandData>
+            <commandDisplayName type="string">Step Backward</commandDisplayName>
+            <commandID type="integer">8</commandID>
+          </Gesture4FSwipeDown>
+          <Gesture4FSwipeDownEnabled type="bool">true</Gesture4FSwipeDownEnabled>
+          <Gesture4FSwipeLeftRightEnabled type="bool">false</Gesture4FSwipeLeftRightEnabled>
+          <Gesture4FSwipeUp type="map">
+            <commandData type="string">&amp;command;&amp;shift;z</commandData>
+            <commandDisplayName type="string">Step Forward</commandDisplayName>
+            <commandID type="integer">8</commandID>
+          </Gesture4FSwipeUp>
+          <Gesture4FSwipeUpEnabled type="bool">true</Gesture4FSwipeUpEnabled>
+          <Gesture5FSwipeDown type="map">
+            <commandData type="string">&amp;command;&amp;option;&amp;shift;e</commandData>
+            <commandDisplayName type="string">Merge Visisble Stamp</commandDisplayName>
+            <commandID type="integer">8</commandID>
+          </Gesture5FSwipeDown>
+          <Gesture5FSwipeDownEnabled type="bool">true</Gesture5FSwipeDownEnabled>
+          <Gesture5FTapAndHold type="map">
+            <commandData type="string">&amp;tab;</commandData>
+            <commandDisplayName type="string">Show/hide all panels</commandDisplayName>
+            <commandID type="integer">8</commandID>
+          </Gesture5FTapAndHold>
+          <Gesture5FTapHoldEnabled type="bool">true</Gesture5FTapHoldEnabled>
+          <GestureRotateEnabled type="bool">true</GestureRotateEnabled>
+          <GestureScrollBehavior type="integer">1</GestureScrollBehavior>
+          <GestureScrollDirection type="integer">0</GestureScrollDirection>
+          <GestureScrollEnabled type="bool">true</GestureScrollEnabled>
+          <GestureSmartZoomEnabled type="bool">true</GestureSmartZoomEnabled>
+          <GestureSwipeEnabled type="bool">true</GestureSwipeEnabled>
+          <GestureZoomEnabled type="bool">true</GestureZoomEnabled>
+          <ScrollingSpeed type="double">0</ScrollingSpeed>
+          <Tap2ToRightClickEnabled type="bool">true</Tap2ToRightClickEnabled>
+          <TapToClickEnabled type="bool">true</TapToClickEnabled>
+        </ArrayElement>
+      </TabletAppTouchFunctions>
+      <TabletControlContainerArray type="array">
+        <ArrayElement type="map">
+          <ApplicationAssociated type="integer">1</ApplicationAssociated>
+          <ExpressKeysShowButtonHUD type="bool">true</ExpressKeysShowButtonHUD>
+          <TabletControlsButtonsArray type="array">
+            <ArrayElement type="map">
+              <ButtonFunction type="integer">41</ButtonFunction>
+              <ButtonName type="string">LeftButton1</ButtonName>
+              <Usage type="map">
+                <EHelp type="map">
+                  <Count type="integer">8</Count>
+                  <Last type="string">Thu Jun 21 17:55:41 2012</Last>
+                </EHelp>
+                <ERadialMenu type="map">
+                  <Count type="integer">7</Count>
+                  <Last type="string">Fri Dec 14 09:04:33 2012</Last>
+                </ERadialMenu>
+              </Usage>
+            </ArrayElement>
+            <ArrayElement type="map">
+              <ButtonFunction type="integer">42</ButtonFunction>
+              <ButtonName type="string">LeftButton2</ButtonName>
+              <Usage type="map">
+                <EFinePoint type="map">
+                  <Count type="integer">0</Count>
+                </EFinePoint>
+                <ERadialMenu type="map">
+                  <Count type="integer">2</Count>
+                  <Last type="string">Thu Jun 21 17:55:45 2012</Last>
+                </ERadialMenu>
+              </Usage>
+            </ArrayElement>
+            <ArrayElement type="map">
+              <ButtonFunction type="integer">9</ButtonFunction>
+              <ButtonName type="string">LeftButton3</ButtonName>
+              <Modifier type="kestring"><![CDATA[&option;&control;]]></Modifier>
+              <Usage type="map">
+                <EModifiers type="map">
+                  <Count type="integer">9</Count>
+                  <Last type="string">Fri Dec 14 09:04:27 2012</Last>
+                </EModifiers>
+              </Usage>
+            </ArrayElement>
+            <ArrayElement type="map">
+              <ButtonFunction type="integer">8</ButtonFunction>
+              <ButtonKeystrokeShortcutName type="string">Space Bar</ButtonKeystrokeShortcutName>
+              <ButtonName type="string">LeftButton4</ButtonName>
+              <Keystroke type="kestring"><![CDATA[&space;]]></Keystroke>
+              <Usage type="map">
+                <EKeystrokes type="map">
+                  <Count type="integer">294</Count>
+                  <Last type="string">Mon Dec  3 13:45:32 2012</Last>
+                </EKeystrokes>
+                <EModifiers type="map">
+                  <Count type="integer">0</Count>
+                </EModifiers>
+              </Usage>
+            </ArrayElement>
+            <ArrayElement type="map">
+              <ButtonFunction type="integer">9</ButtonFunction>
+              <ButtonName type="string">LeftButton5</ButtonName>
+              <Modifier type="kestring"><![CDATA[&command;]]></Modifier>
+              <Usage type="map">
+                <EModifiers type="map">
+                  <Count type="integer">11</Count>
+                  <Last type="string">Fri Sep 14 23:35:55 2012</Last>
+                </EModifiers>
+              </Usage>
+            </ArrayElement>
+            <ArrayElement type="map">
+              <ButtonFunction type="integer">9</ButtonFunction>
+              <ButtonName type="string">LeftButton6</ButtonName>
+              <Modifier type="kestring"><![CDATA[&option;]]></Modifier>
+              <Usage type="map">
+                <EModifiers type="map">
+                  <Count type="integer">42</Count>
+                  <Last type="string">Fri Sep 14 23:36:00 2012</Last>
+                </EModifiers>
+              </Usage>
+            </ArrayElement>
+            <ArrayElement type="map">
+              <ButtonFunction type="integer">9</ButtonFunction>
+              <ButtonName type="string">LeftButton7</ButtonName>
+              <Modifier type="kestring"><![CDATA[&control;]]></Modifier>
+              <Usage type="map">
+                <EModifiers type="map">
+                  <Count type="integer">3</Count>
+                  <Last type="string">Thu Jun 21 17:55:25 2012</Last>
+                </EModifiers>
+              </Usage>
+            </ArrayElement>
+            <ArrayElement type="map">
+              <ButtonFunction type="integer">9</ButtonFunction>
+              <ButtonName type="string">LeftButton8</ButtonName>
+              <Modifier type="kestring"><![CDATA[&shift;]]></Modifier>
+              <Usage type="map">
+                <EModifiers type="map">
+                  <Count type="integer">4</Count>
+                  <Last type="string">Sun Sep 30 22:40:29 2012</Last>
+                </EModifiers>
+                <ETouchToggle type="map">
+                  <Count type="integer">12</Count>
+                  <Last type="string">Mon Jun 11 22:21:23 2012</Last>
+                </ETouchToggle>
+              </Usage>
+            </ArrayElement>
+          </TabletControlsButtonsArray>
+          <TabletControlsModButtonsArray type="array" />
+          <TouchRingSettings type="map">
+            <TouchStripModes type="map">
+              <mode1 type="map">
+                <TouchStripDirection type="integer">-1</TouchStripDirection>
+                <TouchStripEnableTapZones type="bool">false</TouchStripEnableTapZones>
+                <TouchStripFunction type="integer">51</TouchStripFunction>
+                <TouchStripKeystrokeDecrease type="kestring" />
+                <TouchStripKeystrokeIncrease type="kestring" />
+                <TouchStripKeystrokeName type="string" />
+                <TouchStripModeName type="string">mode1</TouchStripModeName>
+                <TouchStripModifiers type="integer">0</TouchStripModifiers>
+                <TouchStripSpeed type="integer">3</TouchStripSpeed>
+              </mode1>
+              <mode2 type="map">
+                <TouchStripDirection type="integer">-1</TouchStripDirection>
+                <TouchStripEnableTapZones type="bool">false</TouchStripEnableTapZones>
+                <TouchStripFunction type="integer">47</TouchStripFunction>
+                <TouchStripKeystrokeDecrease type="kestring"><![CDATA[&option;[]]></TouchStripKeystrokeDecrease>
+                <TouchStripKeystrokeIncrease type="kestring"><![CDATA[&option;&rsqbracket;]]></TouchStripKeystrokeIncrease>
+                <TouchStripKeystrokeName type="string">Cycle Layers</TouchStripKeystrokeName>
+                <TouchStripModeName type="string">mode2</TouchStripModeName>
+                <TouchStripModifiers type="integer">0</TouchStripModifiers>
+                <TouchStripSpeed type="integer">2</TouchStripSpeed>
+              </mode2>
+              <mode3 type="map">
+                <TouchStripDirection type="integer">-1</TouchStripDirection>
+                <TouchStripEnableTapZones type="bool">false</TouchStripEnableTapZones>
+                <TouchStripFunction type="integer">8</TouchStripFunction>
+                <TouchStripKeystrokeDecrease type="kestring"><![CDATA[[]]></TouchStripKeystrokeDecrease>
+                <TouchStripKeystrokeIncrease type="kestring"><![CDATA[&rsqbracket;]]></TouchStripKeystrokeIncrease>
+                <TouchStripKeystrokeName type="string">Brush Size</TouchStripKeystrokeName>
+                <TouchStripModeName type="string">mode3</TouchStripModeName>
+                <TouchStripModifiers type="integer">0</TouchStripModifiers>
+                <TouchStripSpeed type="integer">3</TouchStripSpeed>
+              </mode3>
+              <mode4 type="map">
+                <TouchStripDirection type="integer">-1</TouchStripDirection>
+                <TouchStripEnableTapZones type="bool">false</TouchStripEnableTapZones>
+                <TouchStripFunction type="integer">47</TouchStripFunction>
+                <TouchStripKeystrokeDecrease type="kestring" />
+                <TouchStripKeystrokeIncrease type="kestring" />
+                <TouchStripKeystrokeName type="string" />
+                <TouchStripModeName type="string">mode4</TouchStripModeName>
+                <TouchStripModifiers type="integer">0</TouchStripModifiers>
+                <TouchStripSpeed type="integer">3</TouchStripSpeed>
+              </mode4>
+            </TouchStripModes>
+          </TouchRingSettings>
+          <TouchRingShowButtonHUD type="bool">true</TouchRingShowButtonHUD>
+        </ArrayElement>
+      </TabletControlContainerArray>
+      <TabletModel type="array">
+        <ArrayElement type="integer">267<!--Intuos3 6x11--></ArrayElement>
+        <ArrayElement type="integer">300<!--Cintiq20--></ArrayElement>
+        <ArrayElement type="integer">301<!--Cintiq12--></ArrayElement>
+        <ArrayElement type="integer">338<!--Cintiq122--></ArrayElement>
+        <ArrayElement type="integer">320<!--Intuos4 small--></ArrayElement>
+        <ArrayElement type="integer">321<!--Intuos4 Med--></ArrayElement>
+        <ArrayElement type="integer">322<!--Intuos4 Large--></ArrayElement>
+        <ArrayElement type="integer">323<!--Intuos4 XL--></ArrayElement>
+        <ArrayElement type="integer">324<!--Intuos4 Med Wireless--></ArrayElement>
+        <ArrayElement type="integer">326<!--Cintiq21 Pen only--></ArrayElement>
+        <ArrayElement type="integer">330<!--Cintiq22 HD--></ArrayElement>
+        <ArrayElement type="integer">327<!--Cintiq24 Pen only--></ArrayElement>
+        <ArrayElement type="integer">328<!--Cintiq24 HDT--></ArrayElement>
+        <ArrayElement type="integer">334<!--Intuos5 Small Pen only--></ArrayElement>
+        <ArrayElement type="integer">335<!--Intuos5 Med Pen Only--></ArrayElement>
+        <ArrayElement type="integer">336<!--Intuos5 Small Touch--></ArrayElement>
+        <ArrayElement type="integer">337<!--Intuos5 Med Touch--></ArrayElement>
+        <ArrayElement type="integer">338<!--Intuos5 Lg Touch--></ArrayElement>
+        <ArrayElement type="integer">339<!--C13--></ArrayElement>
+      </TabletModel>
+      <TabletType type="array">
+        <ArrayElement type="integer">24</ArrayElement>
+      </TabletType>
+    </ArrayElement>
+    <!--Second Array Element is for DTZ Pen Displays supported by the Pro driver-->
+    <!--Tranducers only in this section-->
+    <ArrayElement type="map">
+      <TabletTransducerArray type="array">
+        <ArrayElement type="map">
+          <!--Only add Lower and upper buttons-->
+          <ApplicationAssociated type="integer">1</ApplicationAssociated>
+          <TransducerButtonArray type="array" />
+          <TransducerID type="map">
+            <Design type="integer">16</Design>
+            <SerialNumber type="integer">25176127</SerialNumber>
+            <Type type="integer">18434</Type>
+          </TransducerID>
+          <TransducerLowerButtonSettings type="map">
+            <ButtonFunction type="integer">41</ButtonFunction>
+            <ButtonName type="string">barrel</ButtonName>
+            <Usage type="map">
+              <ERadialMenu type="map">
+                <Count type="integer">2</Count>
+                <Last type="string">Mon Nov 12 21:45:43 2012
+</Last>
+              </ERadialMenu>
+            </Usage>
+          </TransducerLowerButtonSettings>
+          <TransducerName type="string" />
+          <TransducerType type="integer">82</TransducerType>
+          <TransducerUpperButtonSettings type="map">
+            <ButtonFunction type="integer">9</ButtonFunction>
+            <ButtonName type="string">barrel2</ButtonName>
+            <Modifier type="kestring"><![CDATA[&control;]]></Modifier>
+            <Usage type="map">
+              <EKeystrokes type="map">
+                <Count type="integer">300</Count>
+                <Last type="string">Thu Jun 21 18:24:31 2012</Last>
+              </EKeystrokes>
+              <EModifiers type="map">
+                <Count type="integer">16</Count>
+                <Last type="string">Mon Dec  3 15:23:04 2012</Last>
+              </EModifiers>
+            </Usage>
+          </TransducerUpperButtonSettings>
+        </ArrayElement>
+      </TabletTransducerArray>
+      <TabletModel type="array">
+        <ArrayElement type="integer">267</ArrayElement>
+        <ArrayElement type="integer">300<!--Cintiq20--></ArrayElement>
+        <ArrayElement type="integer">301<!--Cintiq12--></ArrayElement>
+        <ArrayElement type="integer">320<!--Intuos4 small--></ArrayElement>
+        <ArrayElement type="integer">321<!--Intuos4 Med--></ArrayElement>
+        <ArrayElement type="integer">322<!--Intuos4 Large--></ArrayElement>
+        <ArrayElement type="integer">323<!--Intuos4 XL--></ArrayElement>
+        <ArrayElement type="integer">324<!--Intuos4 Med Wireless--></ArrayElement>
+        <ArrayElement type="integer">326<!--Cintiq21 Pen only--></ArrayElement>
+        <ArrayElement type="integer">330<!--Cintiq22 HD--></ArrayElement>
+        <ArrayElement type="integer">327<!--Cintiq24 Pen only--></ArrayElement>
+        <ArrayElement type="integer">328<!--Cintiq24 HDT--></ArrayElement>
+        <ArrayElement type="integer">334<!--Intuos5 Small Pen only--></ArrayElement>
+        <ArrayElement type="integer">335<!--Intuos5 Med Pen Only--></ArrayElement>
+        <ArrayElement type="integer">336<!--Intuos5 Small Touch--></ArrayElement>
+        <ArrayElement type="integer">337<!--Intuos5 Med Touch--></ArrayElement>
+        <ArrayElement type="integer">338<!--Intuos5 Lg Touch--></ArrayElement>
+        <ArrayElement type="integer">339<!--C13--></ArrayElement>
+      </TabletModel>
+      <TabletType type="array">
+        <ArrayElement type="integer">24</ArrayElement>
+      </TabletType>
+    </ArrayElement>
+  </TabletArray>
+</root>
