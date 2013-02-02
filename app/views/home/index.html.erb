@@ -97,11 +97,22 @@
 
 		<hr/>
 		<div class="row">
-			<div class="span12">
-				<h2>Buttons</h2>
+			<div class="span4">
+				<h3>Buttons</h3>
 				<div data-bind="foreach: buttons">
-					<button data-bind="wacbutton: $data" />
+					<div class="well well-small">
+						<span data-bind="buttonFunction: buttonfunction"></span>
+						<%#<button class="btn">...</button>%>
+					</div>
 				</div>
+			</div>
+			<div class="span4">
+				<h3>Rings</h3>
+			</div>
+			<div class="span4">
+				<h3>Radial Menu</h3>
+
+				<button class="btn">Edit...</button>
 			</div>
 		</div>
 
