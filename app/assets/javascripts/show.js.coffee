@@ -98,11 +98,13 @@ class @ShowViewModel extends kb.ViewModel
 				'include_gestures',
 			]
 			options: options
-		model.fetch()
+		model.fetch success: => @dirty(false)
+		model.on "change", => @dirty(true)
 
 		@busy = ko.observable(false)
 		@success = ko.observable(false)
 		@error = ko.observable(false)
+		@dirty = ko.observable(false)
 
 		@urlForDownload = "/download/" + model.id
 
@@ -114,6 +116,7 @@ class @ShowViewModel extends kb.ViewModel
 			success: =>
 				@busy(false)
 				@success(true)
+				@dirty(false)
 			error: =>
 				@busy(false)
 				@error(true)
