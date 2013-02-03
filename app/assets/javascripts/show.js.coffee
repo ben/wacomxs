@@ -69,6 +69,15 @@ ko.bindingHandlers.buttonFunction =
 		$(el).text(english)
 
 
+ko.bindingHandlers.modifier =
+	init: (el, valueAccessor) ->
+		val = ko.utils.unwrapObservable(valueAccessor())
+		modEntities = /\[CDATA\[(.*)\]\]/.exec(val)[1]
+		modArr = modEntities.split ';'
+		modArr.pop() # omit last ';'
+		$(el).text (s.substring(1) for s in modArr).join(' + ')
+
+
 ################################################################################
 # View Model
 class @ShowViewModel extends kb.ViewModel
