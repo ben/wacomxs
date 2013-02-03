@@ -52,60 +52,77 @@ xml.root :type => :map do
 		xml.ArrayElement :type => :map do
 
 			# TODO
-			xml.TabletAppRadialMenuMapArray :type => :array do
+			if @reco.include_menu
+				xml.TabletAppRadialMenuMapArray :type => :array do
+				end
+			else
+				xml.comment! 'radial menu excluded'
 			end
 
 			# TODO
-			xml.TabletAppTouchFunctions :type => :array do
+			if @reco.include_gestures
+				xml.TabletAppTouchFunctions :type => :array do
+					xml.ArrayElement :type => :map do
+						xml.ApplicationAssociated 1, :type => :integer
+					end
+				end
+			else
+				xml.comment! 'gestures excluded'
 			end
 
 			xml.TabletControlContainerArray :type => :array do
 				xml.ArrayElement :type => :map do
 					xml.ApplicationAssociated 1, :type => :integer
 
-					xml.TabletControlsButtonsArray :type => :array do
-						xml.comment! "This is a dumb mirroring. It could be better."
-						xml.comment! "Left buttons"
-						@reco.buttons.each do |b|
-							button_array_element xml, b
+					if @reco.include_buttons
+						xml.TabletControlsButtonsArray :type => :array do
+							xml.comment! "This is a dumb mirroring. It could be better."
+							xml.comment! "Left buttons"
+							@reco.buttons.each do |b|
+								button_array_element xml, b
+							end
+							xml.comment! "Right buttons"
+							@reco.buttons.each do |b|
+								button_array_element xml, b, "Left", "Right"
+							end
 						end
-						xml.comment! "Right buttons"
-						@reco.buttons.each do |b|
-							button_array_element xml, b, "Left", "Right"
-						end
+					else
+						xml.comment! 'buttons excluded'
 					end
 
 					# TODO
 					xml.TabletControlsModButtonsArray :type => :array do
-						xml.ArrayElement :type => :map do
-							xml.ApplicationAssociated 1, :type => :integer
-						end
 					end
 
-					xml.TouchRings :type => :map do
-						# C24 touch rings live at this level
-						['Left','Right'].each do |pos|
-							xml.tag! "#{pos}Ring", :type => :map do
-								touch_strip_modes xml
+					if @reco.include_rings
+						xml.TouchRings :type => :map do
+							# C24
+							['Left','Right'].each do |pos|
+								xml.tag! "#{pos}Ring", :type => :map do
+									touch_strip_modes xml
+								end
 							end
 						end
-					end
 
-					xml.TouchRingSettings :type => :map do
-						# I4/I5
-						touch_strip_modes xml
-					end
+						xml.TouchRingSettings :type => :map do
+							# I4/I5
+							touch_strip_modes xml
+						end
 
-					xml.TouchStrips :type => :map do
-						# C22, C21
-						[1,2].each do |i|
-							xml.tag! "oned#{i}", :type => :map do
-								touch_strip_modes xml
+						xml.TouchStrips :type => :map do
+							# C22, C21
+							[1,2].each do |i|
+								xml.tag! "oned#{i}", :type => :map do
+									touch_strip_modes xml
+								end
 							end
 						end
+					else
+						xml.comment! 'touch rings excluded'
 					end
-				end
-			end
+
+				end # ArrayElement
+			end # TabletControlContainerArray
 
 			xml.TabletModel :type => :array do
 				tablet_models.sort.each do |m|
