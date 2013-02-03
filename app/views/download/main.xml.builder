@@ -55,6 +55,10 @@ xml.root :type => :map do
 			xml.TabletAppRadialMenuMapArray :type => :array do
 			end
 
+			# TODO
+			xml.TabletAppTouchFunctions :type => :array do
+			end
+
 			xml.TabletControlContainerArray :type => :array do
 				xml.ArrayElement :type => :map do
 					xml.ApplicationAssociated 1, :type => :integer
@@ -73,6 +77,9 @@ xml.root :type => :map do
 
 					# TODO
 					xml.TabletControlsModButtonsArray :type => :array do
+						xml.ArrayElement :type => :map do
+							xml.ApplicationAssociated 1, :type => :integer
+						end
 					end
 
 					xml.TouchRings :type => :map do
