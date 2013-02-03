@@ -11,16 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121019130047) do
+ActiveRecord::Schema.define(:version => 20130203043903) do
 
   create_table "recommendations", :force => true do |t|
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
     t.string   "title"
     t.string   "application_name"
     t.string   "application_long_name"
     t.text     "buttons"
     t.text     "modes"
+    t.text     "menu"
+    t.text     "gestures"
+    t.boolean  "include_buttons",       :default => true
+    t.boolean  "include_rings",         :default => true
+    t.boolean  "include_menu",          :default => true
+    t.boolean  "include_gestures",      :default => true
   end
 
 end
