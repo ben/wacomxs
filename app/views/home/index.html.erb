@@ -103,8 +103,8 @@
 					<input type="checkbox" data-bind="checked: include_buttons">
 					Include
 				</label>
-				<div data-bind="foreach: buttons">
-					<div class="well well-small">
+				<div data-bind="foreach: buttons" class="well well-small">
+					<p>
 						<%#<span data-bind="text: buttonname"></span>:%>
 						<span data-bind="buttonFunction: buttonfunction"></span>
 						<!-- ko if: buttonfunction == '8' -->
@@ -114,7 +114,7 @@
 						(<span data-bind="modifier: modifier"></span>)
 						<!-- /ko -->
 						<%#<button class="btn">...</button>%>
-					</div>
+					</p>
 				</div>
 			</div>
 			<div class="span3">
