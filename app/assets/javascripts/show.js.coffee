@@ -83,8 +83,20 @@ ko.bindingHandlers.modifier =
 class @ShowViewModel extends kb.ViewModel
 	constructor: (model,options) ->
 		super model,
-			requires: ['id', 'title', 'buttons', 'modes',
-							'application_name', 'application_long_name']
+			requires: [
+				'id',
+				'title',
+				'buttons',
+				'modes',
+				'menu',
+				'gestures',
+				'application_name',
+				'application_long_name'
+				'include_buttons',
+				'include_rings',
+				'include_menu',
+				'include_gestures',
+			]
 			options: options
 		model.fetch()
 

@@ -100,12 +100,12 @@
 			<div class="span3">
 				<h3>Buttons</h3>
 				<label class="checkbox">
-					<input type="checkbox" data-bind="disable: true, checked: true">
+					<input type="checkbox" data-bind="checked: include_buttons">
 					Include
 				</label>
 				<div data-bind="foreach: buttons">
 					<div class="well well-small">
-						<span data-bind="text: buttonname"></span>:
+						<%#<span data-bind="text: buttonname"></span>:%>
 						<span data-bind="buttonFunction: buttonfunction"></span>
 						<!-- ko if: buttonfunction == '8' -->
 						(<span data-bind="text: keystrokeName"></span>)
@@ -120,7 +120,7 @@
 			<div class="span3">
 				<h3>Rings</h3>
 				<label class="checkbox">
-					<input type="checkbox" data-bind="disable: true, checked: true">
+					<input type="checkbox" data-bind="checked: include_rings">
 					Include
 				</label>
 				<div data-bind="foreach: modes">
@@ -140,14 +140,14 @@
 			<div class="span3">
 				<h3>Radial Menu</h3>
 				<label class="checkbox">
-					<input type="checkbox" data-bind="disable: true, checked: true">
+					<input type="checkbox" data-bind="checked: include_menu">
 					Include
 				</label>
 			</div>
 			<div class="span3">
 				<h3>Gestures</h3>
 				<label class="checkbox">
-					<input type="checkbox" data-bind="disable: true, checked: true">
+					<input type="checkbox" data-bind="checked: include_gestures">
 					Include
 				</label>
 			</div>
