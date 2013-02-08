@@ -1,17 +1,62 @@
 class @ImportInnerViewModel
 	constructor: (@el) ->
-		@apps = @el.find('ApplicationMap').children().map (i,el) ->
+
+		# General properties of the apps
+		@appMap = {}
+		@el.find('ApplicationMap').children().each (i,el) =>
+			@appMap[i] =
+				name: $(el).find('ApplicationName').text()
+				longName: $(el).find('ApplicationLongName').text()
+				tablets: {}
+
+		# Pre-seed the tablets map
+		tabletMap = {}
+		@el.find('TabletArray').children().each (i,el) =>
+			tabletMap[$(el).find('tabletname').text()] =
+				name: $(el).find('TabletName').text()
+				model: $(el).find('TabletModel').text()
+
+		# Find the app-specialized bits, walk up to attach them to tablets
+		$(el).find('ApplicationAssociated').each (i,appNode) =>
+			appNode = $(appNode)
+			appId = appNode.text()
+			appMapEntry = @appMap[appId]
+
+			tabletName = appNode.parent().parent().parent().find('tabletname').text()
+			appMapEntry.tablets[tabletName] ?= {}
+
+			thingNode = appNode.parent()
+			type = appNode.parent().parent().prop('tagName').toLowerCase()
+			switch type
+				when 'tabletappradialmenumaparray'
+					appMapEntry.tablets[tabletName].menu = @processMenu(thingNode.find('radialzones'))
+				when 'tabletapptouchfunctions'
+					appMapEntry.tablets[tabletName].menu = @processTouch(thingNode)
+				when 'tabletcontrolcontainerarray'
+					appMapEntry.tablets[tabletName].menu = @processButtonsAndRings(thingNode)
+
+			@appMap[appId] = appMapEntry
+
+		@apps = @el.find('ApplicationMap').children().map((i,el) =>
 			id: i
 			name: $(el).find('ApplicationName').text()
 			longName: $(el).find('ApplicationLongName').text()
+		).toArray()
 
 		@tablets = @el.find('TabletArray').children().map (i,el) ->
-			name: $(el).find('TabletName').text()
-			model: $(el).find('TabletModel').text()
-			controls: $(el).find('TabletControlContainerArray').children()
+			{
+				name: $(el).find('TabletName').text()
+				model: $(el).find('TabletModel').text()
+				controls: $(el).find('TabletControlContainerArray').children()
+				gestures: $(el).find('TabletAppTouchFunctions').children()
+				menus: $(el).find('TabletAppRadialMenuMapArray').children()
+			}
 
 		@buttons = @extractButtons()
 		@modes = @extractModes()
+
+		@selectedApp = ko.observable(-1)
+		@selectedTablet = ko.observable(-1)
 
 		@selectedButtons = ko.observable(-1)
 		@selectedModes = ko.observable(-1)
@@ -19,6 +64,35 @@ class @ImportInnerViewModel
 		@isValid = ko.computed =>
 			@selectedButtons() >= 0 or @selectedModes() >= 0
 
+	processMenu: (node) ->
+		ret = {}
+		$(node).children().each (i,dir) =>
+			ret[$(dir).prop('tagName').toLowerCase()] = @processRadialZone(dir)
+		ret
+
+	processRadialZone: (dir) ->
+		dir = $(dir)
+		ret =
+			radialFunction: dir.children('radialfunction').text()
+			radialStringName: dir.children('radialstringname').text()
+		handle = $ dir.children('radialfunctionhandle').children()[0]
+		if handle.length > 0
+			switch handle.prop('tagName').toLowerCase()
+				when 'keystroke'
+					ret.keystroke = handle.children().text()
+				when 'radialzones'
+					ret.radialZones = @processMenu handle
+				when 'runappstringname'
+					ret.runAppStringName = handle.children().text()
+		ret
+
+	processTouch: (node) ->
+
+	processButtonsAndRings: (node) ->
+
+
+################################################################################
+# OLD WAY
 	extractButtons: ->
 		arr = _.map @tablets, (tabEl) =>
 			tabEl.controls.map((i,ctrlEl) =>

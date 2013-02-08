@@ -20,6 +20,22 @@
 				<input type="file" id="importfile" data-bind="file: filedata">
 
 				<div data-bind="with: innerVM">
+					<h4>Applications</h4>
+					<!-- ko foreach: apps -->
+					<label class="radio">
+						<input type="radio" name="appsGroup" data-bind="value: $index, checked: $parent.selectedApp" />
+						<span data-bind="text: name"></span>
+					</label>
+					<!-- /ko -->
+
+					<h4>Tablets</h4>
+					<!-- ko foreach: tablets -->
+					<label class="radio">
+						<input type="radio" name="tabletsGroup" data-bind="value: $index, checked: $parent.selectedTablet" />
+						<span data-bind="text: name"></span>
+					</label>
+					<!-- /ko -->
+
 					<h4>Buttons</h4>
 					<!-- ko foreach: buttons -->
 					<label class="radio">
