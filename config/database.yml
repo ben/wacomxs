@@ -8,6 +8,7 @@ common: &common
 development:
    <<: *common
    database: wacomxs_dev
+   port: 15432
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
