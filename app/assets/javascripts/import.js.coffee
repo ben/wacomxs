@@ -1,20 +1,29 @@
 class @ImportInnerViewModel
 	constructor: (@el) ->
+		
+		# Bindables
+		@selectedAppId = ko.observable()
 
 		# General properties of the apps
 		@appMap = {}
 		@el.find('ApplicationMap').children().each (i,el) =>
-			@appMap[i] =
+			id = $(el).prop('tagName').match(/appid(\d+)/i)[1]
+			@appMap[id] =
 				name: $(el).find('ApplicationName').text()
 				longName: $(el).find('ApplicationLongName').text()
 				tablets: {}
+			secondaryId = $(el).find('ApplicationSecondaryId')
+			if secondaryId.length > 0
+				@appMap[id].secondaryId = secondaryId.text()
 
 		# Pre-seed the tablets map
 		tabletMap = {}
 		@el.find('TabletArray').children().each (i,el) =>
-			tabletMap[$(el).find('tabletname').text()] =
+			tabletMap[$(el).find('TabletName').text()] =
 				name: $(el).find('TabletName').text()
 				model: $(el).find('TabletModel').text()
+
+		console.debug @appMap
 
 		# Find the app-specialized bits, walk up to attach them to tablets
 		$(el).find('ApplicationAssociated').each (i,appNode) =>
@@ -22,47 +31,23 @@ class @ImportInnerViewModel
 			appId = appNode.text()
 			appMapEntry = @appMap[appId]
 
-			tabletName = appNode.parent().parent().parent().find('tabletname').text()
+			tabletName = appNode.parent().parent().parent().find('TabletName').text()
 			appMapEntry.tablets[tabletName] ?= {}
 
 			thingNode = appNode.parent()
 			type = appNode.parent().parent().prop('tagName').toLowerCase()
 			switch type
 				when 'tabletappradialmenumaparray'
-					appMapEntry.tablets[tabletName].menu = @processMenu(thingNode.find('radialzones'))
+					@appMap[appId].tablets[tabletName].menu = @processMenu thingNode.find('RadialZones')
+					console.debug "Menu! #{appId} / #{tabletName}", @appMap[appId].tablets[tabletName].menu
 				when 'tabletapptouchfunctions'
-					appMapEntry.tablets[tabletName].menu = @processTouch(thingNode)
+					console.debug 'Touch!'
+					appMapEntry.tablets[tabletName].gestures = @processTouch(thingNode)
 				when 'tabletcontrolcontainerarray'
-					appMapEntry.tablets[tabletName].menu = @processButtonsAndRings(thingNode)
-
+					console.debug 'Controls!'
+					appMapEntry.tablets[tabletName].controls = @processButtonsAndRings(thingNode)
 			@appMap[appId] = appMapEntry
-
-		@apps = @el.find('ApplicationMap').children().map((i,el) =>
-			id: i
-			name: $(el).find('ApplicationName').text()
-			longName: $(el).find('ApplicationLongName').text()
-		).toArray()
-
-		@tablets = @el.find('TabletArray').children().map (i,el) ->
-			{
-				name: $(el).find('TabletName').text()
-				model: $(el).find('TabletModel').text()
-				controls: $(el).find('TabletControlContainerArray').children()
-				gestures: $(el).find('TabletAppTouchFunctions').children()
-				menus: $(el).find('TabletAppRadialMenuMapArray').children()
-			}
-
-		@buttons = @extractButtons()
-		@modes = @extractModes()
-
-		@selectedApp = ko.observable(-1)
-		@selectedTablet = ko.observable(-1)
-
-		@selectedButtons = ko.observable(-1)
-		@selectedModes = ko.observable(-1)
-
-		@isValid = ko.computed =>
-			@selectedButtons() >= 0 or @selectedModes() >= 0
+			console.debug appMapEntry
 
 	processMenu: (node) ->
 		ret = {}
@@ -73,9 +58,9 @@ class @ImportInnerViewModel
 	processRadialZone: (dir) ->
 		dir = $(dir)
 		ret =
-			radialFunction: dir.children('radialfunction').text()
-			radialStringName: dir.children('radialstringname').text()
-		handle = $ dir.children('radialfunctionhandle').children()[0]
+			radialFunction: dir.children('RadialFunction').text()
+			radialStringName: dir.children('RadialStringName').text()
+		handle = $ dir.children('RadialFunctionHandle').children()[0]
 		if handle.length > 0
 			switch handle.prop('tagName').toLowerCase()
 				when 'keystroke'
@@ -86,128 +71,54 @@ class @ImportInnerViewModel
 					ret.runAppStringName = handle.children().text()
 		ret
 
+	processGestureNode: (node) ->
+		ret =
+			commandId: node.children('commandID').text()
+		data = node.children('commandData')
+		displayName = node.children('commandDisplayName')
+		ret.commandData = data.text() if data.length > 0
+		ret.commandDisplayName = displayName.text() if displayName.length > 0
+		console.debug data,displayName,ret
+		ret
+
 	processTouch: (node) ->
+		AddAFingerToLeftClickEnabled: node.children('AddAFingerToLeftClickEnabled').text()
+		AddAFingerToRightClickEnabled: node.children('AddAFingerToRightClickEnabled').text()
+		ApplicationAssociated: node.children('ApplicationAssociated').text()
+		CursorAccelerationCurve: node.children('CursorAccelerationCurve').text()
+		CursorSpeed: node.children('CursorSpeed').text()
+		DoubleClickAssistMultiplier: node.children('DoubleClickAssistMultiplier').text()
+		DragEnabled: node.children('DragEnabled').text()
+		DragLockEnabled: node.children('DragLockEnabled').text()
+		Gesture3FDragEnabled: node.children('Gesture3FDragEnabled').text()
+		Gesture3FSwipeDownEnabled: node.children('Gesture3FSwipeDownEnabled').text()
+		Gesture3FSwipeEnabled: node.children('Gesture3FSwipeEnabled').text()
+		Gesture3FSwipeUpEnabled: node.children('Gesture3FSwipeUpEnabled').text()
+		Gesture5FTapHoldEnabled: node.children('Gesture5FTapHoldEnabled').text()
+		GestureRotateEnabled: node.children('GestureRotateEnabled').text()
+		GestureScrollBehavior: node.children('GestureScrollBehavior').text()
+		GestureScrollDirection: node.children('GestureScrollDirection').text()
+		GestureScrollEnabled: node.children('GestureScrollEnabled').text()
+		GestureSmartZoomEnabled: node.children('GestureSmartZoomEnabled').text()
+		GestureSwipeEnabled: node.children('GestureSwipeEnabled').text()
+		GestureZoomEnabled: node.children('GestureZoomEnabled').text()
+		ScrollingSpeed: node.children('ScrollingSpeed').text()
+		Tap2ToRightClickEnabled: node.children('Tap2ToRightClickEnabled').text()
+		TapToClickEnabled: node.children('TapToClickEnabled').text()
+		Gesture3FTapHoldEnabled: node.children('Gesture3FTapHoldEnabled').text()
+		Gesture4FPinchEnabled: node.children('Gesture4FPinchEnabled').text()
+		Gesture4FSpreadEnabled: node.children('Gesture4FSpreadEnabled').text()
+		Gesture4FSwipeDownEnabled: node.children('Gesture4FSwipeDownEnabled').text()
+		Gesture4FSwipeLeftRightEnabled: node.children('Gesture4FSwipeLeftRightEnabled').text()
+		Gesture4FSwipeUpEnabled: node.children('Gesture4FSwipeUpEnabled').text()
+		Gesture5FSwipeDownEnabled: node.children('Gesture5FSwipeDownEnabled').text()
+		Gesture3FTapAndHold: @processGestureNode node.children('Gesture3FTapAndHold')
+		Gesture4FSwipeDown: @processGestureNode node.children('Gesture4FSwipeDown')
+		Gesture4FSwipeUp: @processGestureNode node.children('Gesture4FSwipeUp')
+		Gesture5FSwipeDown: @processGestureNode node.children('Gesture5FSwipeDown')
+		Gesture5FTapAndHold: @processGestureNode node.children('Gesture5FTapAndHold')
 
 	processButtonsAndRings: (node) ->
-
-
-################################################################################
-# OLD WAY
-	extractButtons: ->
-		arr = _.map @tablets, (tabEl) =>
-			tabEl.controls.map((i,ctrlEl) =>
-				ctrlEl = $(ctrlEl)
-				app = @apps[parseInt(ctrlEl.find('ApplicationAssociated').text())]
-
-				# Only collect if the selector has results
-				selected = ctrlEl.find('TabletControlsButtonsArray').children()
-				if (selected.length == 0)
-					return null
-
-				{
-					buttons: @extractAllButtons selected
-					tablet: tabEl
-					app: app
-					displayText: tabEl.name + " / " + app.name
-				}
-			).toArray()
-		_.flatten(arr).filter((el)->el.app.id != 0)
-
-	extractAllButtons: (btns) ->
-		btns.map((i,b) ->
-			b = $ b
-			{
-				buttonfunction: b.find('buttonfunction').text()
-				buttonname: b.find('buttonname').text()
-				modifier: b.find('modifier').html()
-				keystrokeName: b.find('buttonkeystrokeshortcutname').text()
-				keystroke: b.find('keystroke').html()
-			}
-		).toArray()
-
-	extractModes: ->
-		@extractStrips().concat @extractRings()
-
-	extractStrips: ->
-		# PTZ/DTZ have touch strip modes in this structure:
-		#   TouchStrips/(Left|Right)OneD/TouchStripModes
-		arr = _.map @tablets, (tabEl) =>
-			tabEl.controls.map((i, ctrlEl) =>
-				ctrlEl = $(ctrlEl)
-				strips = ctrlEl.find('TouchStrips').children()
-				if strips.length == 0
-					return null
-
-				app = @apps[parseInt(ctrlEl.find('ApplicationAssociated').text())]
-				{
-					tablet: tabEl
-					app: app
-					displayText: tabEl.name + ' / ' + app.name
-					strips: @extractAllModes strips
-				}
-			).toArray()
-		_.flatten(arr).filter (el)->el.app.id != 0
-
-	extractRings: ->
-		# I4 has this structure:
-		#   TouchRingSettings/TouchStripModes
-		# Multi-ring tablets have this structure:
-		#   TouchRings/(Left|Right)Ring/TouchStripModes
-		arr = _.map @tablets, (tabEl) =>
-			tabEl.controls.map((i, ctrlEl) =>
-				ctrlEl = $(ctrlEl)
-				rings = ctrlEl.find('TouchRingSettings')
-				if rings.length == 0
-					rings = ctrlEl.find('TouchRings').children()
-				if rings.length == 0
-					return null
-
-				app = @apps[parseInt(ctrlEl.find('ApplicationAssociated').text())]
-				{
-					tablet: tabEl
-					app: app
-					displayText: tabEl.name + ' / ' + app.name
-					rings: @extractAllModes rings
-				}
-			).toArray()
-		_.flatten(arr).filter (el)->el.app.id != 0
-
-	extractAllModes: (coll) ->
-		coll.map((i,el) =>
-			name: el.localName
-			modes: ($(el).find("TouchStripModes").children().map (i,el) => @extractModesFromEl el).toArray()
-		).toArray()
-
-	extractModesFromEl: (el) ->
-		el = $(el)
-		{
-			direction: el.find('TouchStripDirection').text()
-			enableTapZones: el.find('TouchStripEnableTapZones').text()
-			stripFunction: el.find('TouchStripFunction').text()
-			keystrokeDecrease: el.find('TouchStripKeystrokeDecrease').html()
-			keystrokeIncrease: el.find('TouchStripKeystrokeIncrease').html()
-			keystrokeName: el.find('TouchStripKeystrokeName').text()
-			modeName: el.find('TouchStripModeName').text()
-			modifiers: el.find('TouchStripModifiers').text()
-			speed: el.find('TouchStripSpeed').text()
-		}
-
-	toJSON: ->
-		if @selectedModes() >= 0
-			appData = @modes[@selectedModes()].app
-		if @selectedButtons() >= 0
-			appData = @buttons[@selectedButtons()].app
-		ret = {
-			application_name: appData.name
-			application_long_name: appData.longName
-		}
-		ret.title = ret.application_name
-		if @selectedButtons() >= 0
-			ret.buttons = @buttons[@selectedButtons()].buttons
-		if @selectedModes() >= 0
-			obj = @modes[@selectedModes()]
-			ret.modes = obj.strips or obj.rings
-		ret
 
 
 class @ImportViewModel
@@ -225,12 +136,12 @@ class @ImportViewModel
 
 		@innerVM = ko.computed =>
 			if (@unescapedData())
-				new ImportInnerViewModel($(@unescapedData()))
+				new ImportInnerViewModel($($.parseXML @unescapedData()))
 			else
 				null
 
 		@submitDisabled = ko.computed =>
-			if !@innerVM() or !@innerVM().isValid()
+			if !@innerVM()
 				return true
 			if @busy()
 				return true
