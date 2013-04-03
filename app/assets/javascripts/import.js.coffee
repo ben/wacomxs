@@ -71,14 +71,9 @@ class @ImportInnerViewModel
 		ret
 
 	processGestureNode: (node) ->
-		ret =
-			commandId: node.children('commandID').text()
-		data = node.children('commandData')
-		displayName = node.children('commandDisplayName')
-		ret.commandData = data.text() if data.length > 0
-		ret.commandDisplayName = displayName.text() if displayName.length > 0
-		console.debug data,displayName,ret
-		ret
+		commandId: node.children('commandID').text()
+		commandData: node.children('commandData').text()
+		commandDisplayName: node.children('commandDisplayName').text()
 
 	processTouch: (node) ->
 		AddAFingerToLeftClickEnabled: node.children('AddAFingerToLeftClickEnabled').text()
