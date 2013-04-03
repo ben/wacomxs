@@ -39,15 +39,14 @@ class @ImportInnerViewModel
 			switch type
 				when 'tabletappradialmenumaparray'
 					@appMap[appId].tablets[tabletName].menu = @processMenu thingNode.find('RadialZones')
-					console.debug "Menu! #{appId} / #{tabletName}", @appMap[appId].tablets[tabletName].menu
+					#console.debug "Menu! #{appId} / #{tabletName}", @appMap[appId].tablets[tabletName].menu
 				when 'tabletapptouchfunctions'
-					console.debug 'Touch!'
+					#console.debug 'Touch!'
 					appMapEntry.tablets[tabletName].gestures = @processTouch(thingNode)
 				when 'tabletcontrolcontainerarray'
-					console.debug 'Controls!'
+					#console.debug "Controls! #{appId}"
 					appMapEntry.tablets[tabletName].controls = @processButtonsAndRings(thingNode)
 			@appMap[appId] = appMapEntry
-			console.debug appMapEntry
 
 	processMenu: (node) ->
 		ret = {}
