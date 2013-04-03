@@ -113,6 +113,11 @@ class @ImportInnerViewModel
 		Gesture5FTapAndHold: @processGestureNode node.children('Gesture5FTapAndHold')
 
 	processButtonsAndRings: (node) ->
+		ExpressKeysShowButtonHUD: node.children('ExpressKeysShowButtonHUD').text()
+		TouchRingShowButtonHUD: node.children('TouchRingShowButtonHUD').text()
+		buttons: []
+		modButtons: []
+		rings: []
 
 
 class @ImportViewModel
