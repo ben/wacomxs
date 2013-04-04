@@ -21,9 +21,9 @@
 
 				<div data-bind="with: innerVM">
 					<h4>Applications</h4>
-					<!-- ko foreach: apps -->
+					<!-- ko foreach: appArrayForDisplay -->
 					<label class="radio">
-						<input type="radio" name="appsGroup" data-bind="value: $index, checked: $parent.selectedApp" />
+						<input type="radio" name="appsGroup" data-bind="value: appId, checked: $parent.selectedAppId" />
 						<span data-bind="text: name"></span>
 					</label>
 					<!-- /ko -->
@@ -31,33 +31,20 @@
 					<h4>Tablets</h4>
 					<!-- ko foreach: tablets -->
 					<label class="radio">
-						<input type="radio" name="tabletsGroup" data-bind="value: $index, checked: $parent.selectedTablet" />
+						<input type="radio" name="tabsGroup" data-bind="value: name, checked: $parent.selectedTablet" />
 						<span data-bind="text: name"></span>
 					</label>
 					<!-- /ko -->
 
-					<h4>Buttons</h4>
-					<!-- ko foreach: buttons -->
+					<%#
+					<h4>Tablets</h4>
+					<!-- ko foreach: tablets -->
 					<label class="radio">
-						<input type="radio" name="buttonsGroup" data-bind="value: $index, checked: $parent.selectedButtons" />
-						<span data-bind="text: displayText"></span>
+						<input type="radio" name="tabletsGroup" data-bind="value: $index, checked: $parent.selectedTablet" />
+						<span data-bind="text: name"></span>
 					</label>
 					<!-- /ko -->
-					<label class="radio">
-						<input type="radio" name="buttonsGroup" value="-1" data-bind="data: -1, checked: selectedButtons" />
-						<span>(none)</span>
-					</label>
-
-					<h4>Modes</h4>
-					<!-- ko foreach: modes -->
-					<label class="radio">
-						<input type="radio" name="modesGroup" data-bind="value: $index, checked: $parent.selectedModes" />
-						<span data-bind="text: displayText"></span>
-					</label>
-					<!-- /ko -->
-					<label class="radio">
-						<input type="radio" name="modesGroup" value="-1" data-bind="checked: selectedModes" />(none)
-					</label>
+					%>
 
 				</div>
 			</form>

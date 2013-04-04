@@ -3,6 +3,7 @@ class @ImportInnerViewModel
 		
 		# Bindables
 		@selectedAppId = ko.observable()
+		@selectedTablet = ko.observable()
 
 		# General properties of the apps
 		@appMap = {}
@@ -10,20 +11,14 @@ class @ImportInnerViewModel
 			id = $(el).prop('tagName').match(/appid(\d+)/i)[1]
 			@appMap[id] =
 				name: $(el).find('ApplicationName').text()
+				appId: id
 				longName: $(el).find('ApplicationLongName').text()
 				tablets: {}
 			secondaryId = $(el).find('ApplicationSecondaryId')
 			if secondaryId.length > 0
 				@appMap[id].secondaryId = secondaryId.text()
 
-		# Pre-seed the tablets map
-		tabletMap = {}
-		@el.find('TabletArray').children().each (i,el) =>
-			tabletMap[$(el).find('TabletName').text()] =
-				name: $(el).find('TabletName').text()
-				model: $(el).find('TabletModel').text()
-
-		console.debug @appMap
+		#console.debug @appMap
 
 		# Find the app-specialized bits, walk up to attach them to tablets
 		$(el).find('ApplicationAssociated').each (i,appNode) =>
@@ -32,21 +27,31 @@ class @ImportInnerViewModel
 			appMapEntry = @appMap[appId]
 
 			tabletName = appNode.parent().parent().parent().find('TabletName').text()
-			appMapEntry.tablets[tabletName] ?= {}
+			appMapEntry.tablets[tabletName] ?= {name: tabletName}
 
 			thingNode = appNode.parent()
 			type = appNode.parent().parent().prop('tagName').toLowerCase()
 			switch type
 				when 'tabletappradialmenumaparray'
-					@appMap[appId].tablets[tabletName].menu = @processMenu thingNode.find('RadialZones')
-					#console.debug "Menu! #{appId} / #{tabletName}", @appMap[appId].tablets[tabletName].menu
+					appMapEntry.tablets[tabletName].menu = @processMenu thingNode.find('RadialZones')
+					#console.debug "Menu! #{appId} / #{tabletName}", appMapEntry.tablets[tabletName].menu
 				when 'tabletapptouchfunctions'
-					#console.debug 'Touch!'
 					appMapEntry.tablets[tabletName].gestures = @processTouch(thingNode)
+					#console.debug "Gestures! #{appId} / #{tabletName}", appMapEntry.tablets[tabletName].gestures
 				when 'tabletcontrolcontainerarray'
-					#console.debug "Controls! #{appId}"
 					appMapEntry.tablets[tabletName].controls = @processButtonsAndRings(thingNode)
+					#console.debug "Controls! #{appId} / #{tabletName}", appMapEntry.tablets[tabletName].controls
 			@appMap[appId] = appMapEntry
+
+		@appArray = _.map Object.keys(@appMap), (i) => @appMap[i]
+		@appArrayForDisplay = _.rest @appArray
+
+		@tablets = ko.computed =>
+			return [] if not @selectedAppId()
+			console.debug @appMap[@selectedAppId()].tablets
+
+		@valid = ko.computed =>
+			@selectedAppId() and @selectedTablet()
 
 	processMenu: (node) ->
 		ret = {}
@@ -140,6 +145,9 @@ class @ImportInnerViewModel
 		buttons: _.map node.children('TabletControlsButtonsArray').children(), @processButton
 		rings: _.map node.children('TouchRingSettings').children().children(), @processStrip
 
+	toJSON: ->
+		@appMap[@selectedAppId()]
+
 
 class @ImportViewModel
 	constructor: ->
@@ -161,7 +169,7 @@ class @ImportViewModel
 				null
 
 		@submitDisabled = ko.computed =>
-			if !@innerVM()
+			if !@innerVM() or !@innerVM().valid()
 				return true
 			if @busy()
 				return true
