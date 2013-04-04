@@ -112,12 +112,33 @@ class @ImportInnerViewModel
 		Gesture5FSwipeDown: @processGestureNode node.children('Gesture5FSwipeDown')
 		Gesture5FTapAndHold: @processGestureNode node.children('Gesture5FTapAndHold')
 
+	processButton: (node) ->
+		node = $(node)
+		ret =
+			buttonName: node.children('ButtonName').text()
+			buttonFunction: node.children('ButtonFunction').text()
+			modifier: node.children('Modifier').text()
+			buttonKeystrokeShortcutName: node.children('ButtonKeystrokeShortcutName').text()
+			keystroke: node.children('Keystroke').text()
+
+	processStrip: (node) ->
+		node = $(node)
+		ret = 
+			touchStripDirection: node.children('TouchStripDirection').text()
+			touchStripEnableTapZones: node.children('TouchStripEnableTapZones').text()
+			touchStripFunction: node.children('TouchStripFunction').text()
+			touchStripKeystrokeDecrease: node.children('TouchStripKeystrokeDecrease').text()
+			touchStripKeystrokeIncrease: node.children('TouchStripKeystrokeIncrease').text()
+			touchStripKeystrokeName: node.children('TouchStripKeystrokeName').text()
+			touchStripModeName: node.children('TouchStripModeName').text()
+			touchStripModifiers: node.children('TouchStripModifiers').text()
+			touchStripSpeed: node.children('TouchStripSpeed').text()
+
 	processButtonsAndRings: (node) ->
 		ExpressKeysShowButtonHUD: node.children('ExpressKeysShowButtonHUD').text()
 		TouchRingShowButtonHUD: node.children('TouchRingShowButtonHUD').text()
-		buttons: []
-		modButtons: []
-		rings: []
+		buttons: _.map node.children('TabletControlsButtonsArray').children(), @processButton
+		rings: _.map node.children('TouchRingSettings').children().children(), @processStrip
 
 
 class @ImportViewModel
