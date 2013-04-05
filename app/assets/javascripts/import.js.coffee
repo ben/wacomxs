@@ -10,13 +10,11 @@ class @ImportInnerViewModel
 		@el.find('ApplicationMap').children().each (i,el) =>
 			id = $(el).prop('tagName').match(/appid(\d+)/i)[1]
 			@appMap[id] =
-				name: $(el).find('ApplicationName').text()
 				appId: id
+				name: $(el).find('ApplicationName').text()
 				longName: $(el).find('ApplicationLongName').text()
 				tablets: {}
-			secondaryId = $(el).find('ApplicationSecondaryId')
-			if secondaryId.length > 0
-				@appMap[id].secondaryId = secondaryId.text()
+				secondaryId: $(el).find('ApplicationSecondaryId').text()
 
 		#console.debug @appMap
 
@@ -43,15 +41,27 @@ class @ImportInnerViewModel
 					#console.debug "Controls! #{appId} / #{tabletName}", appMapEntry.tablets[tabletName].controls
 			@appMap[appId] = appMapEntry
 
-		@appArray = _.map Object.keys(@appMap), (i) => @appMap[i]
-		@appArrayForDisplay = _.rest @appArray
+		# Leave out the '0' appId
+		@appArray = (@appMap[k] for k in _.rest(Object.keys(@appMap)))
 
 		@tablets = ko.computed =>
 			return [] if not @selectedAppId()
-			console.debug @appMap[@selectedAppId()].tablets
+			tablets = @appMap[@selectedAppId()].tablets
+			tablets[k] for k in Object.keys(tablets)
 
 		@valid = ko.computed =>
 			@selectedAppId() and @selectedTablet()
+
+	toJSON: ->
+		app = @appMap[@selectedAppId()]
+		tab = app.tablets[@selectedTablet()]
+		ret =
+			buttons: tab.controls.buttons
+			modes: tab.controls.rings
+			title: "#{tab.name} – #{app.name}"
+			application_name: app.name
+			application_long_name: app.longName
+			secondaryId: app.secondaryId
 
 	processMenu: (node) ->
 		ret = {}
@@ -144,9 +154,6 @@ class @ImportInnerViewModel
 		TouchRingShowButtonHUD: node.children('TouchRingShowButtonHUD').text()
 		buttons: _.map node.children('TabletControlsButtonsArray').children(), @processButton
 		rings: _.map node.children('TouchRingSettings').children().children(), @processStrip
-
-	toJSON: ->
-		@appMap[@selectedAppId()]
 
 
 class @ImportViewModel

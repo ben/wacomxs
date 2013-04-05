@@ -21,7 +21,7 @@
 
 				<div data-bind="with: innerVM">
 					<h4>Applications</h4>
-					<!-- ko foreach: appArrayForDisplay -->
+					<!-- ko foreach: appArray -->
 					<label class="radio">
 						<input type="radio" name="appsGroup" data-bind="value: appId, checked: $parent.selectedAppId" />
 						<span data-bind="text: name"></span>
