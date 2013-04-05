@@ -108,12 +108,12 @@
 				</label>
 				<div data-bind="foreach: buttons" class="well well-small">
 					<p>
-						<%#<span data-bind="text: buttonname"></span>:%>
-						<span data-bind="buttonFunction: buttonfunction"></span>
-						<!-- ko if: buttonfunction == '8' -->
-						(<span data-bind="text: keystrokeName"></span>)
+						<span data-bind="text: buttonName"></span>:
+						<span data-bind="buttonFunction: buttonFunction"></span>
+						<!-- ko if: buttonFunction == '8' -->
+						(<span data-bind="text: buttonKeystrokeShortcutName"></span>)
 						<!-- /ko -->
-						<!-- ko if: buttonfunction == '9' -->
+						<!-- ko if: buttonFunction == '9' -->
 						(<span data-bind="modifier: modifier"></span>)
 						<!-- /ko -->
 						<%#<button class="btn">...</button>%>
@@ -126,14 +126,14 @@
 					<input type="checkbox" data-bind="checked: include_rings">
 					Include
 				</label>
-				<div data-bind="foreach: modes">
+				<div>
 					<div class="well well-small">
-						<p><span data-bind="text: name"></span>:</p>
+						<p>First:</p>
 						<ul data-bind="foreach: modes">
 							<li>
-							<span data-bind="buttonFunction: stripFunction"></span>
-							<!-- ko if: stripFunction == '8' -->
-							<span data-bind="text: '(' + keystrokeName + ')'"></span>
+							<span data-bind="buttonFunction: touchStripFunction"></span>
+							<!-- ko if: touchStripFunction == '8' -->
+							<span data-bind="text: '(' + touchStripKeystrokeName + ')'"></span>
 							<!-- /ko -->
 							</li>
 						</ul>

@@ -56,12 +56,14 @@ class @ImportInnerViewModel
 		app = @appMap[@selectedAppId()]
 		tab = app.tablets[@selectedTablet()]
 		ret =
-			buttons: tab.controls.buttons
-			modes: tab.controls.rings
 			title: "#{tab.name} – #{app.name}"
 			application_name: app.name
 			application_long_name: app.longName
 			secondaryId: app.secondaryId
+			buttons: tab.controls.buttons
+			modes: tab.controls.rings
+			gestures: tab.gestures
+			menu: tab.menu
 
 	processMenu: (node) ->
 		ret = {}
@@ -82,7 +84,7 @@ class @ImportInnerViewModel
 				when 'radialzones'
 					ret.radialZones = @processMenu handle
 				when 'runappstringname'
-					ret.runAppStringName = handle.children().text()
+					ret.runAppStringName = handle.text()
 		ret
 
 	processGestureNode: (node) ->
@@ -187,8 +189,9 @@ class @ImportViewModel
 			return
 
 		@busy(true)
-		r = new Recommendation @innerVM().toJSON()
-		console.log r
+		json = @innerVM().toJSON()
+		r = new Recommendation json
+		console.log json, r
 
 		r.save null,
 			success: =>
