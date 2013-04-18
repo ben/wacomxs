@@ -138,7 +138,7 @@ class @ImportInnerViewModel
 			buttonKeystrokeShortcutName: node.children('ButtonKeystrokeShortcutName').text()
 			keystroke: node.children('Keystroke').text()
 
-	processStrip: (node) ->
+	processMode: (node) ->
 		node = $(node)
 		ret = 
 			touchStripDirection: node.children('TouchStripDirection').text()
@@ -151,11 +151,29 @@ class @ImportInnerViewModel
 			touchStripModifiers: node.children('TouchStripModifiers').text()
 			touchStripSpeed: node.children('TouchStripSpeed').text()
 
+	processModes: (node) ->
+		# I4 has this structure:
+		#   TouchRingSettings/TouchStripModes/mode[1,2...]
+		# Multi-ring tablets have this structure:
+		#   TouchRings/(Left|Right)Ring/TouchStripModes/mode[1,2...]
+		rings = node.children('TouchRingSettings')
+		if rings.length == 0
+			rings = node.children('TouchRings').children()
+		if rings.length == 0
+			return null
+
+		rings.map((i,el) =>
+			name: el.localName
+			modes: ($(el).find("TouchStripModes").children().map (i,el) =>
+				@processMode el
+			).toArray()
+		).toArray()
+
 	processButtonsAndRings: (node) ->
 		ExpressKeysShowButtonHUD: node.children('ExpressKeysShowButtonHUD').text()
 		TouchRingShowButtonHUD: node.children('TouchRingShowButtonHUD').text()
 		buttons: _.map node.children('TabletControlsButtonsArray').children(), @processButton
-		rings: _.map node.children('TouchRingSettings').children().children(), @processStrip
+		rings: @processModes node
 
 
 class @ImportViewModel
