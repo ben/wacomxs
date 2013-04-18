@@ -64,6 +64,10 @@ class @ImportInnerViewModel
 			modes: tab.controls.rings
 			gestures: tab.gestures
 			menu: tab.menu
+			include_buttons: tab.controls.buttons?
+			include_rings: tab.controls.rings?
+			include_menu: tab.controls.menu?
+			include_gestures: tab.controls.gestures?
 
 	processMenu: (node) ->
 		ret = {}
@@ -203,8 +207,7 @@ class @ImportViewModel
 			false
 
 	submit: ->
-		if @submitDisabled()
-			return
+		return if @submitDisabled()
 
 		@busy(true)
 		json = @innerVM().toJSON()
