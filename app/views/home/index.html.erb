@@ -126,9 +126,9 @@
 					<input type="checkbox" data-bind="checked: include_rings">
 					Include
 				</label>
-				<div>
+				<div data-bind="foreach: modes">
 					<div class="well well-small">
-						<p>First:</p>
+						<p data-bind="text: name"/>
 						<ul data-bind="foreach: modes">
 							<li>
 							<span data-bind="buttonFunction: touchStripFunction"></span>

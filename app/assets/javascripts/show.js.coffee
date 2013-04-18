@@ -72,8 +72,7 @@ ko.bindingHandlers.buttonFunction =
 ko.bindingHandlers.modifier =
 	init: (el, valueAccessor) ->
 		val = ko.utils.unwrapObservable(valueAccessor())
-		modEntities = /\[CDATA\[(.*)\]\]/.exec(val)[1]
-		modArr = modEntities.split ';'
+		modArr = val.split ';'
 		modArr.pop() # omit last ';'
 		$(el).text (s.substring(1) for s in modArr).join(' + ')
 
