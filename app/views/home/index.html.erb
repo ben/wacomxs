@@ -103,9 +103,14 @@
 			<div class="span3">
 				<h3>Buttons</h3>
 				<label class="checkbox">
-					<input type="checkbox" data-bind="checked: include_buttons">
+					<input type="checkbox" data-bind="checked: include_buttons, enable: has_buttons">
 					Include
 				</label>
+				<!-- ko ifnot: has_buttons -->
+				<div class="well well-small muted">
+					<b>No buttons</b>
+				</div>
+				<!-- /ko -->
 				<div data-bind="foreach: buttons" class="well well-small">
 					<p>
 						<span data-bind="text: buttonName"></span>:
@@ -123,9 +128,14 @@
 			<div class="span3">
 				<h3>Rings</h3>
 				<label class="checkbox">
-					<input type="checkbox" data-bind="checked: include_rings">
+					<input type="checkbox" data-bind="checked: include_rings, enable: has_rings">
 					Include
 				</label>
+				<!-- ko ifnot: has_rings -->
+				<div class="well well-small muted">
+					<b>No rings</b>
+				</div>
+				<!-- /ko -->
 				<div data-bind="foreach: modes">
 					<div class="well well-small">
 						<p data-bind="text: name"/>
@@ -143,16 +153,26 @@
 			<div class="span3">
 				<h3>Radial Menu</h3>
 				<label class="checkbox">
-					<input type="checkbox" data-bind="checked: include_menu">
+					<input type="checkbox" data-bind="checked: include_menu, enable: has_menu">
 					Include
 				</label>
+				<!-- ko ifnot: has_menu -->
+				<div class="well well-small muted">
+					<b>No menu</b>
+				</div>
+				<!-- /ko -->
 			</div>
 			<div class="span3">
 				<h3>Gestures</h3>
 				<label class="checkbox">
-					<input type="checkbox" data-bind="checked: include_gestures">
+					<input type="checkbox" data-bind="checked: include_gestures, enable: has_gestures">
 					Include
 				</label>
+				<!-- ko ifnot: has_gestures -->
+				<div class="well well-small muted">
+					<b>No gestures</b>
+				</div>
+				<!-- /ko -->
 			</div>
 
 		</div>

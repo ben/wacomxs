@@ -105,6 +105,11 @@ class @ShowViewModel extends kb.ViewModel
 		@error = ko.observable(false)
 		@dirty = ko.observable(false)
 
+		@has_buttons = ko.computed => @buttons()?
+		@has_rings = ko.computed => @modes()?
+		@has_menu = ko.computed => @menu()?
+		@has_gestures = ko.computed => @gestures()?
+
 		@urlForDownload = "/download/" + model.id
 
 	save: ->
