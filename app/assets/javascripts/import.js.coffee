@@ -31,7 +31,7 @@ class @ImportInnerViewModel
 			type = appNode.parent().parent().prop('tagName').toLowerCase()
 			switch type
 				when 'tabletappradialmenumaparray'
-					appMapEntry.tablets[tabletName].menu = @processMenu thingNode.find('RadialZones')
+					appMapEntry.tablets[tabletName].menu = @processMenu thingNode.children('RadialZones')
 					#console.debug "Menu! #{appId} / #{tabletName}", appMapEntry.tablets[tabletName].menu
 				when 'tabletapptouchfunctions'
 					appMapEntry.tablets[tabletName].gestures = @processTouch(thingNode)
@@ -70,14 +70,12 @@ class @ImportInnerViewModel
 			include_gestures: tab.controls.gestures?
 
 	processMenu: (node) ->
-		ret = {}
-		$(node).children().each (i,dir) =>
-			ret[$(dir).prop('tagName').toLowerCase()] = @processRadialZone(dir)
-		ret
+		@processRadialZone(dir) for dir in $(node).children()
 
 	processRadialZone: (dir) ->
 		dir = $(dir)
 		ret =
+			name: dir.prop('tagName').toLowerCase()
 			radialFunction: dir.children('RadialFunction').text()
 			radialStringName: dir.children('RadialStringName').text()
 		handle = $ dir.children('RadialFunctionHandle').children()[0]
