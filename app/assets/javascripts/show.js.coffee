@@ -68,6 +68,32 @@ ko.bindingHandlers.buttonFunction =
 			}[parseInt(val)]
 		$(el).text(english)
 
+ko.bindingHandlers.radialFunction =
+	init: (el, valueAccessor) ->
+		val = ko.utils.unwrapObservable(valueAccessor())
+		english =
+			{
+				0: 'Submenu',
+				1: 'Keystroke',
+				2: 'RunApp',
+				3: 'Scaling Absolute',
+				4: 'Scaling Relative',
+				5: 'Run Browser',
+				6: 'Run EMail',
+				7: 'Play/Pause',
+				8: 'Next Track',
+				9: 'Prev Track',
+				10: 'Volume Up',
+				11: 'Volume Down',
+				12: 'Disabled',
+				13: 'Close',
+				14: 'Precision Mode',
+				15: 'Display Toggle',
+				16: 'CPL Toggle',
+				17: 'Switch App',
+			}[parseInt(val)]
+		$(el).text(english)
+
 
 ko.bindingHandlers.modifier =
 	init: (el, valueAccessor) ->

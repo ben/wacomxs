@@ -36,16 +36,6 @@
 					</label>
 					<!-- /ko -->
 
-					<%#
-					<h4>Tablets</h4>
-					<!-- ko foreach: tablets -->
-					<label class="radio">
-						<input type="radio" name="tabletsGroup" data-bind="value: $index, checked: $parent.selectedTablet" />
-						<span data-bind="text: name"></span>
-					</label>
-					<!-- /ko -->
-					%>
-
 				</div>
 			</form>
 			<div class="alert alert-error" data-bind="visible: error">
@@ -161,6 +151,13 @@
 					<b>No menu</b>
 				</div>
 				<!-- /ko -->
+				<div class="well well-small">
+					<ul data-bind="foreach: menu">
+						<li>
+							<span data-bind="text: name"></span>:
+							<span data-bind="radialFunction: radialFunction"></span>
+					</ul>
+				</div>
 			</div>
 			<div class="span3">
 				<h3>Gestures</h3>
