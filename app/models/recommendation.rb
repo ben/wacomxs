@@ -3,6 +3,8 @@ class Recommendation < ActiveRecord::Base
 		:title,
 		:buttons,
 		:modes,
+		:menu,
+		:gestures,
 		:application_name,
 		:application_long_name,
 		:include_buttons,
