@@ -66,8 +66,8 @@ class @ImportInnerViewModel
 			menu: tab.menu
 			include_buttons: tab.controls.buttons?
 			include_rings: tab.controls.rings?
-			include_menu: tab.controls.menu?
-			include_gestures: tab.controls.gestures?
+			include_menu: tab.menu?
+			include_gestures: tab.gestures?
 
 	processMenu: (node) ->
 		@processRadialZone(dir) for dir in $(node).children()
