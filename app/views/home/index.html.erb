@@ -172,6 +172,25 @@
 					<b>No gestures</b>
 				</div>
 				<!-- /ko -->
+				<!-- ko if: has_gestures -->
+				<div class="well well-small">
+					<ul>
+						<!-- ko foreach: gestures().simple -->
+						<li>
+							<span data-bind="text: name"></span>
+							:
+							<span data-bind="text: value"></span>
+						</li>
+						<!-- /ko -->
+						<!-- ko foreach: gestures().complex -->
+						<li>
+							<span data-bind="text: name"></span>
+							: (...)
+						</li>
+						<!-- /ko -->
+					</ul>
+				</div>
+				<!-- /ko -->
 			</div>
 
 		</div>

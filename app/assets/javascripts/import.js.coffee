@@ -89,47 +89,56 @@ class @ImportInnerViewModel
 					ret.runAppStringName = handle.text()
 		ret
 
-	processGestureNode: (node) ->
-		commandId: node.children('commandID').text()
-		commandData: node.children('commandData').text()
-		commandDisplayName: node.children('commandDisplayName').text()
+	simpleGestureNode: (node, name) ->
+		name: name
+		value: node.children(name).text()
+
+	complexGestureNode: (node, name) ->
+		name: name
+		commandId: node.children(name).children('commandID').text()
+		commandData: node.children(name).children('commandData').text()
+		commandDisplayName: node.children(name).children('commandDisplayName').text()
 
 	processTouch: (node) ->
-		AddAFingerToLeftClickEnabled: node.children('AddAFingerToLeftClickEnabled').text()
-		AddAFingerToRightClickEnabled: node.children('AddAFingerToRightClickEnabled').text()
-		ApplicationAssociated: node.children('ApplicationAssociated').text()
-		CursorAccelerationCurve: node.children('CursorAccelerationCurve').text()
-		CursorSpeed: node.children('CursorSpeed').text()
-		DoubleClickAssistMultiplier: node.children('DoubleClickAssistMultiplier').text()
-		DragEnabled: node.children('DragEnabled').text()
-		DragLockEnabled: node.children('DragLockEnabled').text()
-		Gesture3FDragEnabled: node.children('Gesture3FDragEnabled').text()
-		Gesture3FSwipeDownEnabled: node.children('Gesture3FSwipeDownEnabled').text()
-		Gesture3FSwipeEnabled: node.children('Gesture3FSwipeEnabled').text()
-		Gesture3FSwipeUpEnabled: node.children('Gesture3FSwipeUpEnabled').text()
-		Gesture5FTapHoldEnabled: node.children('Gesture5FTapHoldEnabled').text()
-		GestureRotateEnabled: node.children('GestureRotateEnabled').text()
-		GestureScrollBehavior: node.children('GestureScrollBehavior').text()
-		GestureScrollDirection: node.children('GestureScrollDirection').text()
-		GestureScrollEnabled: node.children('GestureScrollEnabled').text()
-		GestureSmartZoomEnabled: node.children('GestureSmartZoomEnabled').text()
-		GestureSwipeEnabled: node.children('GestureSwipeEnabled').text()
-		GestureZoomEnabled: node.children('GestureZoomEnabled').text()
-		ScrollingSpeed: node.children('ScrollingSpeed').text()
-		Tap2ToRightClickEnabled: node.children('Tap2ToRightClickEnabled').text()
-		TapToClickEnabled: node.children('TapToClickEnabled').text()
-		Gesture3FTapHoldEnabled: node.children('Gesture3FTapHoldEnabled').text()
-		Gesture4FPinchEnabled: node.children('Gesture4FPinchEnabled').text()
-		Gesture4FSpreadEnabled: node.children('Gesture4FSpreadEnabled').text()
-		Gesture4FSwipeDownEnabled: node.children('Gesture4FSwipeDownEnabled').text()
-		Gesture4FSwipeLeftRightEnabled: node.children('Gesture4FSwipeLeftRightEnabled').text()
-		Gesture4FSwipeUpEnabled: node.children('Gesture4FSwipeUpEnabled').text()
-		Gesture5FSwipeDownEnabled: node.children('Gesture5FSwipeDownEnabled').text()
-		Gesture3FTapAndHold: @processGestureNode node.children('Gesture3FTapAndHold')
-		Gesture4FSwipeDown: @processGestureNode node.children('Gesture4FSwipeDown')
-		Gesture4FSwipeUp: @processGestureNode node.children('Gesture4FSwipeUp')
-		Gesture5FSwipeDown: @processGestureNode node.children('Gesture5FSwipeDown')
-		Gesture5FTapAndHold: @processGestureNode node.children('Gesture5FTapAndHold')
+		simple: (@simpleGestureNode(node, name) for name in [
+			'AddAFingerToLeftClickEnabled',
+			'AddAFingerToRightClickEnabled',
+			'ApplicationAssociated',
+			'CursorAccelerationCurve',
+			'CursorSpeed',
+			'DoubleClickAssistMultiplier',
+			'DragEnabled',
+			'DragLockEnabled',
+			'Gesture3FDragEnabled',
+			'Gesture3FSwipeDownEnabled',
+			'Gesture3FSwipeEnabled',
+			'Gesture3FSwipeUpEnabled',
+			'Gesture5FTapHoldEnabled',
+			'GestureRotateEnabled',
+			'GestureScrollBehavior',
+			'GestureScrollDirection',
+			'GestureScrollEnabled',
+			'GestureSmartZoomEnabled',
+			'GestureSwipeEnabled',
+			'GestureZoomEnabled',
+			'ScrollingSpeed',
+			'Tap2ToRightClickEnabled',
+			'TapToClickEnabled',
+			'Gesture3FTapHoldEnabled',
+			'Gesture4FPinchEnabled',
+			'Gesture4FSpreadEnabled',
+			'Gesture4FSwipeDownEnabled',
+			'Gesture4FSwipeLeftRightEnabled',
+			'Gesture4FSwipeUpEnabled',
+			'Gesture5FSwipeDownEnabled',
+		])
+		complex: (@complexGestureNode(node, name) for name in [
+			'Gesture3FTapAndHold',
+			'Gesture4FSwipeDown',
+			'Gesture4FSwipeUp',
+			'Gesture5FSwipeDown',
+			'Gesture5FTapAndHold',
+		])
 
 	processButton: (node) ->
 		node = $(node)
