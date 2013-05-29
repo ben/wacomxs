@@ -117,6 +117,7 @@ class @ShowViewModel extends kb.ViewModel
 				'gestures',
 				'application_name',
 				'application_long_name'
+				'secondary_id',
 				'include_buttons',
 				'include_rings',
 				'include_menu',

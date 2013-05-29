@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130203043903) do
+ActiveRecord::Schema.define(:version => 20130529033705) do
 
   create_table "recommendations", :force => true do |t|
     t.datetime "created_at",                              :null => false
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20130203043903) do
     t.boolean  "include_rings",         :default => true
     t.boolean  "include_menu",          :default => true
     t.boolean  "include_gestures",      :default => true
+    t.string   "secondary_id"
   end
 
 end

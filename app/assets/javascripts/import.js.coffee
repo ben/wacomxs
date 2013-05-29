@@ -59,7 +59,7 @@ class @ImportInnerViewModel
 			title: "#{tab.name} – #{app.name}"
 			application_name: app.name
 			application_long_name: app.longName
-			secondaryId: app.secondaryId
+			secondary_id: app.secondaryId
 			buttons: tab.controls.buttons
 			modes: tab.controls.rings
 			gestures: tab.gestures
