@@ -151,6 +151,7 @@
 					<b>No menu</b>
 				</div>
 				<!-- /ko -->
+				<!-- ko if: has_menu -->
 				<div class="well well-small">
 					<ul data-bind="foreach: menu">
 						<li>
@@ -158,6 +159,7 @@
 							<span data-bind="radialFunction: radialFunction"></span>
 					</ul>
 				</div>
+				<!-- /ko -->
 			</div>
 			<div class="span3">
 				<h3>Gestures</h3>
