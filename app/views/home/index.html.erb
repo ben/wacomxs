@@ -73,6 +73,31 @@
 	<!-- Show view -->
 	<form data-bind="with: showVM">
 		<div class="row">
+			<div class="span12 btn-toolbar">
+				<button class="btn btn-danger" data-bind="click: destroy">Delete</button>
+				<button class="btn btn-success pull-right span3" data-bind="click: save, visible: dirty">Save</button>
+				<a class="btn btn-primary pull-right span3"
+					data-bind="attr: {href: urlForDownload}, visible: !dirty()">
+					Download
+				</a>
+			</div>
+		</div>
+		<div class="row results">
+			<div class="span6 offset3">
+				<%#<p data-bind="text: dirty"/>%>
+				<img data-bind="visible: busy" src="/busy.gif" />
+				<p class="alert alert-error" data-bind="visible: error">
+					<%#<button type="button" class="close" data-dismiss="alert">×</button>%>
+					There was an error.  Tell Ben.
+				</p>
+				<p class="alert alert-success" data-bind="visible: success">
+					<%#<button type="button" class="close" data-dismiss="alert">×</button>%>
+					Saved!
+				</p>
+			</div>
+		</div>
+
+		<div class="row">
 			<div class="span12">
 				<input data-bind="value: title, valueUpdate: 'afterkeydown'" class="titlebox span12" placeholder="Title" />
 			</div>
@@ -195,31 +220,6 @@
 
 		</div>
 
-		<hr/>
-		<div class="row">
-			<div class="span12 btn-toolbar">
-				<button class="btn btn-danger" data-bind="click: destroy">Delete</button>
-				<button class="btn btn-success pull-right span3" data-bind="click: save, visible: dirty">Save</button>
-				<a class="btn btn-primary pull-right span3"
-					data-bind="attr: {href: urlForDownload}, visible: !dirty()">
-					Download
-				</a>
-			</div>
-		</div>
-		<div class="row results">
-			<div class="span6 offset3">
-				<%#<p data-bind="text: dirty"/>%>
-				<img data-bind="visible: busy" src="/busy.gif" />
-				<p class="alert alert-error" data-bind="visible: error">
-					<%#<button type="button" class="close" data-dismiss="alert">×</button>%>
-					There was an error.  Tell Ben.
-				</p>
-				<p class="alert alert-success" data-bind="visible: success">
-					<%#<button type="button" class="close" data-dismiss="alert">×</button>%>
-					Saved!
-				</p>
-			</div>
-		</div>
 	</form>
 
 </div>
