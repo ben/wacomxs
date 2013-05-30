@@ -73,157 +73,118 @@
 	<!-- Show view -->
 	<form data-bind="with: showVM">
 		<div class="row">
-			<div class="span12 btn-toolbar">
-				<button class="btn btn-danger" data-bind="click: destroy">Delete</button>
-				<button class="btn btn-success pull-right span3" data-bind="click: save, visible: dirty">Save</button>
-				<a class="btn btn-primary pull-right span3"
-					data-bind="attr: {href: urlForDownload}, visible: !dirty()">
-					Download
-				</a>
-			</div>
-		</div>
-		<div class="row results">
-			<div class="span6 offset3">
-				<%#<p data-bind="text: dirty"/>%>
-				<img data-bind="visible: busy" src="/busy.gif" />
-				<p class="alert alert-error" data-bind="visible: error">
-					<%#<button type="button" class="close" data-dismiss="alert">×</button>%>
-					There was an error.  Tell Ben.
-				</p>
-				<p class="alert alert-success" data-bind="visible: success">
-					<%#<button type="button" class="close" data-dismiss="alert">×</button>%>
-					Saved!
-				</p>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="span12">
-				<input data-bind="value: title, valueUpdate: 'afterkeydown'" class="titlebox span12" placeholder="Title" />
-			</div>
-		</div>
-		<div class="row">
 			<div class="span6">
+				<label>Title</label>
+				<input data-bind="value: title, valueUpdate: 'afterkeydown'" class="span6" placeholder="Title" />
 				<label>Short name</label>
 				<input data-bind="value: application_name" class="span6" />
-			</div>
-			<div class="span6">
 				<label>Secondary ID</label>
 				<input data-bind="value: secondary_id" class="span6" />
-			</div>
-		</div>
-		<div class="row">
-			<div class="span12">
 				<label>Long name</label>
-				<input data-bind="value: application_long_name" class="span12" />
+				<input data-bind="value: application_long_name" class="span6" />
 			</div>
-		</div>
-
-		<hr/>
-		<div class="row">
-			<div class="span3">
-				<h3>Buttons</h3>
-				<label class="checkbox">
-					<input type="checkbox" data-bind="checked: include_buttons, enable: has_buttons">
-					Include
-				</label>
-				<!-- ko ifnot: has_buttons -->
-				<div class="well well-small muted">
-					<b>No buttons</b>
+			<div class="span4">
+				<div class="well">
+					<span style="display:none" data-bind="ifnot: has_buttons" class="span-2 muted">(No buttons configured)</span>
+					<div class="span-2" data-bind="if: has_buttons">
+						<label class="checkbox">
+							<input type="checkbox" data-bind="checked: include_buttons">
+							Include Buttons
+						</label>
+					</div>
+					<i rel="buttons-popover" class="pull-right icon-info-sign" data-bind="visible: has_buttons"></i>
+					<div id="buttons-popover" style="display:none">
+						<div data-bind="foreach: buttons">
+							<p>
+							<span data-bind="text: buttonName"></span>:
+							<span data-bind="buttonFunction: buttonFunction"></span>
+							<span data-bind="visible: buttonFunction == '8', text: '(' + buttonKeystrokeShortcutName + ')'"></span>
+							<span data-bind="if: buttonFunction == '9'">(<span data-bind="modifier: modifier"></span>)</span>
+							</p>
+						</div>
+					</div>
 				</div>
-				<!-- /ko -->
-				<div data-bind="foreach: buttons" class="well well-small">
-					<p>
-						<span data-bind="text: buttonName"></span>:
-						<span data-bind="buttonFunction: buttonFunction"></span>
-						<!-- ko if: buttonFunction == '8' -->
-						(<span data-bind="text: buttonKeystrokeShortcutName"></span>)
-						<!-- /ko -->
-						<!-- ko if: buttonFunction == '9' -->
-						(<span data-bind="modifier: modifier"></span>)
-						<!-- /ko -->
-						<%#<button class="btn">...</button>%>
-					</p>
+				<div class="well">
+					<span style="display:none" data-bind="visible: !has_rings()" class="span-2 muted">(No rings configured)</span>
+					<div class="span-2" data-bind="visible: has_rings">
+						<label class="checkbox">
+							<input type="checkbox" data-bind="checked: include_rings">
+							Include Rings
+						</label>
+					</div>
+					<i rel="modes-popover" class="pull-right icon-info-sign" data-bind="visible: has_rings"></i>
+					<div id="modes-popover" style="display:none">
+						<div data-bind="foreach: modes">
+							<div>
+								<h4 data-bind="text: name"></h4>
+								<ul data-bind="foreach: modes">
+									<li>
+									<span data-bind="buttonFunction: touchStripFunction"></span>
+									<span data-bind="visible: touchStripFunction == '8', text: '(' + touchStripKeystrokeName + ')'"></span>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
 				</div>
-			</div>
-			<div class="span3">
-				<h3>Rings</h3>
-				<label class="checkbox">
-					<input type="checkbox" data-bind="checked: include_rings, enable: has_rings">
-					Include
-				</label>
-				<!-- ko ifnot: has_rings -->
-				<div class="well well-small muted">
-					<b>No rings</b>
+				<div class="well">
+					<span style="display:none" data-bind="visible: !has_menu()" class="span-2 muted">(No menu configured)</span>
+					<div class="span-2" data-bind="visible: has_menu">
+						<label class="checkbox">
+							<input type="checkbox" data-bind="checked: include_menu">
+							Include Radial Menu
+						</label>
+					</div>
+					<i rel="menu-popover" class="pull-right icon-info-sign" data-bind="visible: has_menu"></i>
+					<div id="menu-popover" style="display:none" data-bind="foreach: menu">
+						<p>
+						<span data-bind="text: name"></span>:
+						<span data-bind="radialFunction: radialFunction"></span>
+						</p>
+					</div>
 				</div>
-				<!-- /ko -->
-				<div data-bind="foreach: modes">
-					<div class="well well-small">
-						<p data-bind="text: name"/>
-						<ul data-bind="foreach: modes">
-							<li>
-							<span data-bind="buttonFunction: touchStripFunction"></span>
-							<!-- ko if: touchStripFunction == '8' -->
-							<span data-bind="text: '(' + touchStripKeystrokeName + ')'"></span>
+				<div class="well">
+					<span style="display:none" data-bind="visible: !has_gestures()" class="span-2 muted">(No gestures configured)</span>
+					<div class="span-2" data-bind="visible: has_gestures">
+						<label class="checkbox">
+							<input type="checkbox" data-bind="checked: include_gestures">
+							Include Gestures
+						</label>
+					</div>
+					<i rel="gestures-popover" class="pull-right icon-info-sign" data-bind="visible: has_gestures"></i>
+					<div id="gestures-popover" style="display:none;" data-bind="with: gestures">
+						<ul class="unstyled">
+							<!-- ko foreach: simple -->
+							<li><small><span data-bind="text: name"></span>: <span data-bind="text: value"></span></small></li>
 							<!-- /ko -->
-							</li>
+							<!-- ko foreach: complex -->
+							<li><small><span data-bind="text: name"></span>: (...)</small></li>
+							<!-- /ko -->
 						</ul>
 					</div>
 				</div>
 			</div>
-			<div class="span3">
-				<h3>Radial Menu</h3>
-				<label class="checkbox">
-					<input type="checkbox" data-bind="checked: include_menu, enable: has_menu">
-					Include
-				</label>
-				<!-- ko ifnot: has_menu -->
-				<div class="well well-small muted">
-					<b>No menu</b>
-				</div>
-				<!-- /ko -->
-				<!-- ko if: has_menu -->
-				<div class="well well-small">
-					<ul data-bind="foreach: menu">
-						<li>
-							<span data-bind="text: name"></span>:
-							<span data-bind="radialFunction: radialFunction"></span>
-					</ul>
-				</div>
-				<!-- /ko -->
+			<div class="span2">
+				<button class="btn btn-success btn-block" data-bind="click: save, visible: dirty">Save</button>
+				<button class="btn btn-primary btn-block" data-bind="attr: {href: urlForDownload}, visible: !dirty()">
+					Download
+				</button>
+				<button class="btn btn-danger btn-block" data-bind="click: destroy">Delete</button>
 			</div>
-			<div class="span3">
-				<h3>Gestures</h3>
-				<label class="checkbox">
-					<input type="checkbox" data-bind="checked: include_gestures, enable: has_gestures">
-					Include
-				</label>
-				<!-- ko ifnot: has_gestures -->
-				<div class="well well-small muted">
-					<b>No gestures</b>
-				</div>
-				<!-- /ko -->
-				<!-- ko if: has_gestures -->
-				<div class="well well-small">
-					<ul>
-						<!-- ko foreach: gestures().simple -->
-						<li>
-							<span data-bind="text: name"></span>
-							:
-							<span data-bind="text: value"></span>
-						</li>
-						<!-- /ko -->
-						<!-- ko foreach: gestures().complex -->
-						<li>
-							<span data-bind="text: name"></span>
-							: (...)
-						</li>
-						<!-- /ko -->
-					</ul>
-				</div>
-				<!-- /ko -->
-			</div>
+		</div>
 
+		<div class="row results">
+			<div class="span6 offset3">
+				<img data-bind="visible: busy" src="/busy.gif" />
+
+				<p class="alert alert-error" data-bind="visible: error">
+				There was an error. Tell Ben.
+				</p>
+
+				<p class="alert alert-success" data-bind="visible: success">
+				Saved!
+				</p>
+			</div>
 		</div>
 
 	</form>

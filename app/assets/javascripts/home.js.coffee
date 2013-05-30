@@ -44,6 +44,10 @@ class @MasterViewModel
 
 	show: (id) ->
 		@showVM(new ShowViewModel(new Recommendation({id:id})))
+		window.addPopover 'buttons'
+		window.addPopover 'modes'
+		window.addPopover 'menu'
+		window.addPopover 'gestures'
 
 	doLoad: ->
 		router.navigate '/load', {trigger: true}
@@ -98,3 +102,13 @@ $ =>
 	window.router = @router
 	window.Recommendation = @Recommendation
 	window.RecommendationCollection = @RecommendationCollection
+
+################################################################################
+# View code
+window.addPopover = (name) ->
+	$("[rel=#{name}-popover]").popover
+		html: true
+		trigger: 'hover'
+		placement: 'bottom'
+		content: -> $("##{name}-popover").html()
+		template: '<div class="popover"><div class="arrow"></div><div class="popover-inner"><h3 class="popover-title"></h3><div class="popover-content"><p></p></div></div></div>'
