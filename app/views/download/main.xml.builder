@@ -1,19 +1,19 @@
 xml.instruct!
 
 def mode_as_touchstrip(xml, m)
-	xml.TouchStripDirection m[:direction], :type => :integer
-	xml.TouchStripEnableTapZones m[:enableTapZones], :type => :bool
-	xml.TouchStripFunction m[:stripFunction], :type => :integer
+	xml.TouchStripDirection m[:touchStripDirection], :type => :integer
+	xml.TouchStripEnableTapZones m[:touchStripEnableTapZones], :type => :bool
+	xml.TouchStripFunction m[:touchStripFunction], :type => :integer
 	xml.TouchStripKeystrokeDecrease :type => :kestring do
-		xml << m[:keystrokeDecrease]
+		xml.cdata! m[:touchStripKeystrokeDecrease]
 	end
 	xml.TouchStripKeystrokeIncrease :type => :kestring do
-		xml << m[:keystrokeIncrease]
+		xml.cdata! m[:touchStripKeystrokeIncrease]
 	end
-	xml.TouchStripKeystrokeName m[:keystrokeName], :type => :string
-	xml.TouchStripModeName m[:name], :type => :string
-	xml.TouchStripModifiers m[:modifiers], :type => :integer
-	xml.TouchStripSpeed m[:speed], :type => :integer
+	xml.TouchStripKeystrokeName m[:touchStripKeystrokeName], :type => :string
+	xml.TouchStripModeName m[:touchStripModeName], :type => :string
+	xml.TouchStripModifiers m[:touchStripModifiers], :type => :integer
+	xml.TouchStripSpeed m[:touchStripSpeed], :type => :integer
 end
 
 def touch_strip_modes(xml)
@@ -28,12 +28,18 @@ end
 
 def button_array_element(xml, b, replace=nil, with=nil)
 	xml.ArrayElement :type => :map do
-		name = b[:buttonname]
+		name = b[:buttonName]
 		name.sub! replace, with unless replace.nil?
 		xml.ButtonName b[:buttonname], :type => :integer
 		xml.ButtonFunction b[:buttonfunction], :type => :integer
-		xml.ButtonKeystrokeShortcutName b[:keystrokeName], :type => :string unless b[:keystrokeName].empty?
-		xml.Keystroke b[:keystroke], :type => :kestring if b.has_key? :keystroke
+		unless b[:keystrokeShortcutName].nil?
+			xml.ButtonKeystrokeShortcutName b[:keystrokeShortcutName], :type => :string
+		end
+		if b.has_key? :keystroke
+			xml.Keystroke :type => :kestring do
+				xml.cdata! b[:keystroke]
+			end
+		end
 	end
 end
 
@@ -54,6 +60,9 @@ xml.root :type => :map do
 			# TODO
 			if @reco.include_menu
 				xml.TabletAppRadialMenuMapArray :type => :array do
+					xml.ArrayElement :type => :map do
+						xml.ApplicationAssociated 1, :type => :integer
+					end
 				end
 			else
 				xml.comment! 'radial menu excluded'
