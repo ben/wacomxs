@@ -43,6 +43,29 @@ def button_array_element(xml, b, replace=nil, with=nil)
 	end
 end
 
+def radial_menu_element(xml, m)
+	xml.RadialZones :type => :map do
+		m.each do |z|
+			xml.tag! z[:name].capitalize, :type => :map do
+				xml.RadialFunction z[:radialFunction], :type => :integer
+				xml.RadialStringName z[:radialStringName], :type => :string
+				if ['0', '1', '2'].include? z[:radialFunction]
+					xml.RadialFunctionHandle :type => :map do
+						case z[:radialFunction]
+						when '0'
+							radial_menu_element xml, z[:radialZones]
+						when '1'
+							xml.Keystroke z[:keystroke], :type => :kestring
+						when '2'
+							xml.RunAppStringName z[:runAppStringName], :type => :string
+						end
+					end
+				end
+			end
+		end
+	end
+end
+
 xml.root :type => :map do
 	xml.ImportFileVersion 3, :type => :integer
 	xml.OSInterface :type => :map do
@@ -57,11 +80,11 @@ xml.root :type => :map do
 	xml.TabletArray :type => :array do
 		xml.ArrayElement :type => :map do
 
-			# TODO
 			if @reco.include_menu
 				xml.TabletAppRadialMenuMapArray :type => :array do
 					xml.ArrayElement :type => :map do
 						xml.ApplicationAssociated 1, :type => :integer
+						radial_menu_element xml, @reco.menu
 					end
 				end
 			else
