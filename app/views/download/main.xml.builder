@@ -30,8 +30,8 @@ def button_array_element(xml, b, replace=nil, with=nil)
 	xml.ArrayElement :type => :map do
 		name = b[:buttonName]
 		name.sub! replace, with unless replace.nil?
-		xml.ButtonName b[:buttonname], :type => :integer
-		xml.ButtonFunction b[:buttonfunction], :type => :integer
+		xml.ButtonName b[:buttonName], :type => :string
+		xml.ButtonFunction b[:buttonFunction], :type => :integer
 		unless b[:keystrokeShortcutName].nil?
 			xml.ButtonKeystrokeShortcutName b[:keystrokeShortcutName], :type => :string
 		end
