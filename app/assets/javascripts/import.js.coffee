@@ -92,6 +92,7 @@ class @ImportInnerViewModel
 	simpleGestureNode: (node, name) ->
 		name: name
 		value: node.children(name).text()
+		type: node.children(name).attr('type')
 
 	complexGestureNode: (node, name) ->
 		name: name
