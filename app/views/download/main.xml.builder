@@ -66,6 +66,23 @@ def radial_menu_element(xml, m)
 	end
 end
 
+def simple_gesture_element(xml, g)
+	unless g.has_key?(:type)
+		g[:type] = ['true', 'false'].include?(g[:value]) ? 'bool' : 'integer'
+	end
+	xml.tag! g[:name], g[:value], :type => g[:type]
+end
+
+def complex_gesture_element(xml, g)
+	xml.tag! g[:name], :type => :map do
+		xml.commandID g[:commandId], :type => :integer
+		xml.commandDisplayName g[:commandDisplayName], :type => :string
+		xml.commandData :type => :string do
+			xml.cdata! g[:commandData]
+		end
+	end
+end
+
 xml.root :type => :map do
 	xml.ImportFileVersion 3, :type => :integer
 	xml.OSInterface :type => :map do
@@ -91,11 +108,16 @@ xml.root :type => :map do
 				xml.comment! 'radial menu excluded'
 			end
 
-			# TODO
 			if @reco.include_gestures
 				xml.TabletAppTouchFunctions :type => :array do
 					xml.ArrayElement :type => :map do
 						xml.ApplicationAssociated 1, :type => :integer
+						@reco.gestures[:simple].each do |g|
+							simple_gesture_element xml, g
+						end
+						@reco.gestures[:complex].each do |g|
+							complex_gesture_element xml, g
+						end
 					end
 				end
 			else
