@@ -128,8 +128,6 @@ class @ShowViewModel extends kb.ViewModel
 		model.on "change", => @dirty(true)
 
 		@busy = ko.observable(false)
-		@success = ko.observable(false)
-		@error = ko.observable(false)
 		@dirty = ko.observable(false)
 
 		@has_buttons = ko.computed => @buttons()?
@@ -139,18 +137,22 @@ class @ShowViewModel extends kb.ViewModel
 
 		@urlForDownload = "/download/" + model.id
 
+		@alerts = ko.observableArray()
+
 	save: ->
 		@busy(true)
-		@error(false)
-		@success(false)
 		@model().save null
 			success: =>
 				@busy(false)
-				@success(true)
 				@dirty(false)
+				@alerts.push
+					alertType: 'alert-success'
+					displayText: 'Success!'
 			error: =>
 				@busy(false)
-				@error(true)
+				@alerts.push
+					alertType: 'alert-error'
+					displayText: 'There was an error. Call Ben.'
 
 	destroy: ->
 		if window.confirm "Are you sure you want to destroy this?"

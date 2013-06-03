@@ -176,14 +176,12 @@
 		<div class="row results">
 			<div class="span6 offset3">
 				<img data-bind="visible: busy" src="/busy.gif" />
-
-				<p class="alert alert-error" data-bind="visible: error">
-				There was an error. Tell Ben.
-				</p>
-
-				<p class="alert alert-success" data-bind="visible: success">
-				Saved!
-				</p>
+				<div data-bind="foreach: alerts">
+					<div class="alert" data-bind="css: alertType">
+						<button type="button" class="close" data-dismiss="alert">&times;</button>
+						<span data-bind="text: displayText"></span>
+					</div>
+				</div>
 			</div>
 		</div>
 
