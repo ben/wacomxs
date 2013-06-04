@@ -145,17 +145,20 @@ class @ShowViewModel extends kb.ViewModel
 			success: =>
 				@busy(false)
 				@dirty(false)
-				@alerts.push
-					alertType: 'alert-success'
-					displayText: 'Success!'
+				@addAlert "alert-success", "Success!"
 			error: =>
 				@busy(false)
-				@alerts.push
-					alertType: 'alert-error'
-					displayText: 'There was an error. Call Ben.'
+				@addAlert 'alert-error', 'There was an error. Call Ben.'
+
+	addAlert: (alertType, displayText) ->
+		@alerts.push
+			alertType: alertType
+			displayText: displayText
+
+	removeAlert: (alert) =>
+		@alerts.remove alert
 
 	destroy: ->
 		if window.confirm "Are you sure you want to destroy this?"
 			@model().destroy()
 			router.navigate '/', {trigger: true}
-
