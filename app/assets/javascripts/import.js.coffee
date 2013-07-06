@@ -82,7 +82,7 @@ class @ImportInnerViewModel
 		if handle.length > 0
 			switch handle.prop('tagName').toLowerCase()
 				when 'keystroke'
-					ret.keystroke = handle.children().text()
+					ret.keystroke = handle.text()
 				when 'radialzones'
 					ret.radialZones = @processMenu handle
 				when 'runappstringname'
